@@ -3,9 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>Crisis Management System</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href= "/G5_Crisis_Management_System/source/static/style/homepage.css">
+    
 </head>
 <body>
-    <h1>This is the home page of crisis management.</h1>
+
+    <div class="dashboard-navbar">
+        <div class="dashboard-navbar-container">
+            <div class="logo-section">
+                <img src="/G5_Crisis_Management_System/source/static/media/Logo.jpg" alt="NGO Logo" class="logo-img">
+                <!-- Replace with your preferred image URL -->
+                <span class="org-name">Crisis Management</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#">Home</a>
+                <a href="#about">About Us</a>
+                <a href="#contact">Contact Us</a>
+                <a href="#">Incidents</a>
+                <a href="#">Donate</a>
+                <a href="#" class="dashboard-donate">Login/Register</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Bootstrap Carousel with 7-Second Timer -->
+    <section class="carousel-container">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="7000">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/G5_Crisis_Management_System/source/static/media/homepage_slider1.webp" class="d-block w-100" alt="Slide 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="/G5_Crisis_Management_System/source/static/media/homepage_slider2.jpg" class="d-block w-100" alt="Slide 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="/G5_Crisis_Management_System/source/static/media/homepage_slider3.jpg" class="d-block w-100" alt="Slide 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="/G5_Crisis_Management_System/source/static/media/homepage_slider4.webp" class="d-block w-100" alt="Slide 4">
+                </div>
+                <div class="carousel-item">
+                    <img src="/G5_Crisis_Management_System/source/static/media/homepage_slider5.jpg" class="d-block w-100" alt="Slide 5">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about-section">
+        <h1>About Us</h1>
+        <p class="about_us_text">
+            Our Crisis Management System offers a feasible approach for organizations to efficiently manage emergencies and reduce response durations.The platform simplifies incident reporting, team collaboration, and resource distribution via a unified dashboard. It includes crucial tools such as emergency alerts, live status updates, and electronic checklists for standard operating procedures. Team leaders can promptly allocate tasks, monitor response advancements, and ensure clear communication pathways with all involved parties. Equipped with pre-designed reporting templates and secure data storage, the system aids organizations in keeping comprehensive incident records and enhancing their emergency procedures informed by previous experiences. Regardless of facing natural disasters, technical malfunctions, or security issues, our platform delivers the framework and resources required for systematic crisis handling and recovery.
+        </p>
+        <h1>What we do</h1>
+        <p class="what_we_do_text">
+            Our Crisis Management System serves as a crucial bridge between communities, volunteers, and help organizations amid times of emergency. Through our stage, citizens can report occurrences and remain educated approximately crises in their zone, whereas enlisted volunteers can effectively take an interest in help endeavors by tolerating particular errands posted by confirmed organizations. NGOs and alleviation organizations utilize the stage to proficiently distribute and oversee crisis-related assignments, facilitate volunteer endeavors, and keep up real-time stock of accessible assets. The framework encourages consistent communication between all partners, permitting organizations to rapidly convey help where it's required most. With our coordinates gift include, concerned citizens can specifically contribute to progressing help endeavors, guaranteeing assets reach influenced regions productively. This collaborative approach makes a organized reaction organize that interfaces those who need to assist with those who require it most, making emergency administration more facilitated and viable. 
+        </p>
+    </section>
+
+    <div class="report-incident">
+        <h2>Report an Incident</h2>
+        <form>
+            <label for="incident-type">Incident Type *</label>
+            <input type="text" id="incident-type" placeholder="Describe the incident type..." required>
+            
+            <label for="description">Description *</label>
+            <textarea id="description" placeholder="Describe the incident..." required></textarea>
+            
+            <label for="severity">Severity (1 to 10) *</label>
+            <input type="range" id="severity" min="1" max="10" value="5" required>
+            
+            <!-- Integer labels for the severity levels -->
+            <div class="severity-labels">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+                <span>6</span>
+                <span>7</span>
+                <span>8</span>
+                <span>9</span>
+                <span>10</span>
+            </div>
+    
+            <button type="button" id="getLocationBtn" class="get-location-btn">Get Location</button>
+    
+            <label for="image-upload">Upload Image</label>
+            <input type="file" id="image-upload" accept="image/*">
+            
+            <button type="submit">Report Incident</button>
+        </form>
+    </div>
+    
+    
+
+<!-- Contact Us Section -->
+<section id="contact" class="contact-section">
+    <h1>Contact Us</h1>
+    <div style="display: flex; justify-content: space-between; gap: 20px;">
+        <div class="inquire-us-box">
+            <form>
+                <label for="name">Your Name *</label>
+                <input type="text" id="name" placeholder="Enter your name..." required>
+                
+                <label for="email">Your Email *</label>
+                <input type="email" id="email" placeholder="Enter your email..." required>
+                
+                <label for="message">Your Message *</label>
+                <textarea id="message" placeholder="Enter your message..." required></textarea>
+                
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </div>
+        <div class="map-placeholder">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9207.22131232633!2d72.62998082524157!3d23.192097945470948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395c2a3c9618d2c5%3A0xc54de484f986b1fa!2sDA-IICT!5e0!3m2!1sen!2sin!4v1731160429688!5m2!1sen!2sin" width="450" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Crisis Management System. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
