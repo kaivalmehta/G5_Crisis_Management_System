@@ -1,0 +1,220 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-image: url("../../media/background.jpg"); /* Update with your image path */
+    background-size: cover; /* Scales image to cover the entire viewport */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents tiling */
+    background-attachment: fixed; /* Keeps the background fixed when scrolling */
+    color: #f5f7fa; /* Optional: Change text color to improve readability */
+}
+
+/* body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f5f7fa;
+    animation: backgroundFade 5s infinite;
+} */
+
+/* Container and Grid Layout */
+.container {
+    display: grid;
+    place-items: center;
+    height: calc(100vh - 60px); /* Adjusted to account for navbar */
+    position: relative;
+}
+
+/* Login Form Styling */
+.login-form {
+    width: 100%;
+    max-width: 400px;
+    padding: 2em;
+    background: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    animation: fadeIn 1s ease;
+}
+
+.login-form h2 {
+    font-size: 1.8em;
+    margin-bottom: 1em;
+    color: #222222;
+    animation: textSlideIn 1s ease;
+}
+
+.left-align {
+    text-align: left;
+    display: block;
+    width: 100%;
+}
+
+.login-form label {
+    margin-bottom: 0.5em;
+    font-size: 0.9em;
+    color: #222222;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 0.75em;
+    margin-bottom: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.options {
+    text-align: right;
+    font-size: 0.9em;
+    margin-bottom: 1em;
+}
+
+.forgot-password {
+    color: #4a90e2;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 0.75em;
+    border: none;
+    border-radius: 5px;
+    background-color: #4a90e2;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    animation: buttonPulse 1.5s infinite;
+}
+
+.login-btn:hover {
+    background-color: #3b73c4;
+}
+
+.register-text {
+    margin-top: 1em;
+    font-size: 0.9em;
+    color: #222222; /* Adjusted text color */
+}
+
+.register-link {
+    color: #4a90e2;
+    text-decoration: none;
+}
+
+.register-link:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    background: #f4f4f4;
+    padding: 1em;
+    text-align: center;
+    font-size: 0.9em;
+    color: #666;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes buttonPulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes textSlideIn {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes backgroundFade {
+    0%, 100% {
+        background-color: #f5f7fa;
+    }
+    50% {
+        background-color: #e4ebf5;
+    }
+}
+
+
+/* Style for the Password Toggle Icon */
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    color: #555;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+.password-toggle:hover {
+    color: #4a90e2;
+}
+
+
+
+
+.password-field {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-field input[type="password"],
+.password-field input[type="text"] {
+    flex: 1;
+}
+
+.password-field .toggle-password {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
