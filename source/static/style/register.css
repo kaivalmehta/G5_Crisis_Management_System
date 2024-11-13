@@ -1,0 +1,128 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-image: url("../../media/background.jpg"); /* Update with your image path */
+    background-size: cover; /* Scales image to cover the entire viewport */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents tiling */
+    background-attachment: fixed; /* Keeps the background fixed when scrolling */
+    color: #f5f7fa; /* Optional: Change text color to improve readability */
+}
+
+/* Container and Grid Layout */
+.container {
+    display: grid;
+    place-items: center;
+    padding-top: 100px; /* Adjusted for navbar height */
+    padding-bottom: 650px; /* Adjusted for footer height */
+    height: calc(100vh - 140px); /* Navbar + Footer height */
+    position: relative;
+}
+
+/* Register Form Styling */
+.register-form {
+    width: 100%;
+    max-width: 400px;
+    padding: 2em;
+    background: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    animation: fadeIn 1s ease;
+}
+
+.register-form h2 {
+    font-size: 1.8em;
+    margin-bottom: 1em;
+    color: #333;
+}
+
+.register-form label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-size: 0.9em;
+    color: #222222;
+    text-align: left;
+}
+
+.register-form select,
+.register-form input[type="text"],
+.register-form input[type="email"],
+.register-form input[type="password"] {
+    width: 100%;
+    padding: 0.75em;
+    margin-bottom: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+/* Password Container */
+.password-container {
+    position: relative;
+    align-items: center;
+}
+
+.password-container input[type="password"] {
+    padding-right: 3em;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 35%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    font-size: 0.9em;
+    padding: 0;
+}
+
+/* Register Button */
+.register-btn {
+    width: 100%;
+    padding: 0.75em;
+    border: none;
+    border-radius: 5px;
+    background-color: #4a90e2;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.register-btn:hover {
+    background-color: #3b73c4;
+}
+
+/* Footer */
+footer {
+    background: #f4f4f4;
+    padding: 1em;
+    text-align: center;
+    font-size: 0.9em;
+    color: #666;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
