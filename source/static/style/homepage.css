@@ -1,0 +1,287 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: url('https://www.example.com/path-to-background-image.jpg'); /* Replace with an environment-related image URL */
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    color: #333;
+}
+
+/* Container and Grid Layout */
+.container {
+    display: grid;
+    height: calc(100vh - 80px); /* Adjusted to account for navbar */
+    position: relative;
+}
+
+/* Top Fixed Dashboard Navbar */
+.dashboard-navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(2,2,2,2);
+    color: white;
+    padding: 1em 0;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-navbar-container {
+    max-width: 95%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 3%;
+}
+
+/* Left Side: Logo and Organization Name */
+.logo-section {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.org-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* Right Side: Navbar Links */
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    padding: 0.5em 1em;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+/* Pseudo-selector for Hover Effect */
+.nav-links a:hover::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background-color: #4a90e2;
+    transition: width 0.3s ease;
+    width: 100%;
+}
+
+/* Highlight and Animation for Donate Button */
+.dashboard-donate {
+    background-color: #ff5a5f;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    animation: pulse 1.5s infinite;
+}
+
+.dashboard-donate:hover {
+    background-color: #e04747;
+}
+
+.carousel-container{
+    margin-top: 70px;
+}
+
+.carousel-inner img {
+    height: 100vh;
+    object-fit: cover;
+}
+
+.carousel-indicators li {
+    background-color: #bbb; /* Dots instead of dashes */
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.about-section, .contact-section {
+    padding: 40px;
+    max-width: 73%;
+    margin: 0;
+}
+
+.about-section h2, .contact-section h2 {
+    text-align: left;
+    margin-bottom: 20px;
+}
+.about_us_text, .what_we_do_text{
+    font-size: 18px;
+}
+
+.report-incident {
+    position: fixed;
+    right: 20px;
+    top: 130px;
+    width: 400px;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.report-incident h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.report-incident label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+}
+
+.report-incident input[type="text"],
+.report-incident textarea,
+.report-incident input[type="file"],
+.report-incident button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.severity-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    font-size: 0.9em;
+    color: #666; /* Optional: lighter color for labels */
+}
+
+.severity-labels span {
+    width: 10%; /* Adjusts each label to take up equal space */
+    text-align: center;
+}
+
+.report-incident input[type="range"] {
+    width: 100%;
+    margin-top: 5px;
+}
+
+.report-incident button {
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 15px;
+}
+.submit-btn {
+    background-color: #d9534f; /* shade of red */
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #c9302c;
+}
+
+.get-location-btn {
+    background-color: #5bc0de; /* blue shade */
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+.get-location-btn:hover {
+    background-color: #31b0d5;
+}
+.inquire-us-box {
+    background-color: #f9f9f9; /* Light background color */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for boxed effect */
+    width: 100%;
+    max-width: 53%;
+}
+
+.inquire-us-box form label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+}
+
+.inquire-us-box form input[type="text"],
+.inquire-us-box form input[type="email"],
+.inquire-us-box form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.inquire-us-box form .submit-btn {
+    width: 100%;
+    background-color: #d9534f; /* shade of red */
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.inquire-us-box form .submit-btn:hover {
+    background-color: #c9302c;
+}
+
+
+.contact-section .map-placeholder {
+    background-color: #eee;
+    height: 450px;
+    display: grid;
+    place-items: end;
+    margin-top: 0;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Ensures shadow is applied to the entire element, including iframe */
+    max-width: 450px; /* Optional: Adjust width to match the form */
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding-top: 5px;
+    }
