@@ -10,8 +10,8 @@ class Crisis(models.Model):
     description = models.TextField()
     severitylvl = models.IntegerField()
     time = models.DateTimeField(auto_now_add=True, editable=False) 
-    lat = models.DecimalField(max_digits=9, decimal_places=6)
-    lon = models.DecimalField(max_digits=9, decimal_places=6)
+    lat = models.DecimalField(max_digits=9, decimal_places=6,null=True)
+    lon = models.DecimalField(max_digits=9, decimal_places=6,null=True)
     currentstatus= models.CharField(max_length=1,
         choices=[
             ('R', 'Reported'),

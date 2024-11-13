@@ -5,5 +5,5 @@ from . import views
 
 #URL CONFIGURATION
 urlpatterns = [
-    
+    path('',views.report,name="report"),
 ]
