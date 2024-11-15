@@ -1,25 +1,38 @@
-# forms.py
-from django import forms
-from django.contrib.auth.models import User
-from django.contrib.auth.forms import AuthenticationForm
+from django.forms import ModelForm
+from .models import Organization, Volunteer, Resource
+from django.forms import CheckboxSelectMultiple, TextInput, NumberInput, Select, SelectMultiple
 
-class RegistrationForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
-    confirm_password = forms.CharField(widget=forms.PasswordInput)
-    
+
+class OrganizationForm(ModelForm):
     class Meta:
-        model = User
-        fields = ['username', 'email', 'password']
+        model = Organization
+        exclude = ['user']
+        widgets = {
+            'domain': TextInput(attrs={"class":"form-control my-2 mb-3"}),
+            'level': Select(attrs={"class":"form-select my-2 mb-3"}),
+        }
 
-    def clean(self):
-        cleaned_data = super().clean()
-        password = cleaned_data.get("password")
-        confirm_password = cleaned_data.get("confirm_password")
 
-        if password != confirm_password:
-            raise forms.ValidationError("Passwords do not match")
-        return cleaned_data
+class VolunteerForm(ModelForm):
+    class Meta:
+        model = Volunteer
+        exclude = ['user']
+        widgets = {
+            'organization': Select(attrs={"class":"form-select my-2 mb-3"}),
+            'age': NumberInput(attrs={"class":"form-control my-2 mb-3"}),
+            'sex': Select(attrs={"class":"form-select my-2 mb-3"}),
+            'skills': TextInput(attrs={"class":"form-control my-2 mb-3"}),
+                                
+        }
 
-class LoginForm(AuthenticationForm):
-    username = forms.CharField()
-    password = forms.CharField(widget=forms.PasswordInput)
+
+class ResourceForm(ModelForm):
+    class Meta:
+        model = Resource
+        exclude = ['resourceID', 'organization']
+        widgets = {
+            'name': TextInput(attrs={"class":"form-control my-2 mb-3"}),
+            'quantity':TextInput(attrs={"class":"form-control my-2 mb-3"}),
+            'city':Select(attrs={"class":"form-control my-2 mb-3"}),
+            'ward':NumberInput(attrs={"class":"form-control my-2 mb-3"})
+        }

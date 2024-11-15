@@ -20,12 +20,6 @@ class Organization(models.Model):
         return str(self.user.get_full_name())
 
 
-class Skill(models.Model):
-    name = models.CharField(max_length=64)
-
-    def __str__(self):
-        return self.name
-
 
 class Volunteer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -37,8 +31,7 @@ class Volunteer(models.Model):
             ('F', 'Female'),
             ('O', 'Other')
         ])
-    skills = models.ManyToManyField(Skill, blank=True)
-    availability = models.BooleanField(default=True)
+    skills = models.TextField(blank=True)
 
     def __str__(self):
         return str(self.user.get_full_name())

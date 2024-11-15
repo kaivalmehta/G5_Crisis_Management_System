@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Register Account | Crisis Management{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="register-form mx-auto" style="max-width: 500px;">
+        <h2 class="text-center mb-4">Register Account</h2>
+        <form method="POST">
+            {% csrf_token %}
+            
+            <!-- Form Fields Rendered with Django's form.as_p() for Better Spacing -->
+            {{ form.as_p }}
+            
+            <!-- Submit and Reset Buttons -->
+            <div class="form-group text-center mt-4">
+                <input class="btn btn-danger mx-1" type="reset" value="Reset">
+                <input class="btn btn-success mx-1" type="submit" value="Register">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

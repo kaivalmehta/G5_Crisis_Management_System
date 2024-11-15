@@ -56,41 +56,41 @@
     </section>
 
     <!-- Report Incident Section -->
-    <div class="report-incident">
-        <h2>Report an Incident</h2>
-        <form method="POST">
-            {% csrf_token %}
-            <label for="name">Incident *</label>
-            <input type="text" id="incident-type" name="name" placeholder="Describe the incident type..." required>
-            
-            <label for="description">Description *</label>
-            <textarea id="description" name="description" placeholder="Describe the incident..." required></textarea>
-            
-            <label for="severity">Severity (1 to 10) *</label>
-            <input type="range" name ="severity" id="severity" min="1" max="10" value="5" required>
-            
-            <!-- Integer labels for the severity levels -->
-            <div class="severity-labels">
-                <span>1</span>
-                <span>2</span>
-                <span>3</span>
-                <span>4</span>
-                <span>5</span>
-                <span>6</span>
-                <span>7</span>
-                <span>8</span>
-                <span>9</span>
-                <span>10</span>
-            </div>
-    
-            <button type="button" id="getLocationBtn" class="get-location-btn">Get Location</button>
-    
-            <label for="image-upload">Upload Image</label>
-            <input type="file" id="image-upload" accept="image/*">
-            
-            <button type="submit">Report Incident</button>
-        </form>
-    </div>
+<div class="report-incident">
+    <h2>Report an Incident</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="name" style="color: black;">Incident *</label>
+        <input type="text" id="incident-type" name="name" placeholder="Describe the incident type..." required>
+        
+        <label for="description" style="color: black;">Description *</label>
+        <textarea id="description" name="description" placeholder="Describe the incident..." required></textarea>
+        
+        <label for="severity" style="color: black;">Severity (1 to 10) *</label>
+        <input type="range" name ="severity" id="severity" min="1" max="10" value="5" required>
+        
+        <!-- Integer labels for the severity levels -->
+        <div class="severity-labels">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+            <span>10</span>
+        </div>
+
+        <button type="button" id="getLocationBtn" class="get-location-btn">Get Location</button>
+
+        <label for="image-upload" style="color: black;">Upload Image</label>
+        <input type="file" id="image-upload" accept="image/*">
+        
+        <button type="submit">Report Incident</button>
+    </form>
+</div>
 
     <!-- Contact Us Section -->
     <section id="contact" class="contact-section">

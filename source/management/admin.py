@@ -3,6 +3,5 @@ from .models import *
 
 # Register your models here.
 admin.site.register(Organization)
-admin.site.register(Skill)
 admin.site.register(Volunteer)
 admin.site.register(Resource)

@@ -5,13 +5,32 @@
 {% block title %}Login | Crisis Management{% endblock %}
 
 {% block content %}
-<div class="login-form">
-    <h2>Login</h2>
-    <form action="{% url 'login' %}" method="post">
+<div class="container py-5">
+
+    {% if messages %}
+    <div class="text-center mb-2">
+        {% for message in messages %}
+        <i class="text-danger text-center">{{ message }}</i>
+        {% endfor %}
+    </div>
+    {% endif %}
+<div class="login-form container mt-5">
+    <h2 class="text-center mb-4">Login</h2>
+    <form method="POST" class="mx-1">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="login-btn">Login</button>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+        </div>
+        <div class="mb-4">
+            <label for="inputPassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password">
+        </div>
+        <div class="text-center">
+            <input class="btn btn-success" type="submit" value="Login" />
+        </div>
     </form>
-    <p class="register-text">Don't have an account? <a href="{% url 'register' %}" class="register-link">Register</a></p>
+    
+    <p class="register-text text-center mt-3">Don't have an account? <a href="{% url 'register' %}" class="register-link">Register</a></p>
 </div>
 {% endblock %}

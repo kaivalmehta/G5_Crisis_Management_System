@@ -5,13 +5,55 @@
 {% block title %}Register Account | Crisis Management{% endblock %}
 
 {% block content %}
-<div class="register-form">
-    <h2>Register Account</h2>
-    <form action="{% url 'register' %}" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-
-        <button type="submit" class="register-btn">Register</button>
-    </form>
+<div class="container mt-5">
+    <div class="register-form mx-auto" style="max-width: 500px;">
+        <h2 class="text-center mb-4">Register Account</h2>
+        <form method="POST">
+            {% csrf_token %}
+            
+            <!-- Account Type Radio Buttons -->
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Account Type</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="type" id="typeVolunteer" value="volunteer">
+                    <label class="form-check-label" for="typeVolunteer">Volunteer</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="type" id="typeOrganization" value="organization">
+                    <label class="form-check-label" for="typeOrganization">Organization</label>
+                </div>
+            </div>
+            
+            <!-- Name Field -->
+            <div class="mb-3">
+                <label for="name" class="form-label fw-semibold">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
+            </div>
+            
+            <!-- Email Field -->
+            <div class="mb-3">
+                <label for="email" class="form-label fw-semibold">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+            </div>
+            
+            <!-- Password Field -->
+            <div class="mb-3">
+                <label for="inputPassword" class="form-label fw-semibold">Password</label>
+                <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password">
+            </div>
+            
+            <!-- Confirm Password Field -->
+            <div class="mb-4">
+                <label for="confPassword" class="form-label fw-semibold">Confirm Password</label>
+                <input type="password" class="form-control" id="confPassword" name="confpassword" placeholder="Confirm password">
+            </div>
+            
+            <!-- Submit and Reset Buttons -->
+            <div class="text-center">
+                <input class="btn btn-danger mx-1" type="reset" value="Reset">
+                <input class="btn btn-success mx-1" type="submit" value="Register">
+            </div>
+        </form>
+    </div>
 </div>
 {% endblock %}
