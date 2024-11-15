@@ -1,125 +1,88 @@
-# G5_Crisis_Management_System
+# Crisis Management System
 
-# Django Project Setup
+A web-based application for organizations to efficiently manage emergencies, streamline incident reporting, and reduce response times through a centralized platform. This system facilitates communication between volunteers, organizations, and communities during crises.
 
-This guide will help you set up and run the Django project locally on your machine.
+## Features
+
+- **User Registration and Authentication:** Users can register as volunteers or organizations, log in, and manage their profile.
+- **Incident Reporting:** Users can report incidents, provide descriptions, attach images, and specify severity.
+- **Profile Management:** Logged-in users can view their profiles and log out.
+- **Carousel Display:** Home page features a carousel section to showcase images or information.
+- **Contact Form and Google Maps Integration:** Users can reach out via a contact form and locate the organization's address through an embedded map.
 
 ## Prerequisites
 
-Make sure you have the following installed on your machine:
-
 - Python 3.x
-- pip (Python package manager)
-- Virtualenv (optional, but recommended)
+- Django 4.x
+- Virtual environment (recommended)
 
-## Setup Instructions
+## Project Setup
 
 ### 1. Clone the Repository
 
 ```bash
-git clone <your-repository-url>
-cd <your-project-directory>
+git clone https://github.com/your-username/crisis-management-system.git
+cd crisis-management-system
 ```
 
-### 2. Create and Activate a Virtual Environment (optional, but recommended)
+### 2. Set Up a Virtual Environment
 
-Creating a virtual environment isolates the project dependencies from your global Python installation.
-
-#### For Unix/macOS:
-```bash
-python3 -m venv venv
-source venv/bin/activate
-```
-
-#### For Windows:
 ```bash
 python -m venv venv
-.\venv\Scripts\activate
+source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
 ```
 
 ### 3. Install Dependencies
-
-Make sure to install all required dependencies by running the following command:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Set up Environment Variables
+### 4. Configure the Database
 
-Create a `.env` file in the project root and add your environment-specific variables. Example:
-
-```bash
-SECRET_KEY='your-django-secret-key'
-DEBUG=True
-ALLOWED_HOSTS=127.0.0.1,localhost
-DATABASE_URL=sqlite:///db.sqlite3  # Or your preferred database
-```
-
-### 5. Apply Migrations
-
-To set up your database schema, run the following migrations command:
+Apply migrations to set up the database schema.
 
 ```bash
 python manage.py migrate
 ```
 
-### 6. Create a Superuser (for Admin Access)
+### 5. Create a Superuser
 
-Create a superuser to access Django's admin panel:
+Create a superuser account to access the Django admin panel.
 
 ```bash
 python manage.py createsuperuser
 ```
 
-### 7. Run the Development Server
-
-You can now run the Django development server:
+### 6. Run the Development Server
 
 ```bash
 python manage.py runserver
 ```
 
-Visit [http://127.0.0.1:8000/admin](http://127.0.0.1:8000/admin) to access the Django Admin panel.
+Access the application at `http://127.0.0.1:8000`.
 
-## Testing
+## Project Structure
 
-To run tests for the project, you can use the following command:
-
-```bash
-python manage.py test
-```
-
-## Common Issues
-
-### Model class doesn't declare an explicit app_label
-If you see the following error:
-
-```
-RuntimeError: Model class django.contrib.sessions.models.Session doesn't declare an explicit app_label and isn't in an application in INSTALLED_APPS.
-```
-
-Make sure you have `django.contrib.sessions` included in the `INSTALLED_APPS` list in your `settings.py`:
-
-```python
-INSTALLED_APPS = [
-    # Other apps...
-    'django.contrib.sessions',
-]
-```
-
-## Deployment
-
-For deployment, make sure to configure:
-
-- `DEBUG = False`
-- Use a production-ready database like PostgreSQL
-- Set proper `ALLOWED_HOSTS`
-- Use `whitenoise` for serving static files
-- Set up environment variables for secret keys, database credentials, etc.
+- **`base.html`** - Base template that includes navigation and footer.
+- **`home.html`** - Home page with a carousel, about section, report incident form, and contact form.
+- **`register.html`** - Registration form allowing users to sign up as volunteers or organizations.
+- **`login.html`** - Login form with a link to the registration page.
+- **`profile.html`** - Profile page with a logout button.
+- **`urls.py`** - URL routing configuration for all views.
+- **`views.py`** - Contains view functions for handling requests, including login, register, profile, etc.
+- **`models.py`** - Database models (if applicable, e.g., for users, incidents, etc.).
+- **`forms.py`** - Django forms for handling registration and login.
+- **`static/`** - Directory for static files, such as CSS, JavaScript, and images.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
 
----
+## Contributing
+
+1. Fork the repository
+2. Create a new branch for your feature: `git checkout -b feature-name`
+3. Commit your changes: `git commit -m 'Add new feature'`
+4. Push to the branch: `git push origin feature-name`
+5. Submit a pull request

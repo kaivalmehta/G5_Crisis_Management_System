@@ -1,73 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="../static/style/login.css">
-    <link rel="stylesheet" href="../static/style/navbar.css">
-    <link rel="script" href="../static/script/login.js">
-    
-</head>
+{% load static %}
 
-<body>
+{% block title %}Login | Crisis Management{% endblock %}
 
-
-
-    <!-- Top Fixed Dashboard Navbar -->
-    <div class="dashboard-navbar">
-        <div class="dashboard-navbar-container">
-            <div class="logo-section">
-                <img src="../static/media/Logo.jpg" alt="NGO Logo" class="logo-img">
-                <!-- Replace with your preferred image URL -->
-                <span class="org-name">Crisis Management</span>
-            </div>
-            <nav class="nav-links">
-                <a href="#">Home</a>
-                <a href="#">About Us</a>
-                <a href="#">Contact Us</a>
-                <a href="#">Incidents</a>
-                <a href="#">Login/Register</a>
-                <a href="#" class="dashboard-donate">Donate</a>
-            </nav>
-        </div>
-    </div>
-
-    <!-- Navbar for Login Page -->
-    <div id="navbar"></div>
-
-    <!-- Main Content -->
-    <main class="container">
-        <div class="login-form">
-            <h2>Welcome Back</h2>
-            <form action="#">
-                <label for="email" class="left-align">Email</label>
-                <input type="email" id="email" name="email" required placeholder="Enter your email">
-                <div class="pass">
-                    <label for="password" class="left-align">Password</label>
-                    <input type="password" id="password" name="password" required placeholder="Enter your password">
-                </div>
-
-
-                <div class="options">
-                    <a href="#" class="forgot-password">Forgot Password?</a>
-                </div>
-
-                <button type="submit" class="login-btn">Login</button>
-                <p class="register-text">Don't have an account? <a href="https://www.google.co.in/"
-                        class="register-link">Register</a></p>
-            </form>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2023 Crisis Management. All rights reserved. | India</p>
-    </footer>
-
-    <!-- Navbar Script -->
-    <script src="navbar.js"></script>
-</body>
-
-</html>
+{% block content %}
+<div class="login-form">
+    <h2>Login</h2>
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="login-btn">Login</button>
+    </form>
+    <p class="register-text">Don't have an account? <a href="{% url 'register' %}" class="register-link">Register</a></p>
+</div>
+{% endblock %}
