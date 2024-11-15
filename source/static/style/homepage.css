@@ -118,15 +118,18 @@ body {
 }
 
 .about-section, .contact-section {
-    padding: 4%;
-    max-width: 70%;
-    margin: 0 auto ;
+    padding-top: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
+    max-width: 100%;
+    margin: 0;
 }
 .about-section h1, .contact-section h1 {
-    text-align: center;
+    color: #222;
+    text-align: left;
 }
 .about_us_text, .what_we_do_text{
-    text-align: center;
+    text-align: left;
     font-size: large;
 }
 
@@ -147,9 +150,11 @@ body {
     margin-bottom: 1.5%;
     font-weight: bold;
     text-align: center;
+    color: #000;
 }
 
 .report-incident label {
+    color: #000;
     font-weight: bold;
     font-size: medium;
     margin-top: 1%;
@@ -236,11 +241,12 @@ body {
     border-radius: 0.8%;
     box-shadow: 0 4% 8% rgba(0, 0, 0, 0.2);
     width: 100%;
-    max-width: 53%;
+    max-width: 50%;
 }
 
 .inquire-us-box form label {
     font-weight: bold;
+    color: #000;
     margin-top: 1%;
     margin-bottom: 2.5%;
     display: block;
@@ -272,16 +278,14 @@ body {
     background-color: #c9302c;
 }
 
-.contact-section .map-placeholder {
+.map-placeholder {
     background-color: #eee;
-    height: 60%;
     display: grid;
-    place-items: center;
     margin-top: 0;
     border-radius: 0.5%;
     box-shadow: 0 0.4% 0.8% rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    max-width: 45%;
+    width: 100%;
+    max-width: 1000px;
 }
 
 /* Responsive Layout Adjustments */
