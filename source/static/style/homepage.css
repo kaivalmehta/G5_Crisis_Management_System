@@ -7,47 +7,36 @@
 
 body {
     font-family: Arial, sans-serif;
-}
-
-body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-image: url('https://www.example.com/path-to-background-image.jpg'); /* Replace with an environment-related image URL */
+    background-image: url('https://www.example.com/path-to-background-image.jpg');
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
     color: #333;
 }
 
-/* Container and Grid Layout */
-.container {
-    display: grid;
-    height: calc(100vh - 80px); /* Adjusted to account for navbar */
-    position: relative;
-}
-
-/* Top Fixed Dashboard Navbar */
+/* Dashboard Navbar */
 .dashboard-navbar {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: rgba(2,2,2,2);
+    background-color: rgba(2, 2, 2, 0.9);
     color: white;
-    padding: 1em 0;
+    padding: 1% 0;
     z-index: 1000;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .dashboard-navbar-container {
-    max-width: 95%;
-    margin: 0 auto;
+    max-width: 93%;
+    margin-left: 2%;
     display: flex;
     justify-content: space-between;
-    align-items: end;
+    align-items: center;
     gap: 3%;
 }
-
 /* Left Side: Logo and Organization Name */
 .logo-section {
     display: flex;
@@ -65,39 +54,31 @@ body {
     font-weight: bold;
     color: #ffffff;
 }
-
-/* Right Side: Navbar Links */
 .nav-links {
     display: flex;
-    gap: 15px;
 }
 
 .nav-links a {
     color: white;
     text-decoration: none;
-    font-size: 1em;
     padding: 0.5em 1em;
-    transition: color 0.3s ease;
-    position: relative;
 }
-
-/* Pseudo-selector for Hover Effect */
 .nav-links a:hover::after {
     content: "";
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
-    height: 2px;
+    height: 0.2%;
     background-color: #4a90e2;
-    transition: width 0.3s ease;
     width: 100%;
+    transition: width 0.3s ease;
 }
 
 /* Highlight and Animation for Donate Button */
 .dashboard-donate {
     background-color: #ff5a5f;
-    padding: 0.5em 1em;
+    padding: 0.5% 1%;
     border-radius: 5px;
     transition: background-color 0.3s ease;
     animation: pulse 1.5s infinite;
@@ -107,8 +88,14 @@ body {
     background-color: #e04747;
 }
 
-.carousel-container{
-    margin-top: 70px;
+.carousel-container {
+    position: relative; /* Allows .report-incident to overlay on top */
+    width: 100%;
+    margin-top: 4.6%; /* Adjusts for any fixed navbar height */
+}
+.carousel-container .carousel {
+    flex: 2; /* Carousel takes up more space */
+    height: 100vh; /* Full viewport height for the slider */
 }
 
 .carousel-inner img {
@@ -117,91 +104,109 @@ body {
 }
 
 .carousel-indicators li {
-    background-color: #bbb; /* Dots instead of dashes */
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background for the dots */
+    width: 12px; /* Increase the size for better visibility */
+    height: 12px;
+    border-radius: 50%; /* Make them circular */
+    margin: 0 5px; /* Add spacing between dots */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+.carousel-indicators .active {
+    background-color: #000; /* Fully black for the active dot */
+    width: 12px; /* Slightly larger to indicate active state */
+    height: 12px;
 }
 
 .about-section, .contact-section {
-    padding: 40px;
-    max-width: 73%;
-    margin: 0;
+    padding: 4%;
+    max-width: 70%;
+    margin: 0 auto ;
 }
-
-.about-section h2, .contact-section h2 {
-    text-align: left;
-    margin-bottom: 20px;
+.about-section h1, .contact-section h1 {
+    text-align: center;
 }
 .about_us_text, .what_we_do_text{
-    font-size: 18px;
+    text-align: center;
+    font-size: large;
 }
 
 .report-incident {
-    position: fixed;
-    right: 20px;
-    top: 130px;
-    width: 400px;
-    background-color: white;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
+    position: absolute; /* Allows placement within carousel container */
+    top: 12%; /* Positions near the top */
+    right: 5%; /* Positions near the right side */
+    width: 40%; /* Sets a fixed width */
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow for depth */
+    z-index: 10; /* Ensures it appears above carousel content */
 }
 
-.report-incident h2 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
+.report-incident h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5%;
+    font-weight: bold;
     text-align: center;
 }
 
 .report-incident label {
     font-weight: bold;
-    margin-top: 10px;
-    display: block;
+    font-size: medium;
+    margin-top: 1%;
+    display: b
 }
 
 .report-incident input[type="text"],
-.report-incident textarea,
-.report-incident input[type="file"],
+.report-incident textarea{
+    width: 100%;
+    padding: 2.5%;
+    margin-top: 0.5%;
+    margin-bottom: 3%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
 .report-incident button {
     width: 100%;
-    padding: 10px;
-    margin-top: 5px;
+    padding: 1%;
+    margin-top: 0.5%;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 0.5%;
+    margin-bottom: 3%;
 }
 
 .severity-labels {
     display: flex;
     justify-content: space-between;
-    margin-top: 5px;
+    margin-top: 0.5%;
     font-size: 0.9em;
-    color: #666; /* Optional: lighter color for labels */
+    color: #666;
 }
 
 .severity-labels span {
-    width: 10%; /* Adjusts each label to take up equal space */
+    width: 10%;
     text-align: center;
 }
 
 .report-incident input[type="range"] {
     width: 100%;
-    margin-top: 5px;
+    margin-top: 0.5%;
 }
 
 .report-incident button {
-    background-color: #333;
+    background-color: #ff5a5f;
     color: white;
     border: none;
     cursor: pointer;
-    margin-top: 15px;
-}
-.submit-btn {
-    background-color: #d9534f; /* shade of red */
-    color: white;
-    padding: 10px;
-    border: none;
+    margin-top: 1.5%;
     border-radius: 5px;
+}
+
+.submit-btn {
+    background-color: #d9534f;
+    color: white;
+    padding: 1%;
+    border: none;
+    border-radius: 0.5%;
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -211,31 +216,33 @@ body {
 }
 
 .get-location-btn {
-    background-color: #5bc0de; /* blue shade */
+    background-color: #5bc0de;
     color: white;
-    padding: 10px;
+    padding: 1%;
     border: none;
-    border-radius: 5px;
+    border-radius: 0.5%;
     cursor: pointer;
-    margin-top: 15px;
+    margin-top: 1.5%;
     transition: background-color 0.3s;
 }
 
 .get-location-btn:hover {
     background-color: #31b0d5;
 }
+
 .inquire-us-box {
-    background-color: #f9f9f9; /* Light background color */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for boxed effect */
+    background-color: #f9f9f9;
+    padding: 2%;
+    border-radius: 0.8%;
+    box-shadow: 0 4% 8% rgba(0, 0, 0, 0.2);
     width: 100%;
     max-width: 53%;
 }
 
 .inquire-us-box form label {
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 1%;
+    margin-bottom: 2.5%;
     display: block;
 }
 
@@ -243,18 +250,18 @@ body {
 .inquire-us-box form input[type="email"],
 .inquire-us-box form textarea {
     width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 15px;
+    padding: 2.5%;
+    margin-top: 0.5%;
+    margin-bottom: 5%;
     border: 1px solid #ddd;
     border-radius: 5px;
 }
 
 .inquire-us-box form .submit-btn {
     width: 100%;
-    background-color: #d9534f; /* shade of red */
+    background-color: #d9534f;
     color: white;
-    padding: 10px;
+    padding: 1%;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -265,23 +272,160 @@ body {
     background-color: #c9302c;
 }
 
-
 .contact-section .map-placeholder {
     background-color: #eee;
-    height: 450px;
+    height: 60%;
     display: grid;
-    place-items: end;
+    place-items: center;
     margin-top: 0;
-    border-radius: 5px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-    border-radius: 8px; /* Rounded corners */
-    overflow: hidden; /* Ensures shadow is applied to the entire element, including iframe */
-    max-width: 450px; /* Optional: Adjust width to match the form */
+    border-radius: 0.5%;
+    box-shadow: 0 0.4% 0.8% rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    max-width: 45%;
 }
 
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding-top: 5px;
+/* Responsive Layout Adjustments */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
     }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: rgba(2, 2, 2, 0.9);
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        padding: 10px 0;
+        z-index: 999;
+    }
+
+    .nav-links a {
+        padding: 10px;
+        font-size: 1.2em;
+        text-align: center;
+    }
+    .about-section, .contact-section, .report-incident {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    .report-incident {
+        width: 90%; /* Full width on smaller screens */
+        top: 50%;
+        right: 10px;
+        padding: 10px;
+    }
+    .report-incident {
+        position: absolute; /* Removes fixed positioning */
+        margin: 20px ; /* Centers the form horizontally */
+        width: 90%; /* Adjusts width for mobile view */
+    }
+
+    .carousel-container {
+        display: flex;
+        flex-direction: column; /* Stacks items vertically */
+        align-items: center; /* Centers items */
+    }
+    .contact-section{
+        width: 100%;
+        padding: 5%;
+    }
+
+    .map-placeholder {
+        height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .org-name {
+        font-size: 1.1em;
+    }
+
+    .logo-img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .carousel-inner img {
+        height: 50vh;
+    }
+
+    .about-section, .contact-section{
+        padding: 5%;
+        font-size: 0.9em;
+    }
+
+    .inquire-us-box {
+        max-width: 100%;
+    }
+    .report-incident {
+        position: absolute;
+        width: 95%; /* Almost full width on mobile */
+        top: 50%;
+        right: 10px;
+        padding: 10px;
+    }
+
+    .report-incident h1 {
+        font-size: 1.2rem; /* Adjust heading size */
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .contact-section h1, .about-section h1 {
+        font-size: 1.2rem;
+    }
+
+    .map-placeholder {
+        height: 200px;
+    }
+    .org-name {
+        font-size: 1.1em;
+    }
+
+    .logo-img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .carousel-inner img {
+        height: 50vh;
+    }
+
+    .about-section, .contact-section {
+        padding: 5%;
+        font-size: 0.9em;
+    }
+
+    /* Adjust report-incident positioning to be fixed below carousel */
+    .report-incident {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+        background-color: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        border-radius: 5px 5px 0 0;
+    }
+
+    /* Reduce size and padding for better mobile view */
+    .report-incident h1 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .report-incident form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .map-placeholder {
+        height: 200px;
+    }
+}
