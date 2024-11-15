@@ -1,36 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crisis Management System</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href= "../static/style/homepage.css">
-    
-</head>
-<body>
-    
+{% extends "base.html" %}
 
-    <div class="dashboard-navbar">
-        <div class="dashboard-navbar-container">
-            <div class="logo-section">
-                <img src="../static/media/Logo.jpg" alt="NGO Logo" class="logo-img">
-                <!-- Replace with your preferred image URL -->
-                <span class="org-name">Crisis Management</span>
-            </div>
-            <nav class="nav-links">
-                <a href="#">Home</a>
-                <a href="#about">About Us</a>
-                <a href="#contact">Contact Us</a>
-                <a href="#">Incidents</a>
-                <a href="#">Donate</a>
-                <a href="#" class="dashboard-donate">Login/Register</a>
-            </nav>
-        </div>
-    </div>
+{% load static %}
 
-    <!-- Bootstrap Carousel with 7-Second Timer -->
+{% block title %}Home | Crisis Management{% endblock %}
+
+{% block content %}
+    <!-- Carousel Section -->
     <section class="carousel-container">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="7000">
             <ol class="carousel-indicators">
@@ -42,19 +17,19 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="../static/media/homepage_slider1.webp" class="d-block w-100" alt="Slide 1">
+                    <img src="{% static 'media/homepage_slider1.webp' %}" class="d-block w-100" alt="Slide 1">
                 </div>
                 <div class="carousel-item">
-                    <img src="../static/media/homepage_slider2.jpg" class="d-block w-100" alt="Slide 2">
+                    <img src="{% static 'media/homepage_slider2.jpg' %}" class="d-block w-100" alt="Slide 2">
                 </div>
                 <div class="carousel-item">
-                    <img src="../static/media/homepage_slider3.jpg" class="d-block w-100" alt="Slide 3">
+                    <img src="{% static 'media/homepage_slider3.jpg' %}" class="d-block w-100" alt="Slide 3">
                 </div>
                 <div class="carousel-item">
-                    <img src="../static/media/homepage_slider4.webp" class="d-block w-100" alt="Slide 4">
+                    <img src="{% static 'media/homepage_slider4.webp' %}" class="d-block w-100" alt="Slide 4">
                 </div>
                 <div class="carousel-item">
-                    <img src="../static/media/homepage_slider5.jpg" class="d-block w-100" alt="Slide 5">
+                    <img src="{% static 'media/homepage_slider5.jpg' %}" class="d-block w-100" alt="Slide 5">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -80,6 +55,7 @@
         </p>
     </section>
 
+    <!-- Report Incident Section -->
     <div class="report-incident">
         <h2>Report an Incident</h2>
         <form method="POST">
@@ -113,46 +89,30 @@
             <input type="file" id="image-upload" accept="image/*">
             
             <button type="submit">Report Incident</button>
-            
         </form>
     </div>
-    
-    
 
-<!-- Contact Us Section -->
-<section id="contact" class="contact-section">
-    <h1>Contact Us</h1>
-    <div style="display: flex; justify-content: space-between; gap: 20px;">
-        <div class="inquire-us-box">
-            <form>
-                <label for="name">Your Name *</label>
-                <input type="text" id="name" placeholder="Enter your name..." required>
-                
-                <label for="email">Your Email *</label>
-                <input type="email" id="email" placeholder="Enter your email..." required>
-                
-                <label for="message">Your Message *</label>
-                <textarea id="message" placeholder="Enter your message..." required></textarea>
-                
-                <button type="submit" class="submit-btn">Submit</button>
-            </form>
-        </div>
-        <div class="map-placeholder">
+    <!-- Contact Us Section -->
+    <section id="contact" class="contact-section">
+        <h1>Contact Us</h1>
+        <div style="display: flex; justify-content: space-between; gap: 20px;">
+            <div class="inquire-us-box">
+                <form>
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" placeholder="Enter your name..." required>
+                    
+                    <label for="email">Your Email *</label>
+                    <input type="email" id="email" placeholder="Enter your email..." required>
+                    
+                    <label for="message">Your Message *</label>
+                    <textarea id="message" placeholder="Enter your message..." required></textarea>
+                    
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+            </div>
+            <div class="map-placeholder">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9207.22131232633!2d72.62998082524157!3d23.192097945470948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395c2a3c9618d2c5%3A0xc54de484f986b1fa!2sDA-IICT!5e0!3m2!1sen!2sin!4v1731160429688!5m2!1sen!2sin" width="450" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
         </div>
-    </div>
-</section>
-
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Crisis Management System. All rights reserved.</p>
-    </footer>
-
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-
-</html>
+    </section>
+{% endblock %}
