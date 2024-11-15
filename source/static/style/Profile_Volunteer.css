@@ -1,0 +1,172 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f4f5f7;
+}
+
+.container {
+    display: grid;
+    place-items: center;
+    padding-top: 100px; /* Adjusted for navbar height */
+    padding-bottom: 650px; /* Adjusted for footer height */
+    height: calc(100vh - 140px); /* Navbar + Footer height */
+    position: relative;
+}
+
+.profile-wrapper {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+.left-section {
+    flex: 0.4;
+    background-color: #e3e6ea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.right-section {
+    flex: 0.6;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.form-logo {
+    width: 60px;
+    height: auto;
+    margin-bottom: 0.5rem;
+}
+
+.form-header h2 {
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.header-line {
+    width: 80%;
+    border: 1px solid #ddd;
+    margin: 0.5rem auto;
+}
+
+/* Grid Form Layout */
+.grid-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.grid-form .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    font-weight: bold;
+    color: #555;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+form input[type="text"],
+form input[type="date"],
+form input[type="tel"],
+form input[type="file"],
+form select,
+form textarea {
+    padding: 0.75em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+/* Textarea */
+textarea {
+    resize: vertical;
+    min-height: 60px;
+    grid-column: span 2;
+}
+
+/* Submit Button */
+.submit-btn {
+    grid-column: span 2;
+    padding: 0.75em;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 1rem;
+}
+
+.submit-btn:hover {
+    background-color: #388E3C;
+}
+
+.submit-btn:active {
+    transform: scale(0.98);
+}
+
+
+/* Responsive Design */
+@media (max-width: 800px) {
+    .profile-wrapper {
+        flex-direction: column;
+    }
+
+    .left-section {
+        display: none; 
+    }
+
+    .grid-form {
+        grid-template-columns: 1fr; 
+        gap: 1rem; 
+    }
+
+    textarea {
+        grid-column: 1; /* Ensure textarea spans correctly in the single column layout */
+    }
+
+    .submit-btn {
+        grid-column: 1; /* Align the submit button with the rest of the fields */
+    }
+}

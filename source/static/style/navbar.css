@@ -1,4 +1,4 @@
-/* Reset and base styles */
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -6,34 +6,30 @@
     font-family: Arial, sans-serif;
 }
 
-
-/* Container and Grid Layout */
-.container {
-    display: grid;
-    height: calc(100vh - 80px); /* Adjusted to account for navbar */
-    position: relative;
+/* Body Padding to Prevent Overlap */
+body {
+    padding-top: 70px; /* Adjust to match the navbar height */
 }
 
-/* Top Fixed Dashboard Navbar */
+/* Navbar Container */
 .dashboard-navbar {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: #222222; /* Changed to solid color without transparency */
+    background-color: rgba(2,2,2,2);
     color: white;
     padding: 1em 0;
     z-index: 1000;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-
 .dashboard-navbar-container {
     max-width: 95%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    gap: 20px;
+    align-items: end;
+    gap: 3%;
 }
 
 /* Left Side: Logo and Organization Name */
@@ -95,123 +91,22 @@
     background-color: #e04747;
 }
 
-/* Login Form Styling */
-.login-form {
-    width: 100%;
-    max-width: 400px;
-    padding: 2em;
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    text-align: center;
-    animation: fadeIn 1s ease;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.login-form h2 {
-    font-size: 1.8em;
-    margin-bottom: 1em;
-    color: #333;
-}
-
-.login-form label {
-    display: block;
-    margin-bottom: 0.5em;
-    font-size: 0.9em;
-    color: #555;
-}
-
-.login-form input[type="email"],
-.login-form input[type="password"] {
-    width: 100%;
-    padding: 0.75em;
-    margin-bottom: 1em;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1em;
-}
-
-.options {
-    text-align: right;
-    font-size: 0.9em;
-    margin-bottom: 1em;
-}
-
-.forgot-password {
-    color: #4a90e2;
-    text-decoration: none;
-}
-
-.forgot-password:hover {
-    text-decoration: underline;
-}
-
-.login-btn {
-    width: 100%;
-    padding: 0.75em;
-    border: none;
-    border-radius: 5px;
-    background-color: #4a90e2;
-    color: #fff;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.login-btn:hover {
-    background-color: #3b73c4;
-}
-
-.register-text {
-    margin-top: 1em;
-    font-size: 0.9em;
-}
-
-.register-link {
-    color: #4a90e2;
-    text-decoration: none;
-}
-
-.register-link:hover {
-    text-decoration: underline;
-}
-
-/* Footer */
-footer {
-    background: rgba(244, 244, 244, 0.8);
-    padding: 1em;
-    text-align: center;
-    font-size: 0.9em;
-    color: #666;
-}
-
-/* Keyframes */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide links on smaller screens */
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+
+    .menu-icon {
+        display: block;
+        font-size: 1.5em;
+        color: white;
+        cursor: pointer;
     }
 }
 
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        
-    }
-    50% {
-        transform: scale(1.05);
-    }
-    100% {
-        transform: scale(1);
+@media (max-width: 1200px) {
+    .dashboard-navbar-container {
+        padding: 0 10px;
     }
 }
-
-
-
