@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource List</title>
+    <link rel="stylesheet" href="../static/style/navbar.css">
+    <link rel="stylesheet" href="../static/style/resources.css">
+</head>
+<body>
+    
+    <div class="dashboard-navbar">
+        <div class="dashboard-navbar-container">
+            <div class="logo-section">
+                <img src="../static/media/Logo.jpg" alt="NGO Logo" class="logo-img">
+                <!-- Replace with your preferred image URL -->
+                <span class="org-name">Crisis Management</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#">Home</a>
+                <a href="#about">About Us</a>
+                <a href="#contact">Contact Us</a>
+                <a href="#">Incidents</a>
+                <a href="#">Donate</a>
+                <a href="#" class="dashboard-donate">Login/Register</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Resource Management</h1> <!-- Updated title -->
+
+        <!-- Top Section -->
+        <div class="top-section">
+            <input type="text" id="searchSkill" placeholder="Search by name..." oninput="filterVolunteers()">
+            <button class="add-volunteer-btn" onclick="showAddVolunteerModal()">Add Resource</button> <!-- Button text changed -->
+            <button class="delete-volunteer-btn" onclick="deleteSelectedVolunteers()">Delete Selected</button>
+        </div>
+
+        <!-- Resource Table -->
+        <div class="table-container">
+            <table class="volunteer-table">
+                <thead>
+                    <tr>
+                        <th>Select</th>
+                        <th>Index</th>
+                        <th>Name</th>
+                        <th>Quantity</th> <!-- Changed "Location" to "Quantity" -->
+                        <th>Sign-Up Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="volunteerList">
+                    <!-- Rows will be dynamically added here -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Add Resource Modal -->
+        <div id="addVolunteerModal" class="modal hidden">
+            <div class="modal-content">
+                <h2>Add Resource</h2> <!-- Updated modal title -->
+                <label for="volunteerName">Name:</label>
+                <input type="text" id="volunteerName" placeholder="Enter name">
+                <label for="resourceQuantity">Quantity:</label> <!-- Changed label -->
+                <input type="number" id="resourceQuantity" placeholder="Enter quantity" min="1" step="1"> <!-- Quantity input, positive integer -->
+                <button onclick="saveResource()">Save</button> <!-- Button text changed -->
+                <button onclick="closeAddVolunteerModal()">Cancel</button>
+            </div>
+        </div>
+
+    <script src="../static/script/resources.js"></script>
+</body>
+</html>
