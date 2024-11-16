@@ -13,6 +13,3 @@ def donations(request):
 def guidelines(request):
     return render(request, 'guidelines.html')
 
-def incidents(request):
-    return render(request, 'incidents.html')
-

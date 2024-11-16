@@ -1,0 +1,374 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body styling */
+body {
+    background-color: #f5f5fa;
+    background-image: none;
+    padding-top: 70px; /* Space for the fixed navbar */
+    display: flex;
+    justify-content: center;
+}
+
+/* Dashboard Navbar */
+.dashboard-navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(2, 2, 2, 0.8);
+    color: white;
+    padding: 1% 0;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-navbar-container {
+    max-width: 93%;
+    margin-left: 2%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3%;
+}
+/* Style for the Toggle Button (Hamburger Icon) */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Mobile Nav Links Visibility */
+.nav-links.nav-open {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.org-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    padding: 0.5em 1em;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-links a:hover::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background-color: #4a90e2;
+    width: 100%;
+    transition: width 0.3s ease;
+}
+
+.dashboard-donate {
+    background-color: #ff5a5f;
+    padding: 5px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    animation: pulse 1.5s infinite;
+}
+
+.dashboard-donate:hover {
+    background-color: #e04747;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+    width: 80%;
+    max-width: 800px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-top: 20px;
+}
+.incident-dashboard{
+    width: 80%;
+    max-width: 50%;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-top: 20px;
+}
+.header {
+    text-align: center;
+    padding: 20px;
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+/* Status Tabs Styling */
+.status-tabs {
+    display: flex;
+    justify-content: center;
+}
+
+.status-tab {
+    padding: 10px 20px;
+    background-color: #fff;
+    border: 1px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+.status-tab.active {
+    background-color: #e04747;
+    color: white;
+}
+
+/* Status Sections Styling */
+.status-section {
+    display: none; /* Hide by default */
+    padding: 20px;
+    background-color: #f7f7f7;
+    margin-top: 20px;
+}
+
+.status-section.active {
+    display: block; /* Show only the active section */
+}
+
+.incident-list {
+    padding: 20px;
+}
+
+.incident-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 15px;
+    border: 1px solid #eee;
+    box-shadow: #333;
+    transition: background 0.3s;
+}
+
+.incident-item:hover {
+    background-color: #f7f7f7;
+}
+
+.incident-details {
+    flex: 1;
+    margin-right: 15px;
+}
+
+.incident-title {
+    font-size: 18px;
+    padding: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.incident-time {
+    color: #666;
+    padding: 5px;
+    font-size: 14px;
+}
+
+.incident-description {
+    padding: 5px;
+    font-size: 14px;
+    color: #555;
+}
+
+.severity-level {
+    padding: 5px;
+    color: #d9534f;
+    font-weight: bold;
+}
+
+.map-container {
+    flex-shrink: 0;
+    width: 50%;
+    height: 120px;
+}
+
+/* Show Toggle Button on Small Screens */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: rgba(2, 2, 2, 0.9);
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        padding: 10px 0;
+        z-index: 999;
+    }
+
+    .nav-links a {
+        padding: 10px;
+        font-size: 1.2em;
+        text-align: center;
+    }
+}
+/* Default nav-links are hidden on mobile */
+.nav-links {
+    display: flex;
+}
+
+/* Show nav-links when .nav-open is applied */
+.nav-links.nav-open {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background-color: rgba(2, 2, 2, 0.9);
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 100%;
+    padding: 10px 0;
+    z-index: 999;
+}
+
+/* Show Toggle Button on Small Screens */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+}
+
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .dashboard-navbar-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .nav-links a {
+        padding: 0.5em 0;
+    }
+
+    .dashboard-container {
+        width: 90%;
+    }
+
+    .tabs {
+        flex-direction: column;
+    }
+
+    .incident-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .map-container {
+        width: 100%;
+        height: 200px;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .org-name {
+        font-size: 1em;
+    }
+
+    .nav-links a {
+        font-size: 0.9em;
+    }
+
+    .header {
+        font-size: 20px;
+    }
+
+    .incident-title {
+        font-size: 16px;
+    }
+
+    .incident-time,
+    .incident-description,
+    .severity-level {
+        font-size: 12px;
+    }
+}
+/* Style for the report items */
+.report-item {
+    background-color: #f8f9fa;  /* Light grey background */
+    color: black;               /* Black text */
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #dcdcdc;  /* Light border */
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Subtle shadow */
+}
+
+.report-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.report-description {
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+.severity-label,
+.assignee-label {
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+.severity-value {
+    font-weight: bold;
+    color: red;
+}
+
+.assignee-value {
+    font-weight: bold;
+    color: green;
+}
+
+.report-map {
+    margin-top: 15px;
+}
+
+.report-item .map-outer {
+    height: 100%;
+}

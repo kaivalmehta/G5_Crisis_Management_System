@@ -7,6 +7,7 @@
 {% block content %}
     <!-- Carousel Section -->
     <section class="carousel-container">
+        <!-- Carousel Slider -->
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="7000">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -17,19 +18,19 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{% static 'media/homepage_slider1.webp' %}" class="d-block w-100" alt="Slide 1">
+                    <img src="../static/media/homepage_slider1.webp" class="d-block w-100" alt="Slide 1">
                 </div>
                 <div class="carousel-item">
-                    <img src="{% static 'media/homepage_slider2.jpg' %}" class="d-block w-100" alt="Slide 2">
+                    <img src="../static/media/homepage_slider2.jpg" class="d-block w-100" alt="Slide 2">
                 </div>
                 <div class="carousel-item">
-                    <img src="{% static 'media/homepage_slider3.jpg' %}" class="d-block w-100" alt="Slide 3">
+                    <img src="../static/media/homepage_slider3.jpg" class="d-block w-100" alt="Slide 3">
                 </div>
                 <div class="carousel-item">
-                    <img src="{% static 'media/homepage_slider4.webp' %}" class="d-block w-100" alt="Slide 4">
+                    <img src="../static/media/homepage_slider4.webp" class="d-block w-100" alt="Slide 4">
                 </div>
                 <div class="carousel-item">
-                    <img src="{% static 'media/homepage_slider5.jpg' %}" class="d-block w-100" alt="Slide 5">
+                    <img src="../static/media/homepage_slider5.jpg" class="d-block w-100" alt="Slide 5">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -41,7 +42,39 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
+    
+        <!-- Report Incident Form Overlay -->
+        <div class="report-incident">
+            <h1>Report an Incident</h1>
+            <form method="POST">
+                {% csrf_token %}
+                <label for="incident-type">Incident Type *</label>
+                <input type="text" name="name" id="incident-type" placeholder="Describe the incident type..." required>
+                
+                <label for="description">Description *</label>
+                <textarea id="description" name="description" placeholder="Describe the incident..." required></textarea>
+                
+                <label for="severity">Severity Level *</label>
+                <input type="range" name="severity" id="severity" min="1" max="10" value="5" required>
+                
+                <div class="severity-labels">
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+                    <span>6</span>
+                    <span>7</span>
+                    <span>8</span>
+                    <span>9</span>
+                    <span>10</span>
+                </div>
+    
+                <button type="submit">Report Incident</button>
+            </form>
+        </div>
     </section>
+    
 
     <!-- About Us Section -->
     <section id="about" class="about-section">
@@ -55,42 +88,6 @@
         </p>
     </section>
 
-    <!-- Report Incident Section -->
-<div class="report-incident">
-    <h2>Report an Incident</h2>
-    <form method="POST">
-        {% csrf_token %}
-        <label for="name" style="color: black;">Incident *</label>
-        <input type="text" id="incident-type" name="name" placeholder="Describe the incident type..." required>
-        
-        <label for="description" style="color: black;">Description *</label>
-        <textarea id="description" name="description" placeholder="Describe the incident..." required></textarea>
-        
-        <label for="severity" style="color: black;">Severity (1 to 10) *</label>
-        <input type="range" name ="severity" id="severity" min="1" max="10" value="5" required>
-        
-        <!-- Integer labels for the severity levels -->
-        <div class="severity-labels">
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-            <span>4</span>
-            <span>5</span>
-            <span>6</span>
-            <span>7</span>
-            <span>8</span>
-            <span>9</span>
-            <span>10</span>
-        </div>
-
-        <button type="button" id="getLocationBtn" class="get-location-btn">Get Location</button>
-
-        <label for="image-upload" style="color: black;">Upload Image</label>
-        <input type="file" id="image-upload" accept="image/*">
-        
-        <button type="submit">Report Incident</button>
-    </form>
-</div>
 
     <!-- Contact Us Section -->
     <section id="contact" class="contact-section">
