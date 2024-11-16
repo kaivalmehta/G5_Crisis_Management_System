@@ -6,4 +6,5 @@ from . import views
 #URL CONFIGURATION
 urlpatterns = [
     path('',views.report,name="home"),
+    path('incidents/',views.dashboard,name="incidents"),
 ]

@@ -8,7 +8,8 @@
 
 /* Body styling */
 body {
-    background-color: #f4f4f9;
+    background-color: #f5f5fa;
+    background-image: none;
     padding-top: 70px; /* Space for the fixed navbar */
     display: flex;
     justify-content: center;
@@ -243,7 +244,7 @@ body {
 }
 /* Default nav-links are hidden on mobile */
 .nav-links {
-    display: none;
+    display: flex;
 }
 
 /* Show nav-links when .nav-open is applied */
@@ -326,4 +327,48 @@ body {
     .severity-level {
         font-size: 12px;
     }
+}
+/* Style for the report items */
+.report-item {
+    background-color: #f8f9fa;  /* Light grey background */
+    color: black;               /* Black text */
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #dcdcdc;  /* Light border */
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Subtle shadow */
+}
+
+.report-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.report-description {
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+.severity-label,
+.assignee-label {
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+.severity-value {
+    font-weight: bold;
+    color: red;
+}
+
+.assignee-value {
+    font-weight: bold;
+    color: green;
+}
+
+.report-map {
+    margin-top: 15px;
+}
+
+.report-item .map-outer {
+    height: 100%;
 }

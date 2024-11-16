@@ -46,17 +46,16 @@
         <!-- Report Incident Form Overlay -->
         <div class="report-incident">
             <h1>Report an Incident</h1>
-            <form>
+            <form method="POST">
+                {% csrf_token %}
                 <label for="incident-type">Incident Type *</label>
-                <input type="text" id="incident-type" placeholder="Describe the incident type..." required>
+                <input type="text" name="name" id="incident-type" placeholder="Describe the incident type..." required>
                 
                 <label for="description">Description *</label>
-                <textarea id="description" placeholder="Describe the incident..." required></textarea>
-    
-                <button type="button" id="getLocationBtn" class="get-location-btn">Get Location</button>
+                <textarea id="description" name="description" placeholder="Describe the incident..." required></textarea>
                 
                 <label for="severity">Severity Level *</label>
-                <input type="range" id="severity" min="1" max="10" value="5" required>
+                <input type="range" name="severity" id="severity" min="1" max="10" value="5" required>
                 
                 <div class="severity-labels">
                     <span>1</span>

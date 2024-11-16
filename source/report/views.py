@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import Crisis
 from django.contrib import messages
+from management.models import Organization
 import requests
 
 def report(request):
@@ -22,8 +23,18 @@ def report(request):
             lon=data['location']['lng'],
         )
         crisis.save()
-        return redirect('dashboard')
+        return redirect('incidents')
 
     return render(request, 'home.html')
+
+def dashboard(request):
+    if request.user.is_authenticated and (Organization.objects.filter(user=request.user).exists()):
+        reports = Crisis.objects.exclude(assignee=request.user.organization, status='I').order_by('-time')
+        mycrisis= Crisis.objects.filter(assignee=request.user.organization, status='I')
+        if mycrisis:
+            mycrisis = mycrisis[0]
+            return render(request, 'incidents.html', {'mycrisis':mycrisis, 'crisis':reports})
+    reports = Crisis.objects.order_by('-time')
+    return render(request, 'incidents.html', {'crisis':reports})
 
 # Create your views here.

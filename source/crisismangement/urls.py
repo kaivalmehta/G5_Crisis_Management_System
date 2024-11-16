@@ -28,7 +28,6 @@ urlpatterns = [
     # path('', views.home, name='home'),
     path('donations/', views.donations, name='donations'),
     path('guidelines/', views.guidelines, name='guidelines'),
-    path('incidents/', views.incidents, name='incidents'),
 
     path('',include('report.urls')),
     path('',include('management.urls')),
