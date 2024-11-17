@@ -103,18 +103,6 @@ body {
     background-color: #3b73c4;
 }
 
-/* Footer */
-footer {
-    background: #f4f4f4;
-    padding: 1em;
-    text-align: center;
-    font-size: 0.9em;
-    color: #666;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
 /* Keyframes */
 @keyframes fadeIn {
     from {

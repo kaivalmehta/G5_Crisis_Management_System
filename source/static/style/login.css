@@ -119,18 +119,6 @@ body {
     text-decoration: underline;
 }
 
-/* Footer */
-footer {
-    background: #f4f4f4;
-    padding: 1em;
-    text-align: center;
-    font-size: 0.9em;
-    color: #666;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}
-
 /* Keyframes */
 @keyframes fadeIn {
     from {

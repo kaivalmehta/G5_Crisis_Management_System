@@ -1,0 +1,98 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fb;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+h1 {
+    text-align: center;
+    margin: 20px;
+}
+
+h2 {
+    color: #007bff;
+    margin-top: 20px;
+}
+
+/* Profile Details */
+.profile-details {
+    margin: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-details p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.profile-details strong {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Edit Profile Button */
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Logout Button */
+form {
+    text-align: center;
+    margin-top: 30px;
+}
+
+form button {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form button:hover {
+    background-color: #d32f2f;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .profile-details {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .profile-details p {
+        font-size: 14px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px 20px;
+    }
+}

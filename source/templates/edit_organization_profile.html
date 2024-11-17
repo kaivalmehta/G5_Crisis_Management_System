@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'style/edit_profile.css' %}">
+{% endblock %}
+
+{% block title %}Edit Organization Profile{% endblock %}
+
+{% block content %}
+<h1>Edit Organization Profile</h1>
+<form method="POST">
+    {% csrf_token %}
+    <label for="domain">Domain:</label>
+    <input type="text" id="domain" name="domain" value="{{ organization.domain }}" required>
+    
+    <label for="level">Level:</label>
+    <select id="level" name="level">
+        <option value="L" {% if organization.level == 'L' %}selected{% endif %}>Local</option>
+        <option value="R" {% if organization.level == 'R' %}selected{% endif %}>Regional</option>
+        <option value="N" {% if organization.level == 'N' %}selected{% endif %}>National</option>
+        <option value="I" {% if organization.level == 'I' %}selected{% endif %}>International</option>
+    </select>
+    
+    <button type="submit">Save Changes</button>
+</form>
+{% endblock %}

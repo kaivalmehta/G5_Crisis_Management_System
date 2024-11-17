@@ -1,75 +1,54 @@
-let volunteerIndex = 1; // Updated variable name
-let editingRow = null; // To store the row being edited
+// Function to assign a volunteer to the current logged-in user's organization
+function assignToMyOrganization(volunteerId) {
+    // Fetch the current logged-in user's organization
+    fetch('/get_current_organization/')
+        .then(response => response.json())
+        .then(data => {
+            if (data.organization) {
+                const organizationId = data.organization.id;
 
-// Show Add Volunteer Modal (used for both Add and Edit)
-function showAddVolunteerModal(row = null) {
-    if (row) {
-        // If editing, populate the fields with existing data
-        const cells = row.querySelectorAll('td');
-        document.getElementById('volunteerName').value = cells[2].textContent;
-        document.getElementById('volunteerLocation').value = cells[3].textContent;
-
-        // Store the row for editing
-        editingRow = row;
-    } else {
-        // Reset the modal if adding a new volunteer
-        document.getElementById('volunteerName').value = '';
-        document.getElementById('volunteerLocation').value = '';
-        editingRow = null; // Reset the editing row
-    }
-    document.getElementById('addVolunteerModal').classList.add('show');
-    document.querySelector('.modal-content').classList.add('show');
+                // Send an AJAX request to update the volunteer's organization
+                fetch(`/assign_to_my_organization/${volunteerId}/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken') // CSRF token for security
+                    },
+                    body: JSON.stringify({ organization_id: organizationId })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Volunteer assigned to your organization!');
+                        location.reload(); // Reload the page to update the table
+                    } else {
+                        alert('Failed to assign volunteer. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            } else {
+                alert('You are not assigned to any organization.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 }
 
-// Close Add/Edit Volunteer Modal
-function closeAddVolunteerModal() {
-    document.getElementById('addVolunteerModal').classList.remove('show');
-    document.querySelector('.modal-content').classList.remove('show');
-}
-
-// Add or Edit Volunteer
-function saveVolunteer() {
-    const name = document.getElementById('volunteerName').value;
-    const location = document.getElementById('volunteerLocation').value;
-    const tableBody = document.getElementById('volunteerList');
-    const currentDate = new Date().toLocaleDateString();
-
-    if (name && location.match(/^[A-Za-z\s]+$/)) {
-        if (editingRow) {
-            // If editing, update the existing row
-            const cells = editingRow.querySelectorAll('td');
-            cells[2].textContent = name;
-            cells[3].textContent = location;
-            cells[4].textContent = currentDate;
-        } else {
-            // If adding, create a new row
-            const row = `
-                <tr>
-                    <td><input type="checkbox"></td>
-                    <td>${volunteerIndex++}</td>
-                    <td>${name}</td>
-                    <td>${location}</td>
-                    <td>${currentDate}</td>
-                    <td><button class="action-btn edit-btn" onclick="showAddVolunteerModal(this.closest('tr'))">Edit</button></td>
-                </tr>
-            `;
-            tableBody.insertAdjacentHTML('beforeend', row);
+// Function to get the CSRF token (for security in AJAX requests)
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
         }
-
-        closeAddVolunteerModal(); // Close the modal after saving
-    } else {
-        alert('Please fill out both fields and ensure the location contains only letters.');
     }
-}
-
-// Delete Selected Volunteers
-function deleteSelectedVolunteers() {
-    const checkboxes = document.querySelectorAll('#volunteerList input[type="checkbox"]:checked');
-    checkboxes.forEach(checkbox => checkbox.closest('tr').remove());
-}
-
-// Toggle Select All Checkboxes
-function toggleSelectAll(mainCheckbox) {
-    const checkboxes = document.querySelectorAll('#volunteerList input[type="checkbox"]');
-    checkboxes.forEach(checkbox => checkbox.checked = mainCheckbox.checked);
+    return cookieValue;
 }
