@@ -10,15 +10,15 @@
 
 {% block content %}
 <h1>Profile Page</h1>
-
-{% if profile_type == 'volunteer' %}
+<div class="profile-container">
+    {% if profile_type == 'volunteer' %}
     <h2>Volunteer Profile</h2>
     <p><strong>Name:</strong> {{ profile.user.get_full_name }}</p>
     <p><strong>Email:</strong> {{ profile.user.email }}</p>
     <p><strong>Age:</strong> {{ profile.age }}</p>
     <p><strong>Sex:</strong> {{ profile.get_sex_display }}</p>
     <p><strong>Skills:</strong> {{ profile.skills }}</p>
-    <button onclick="window.location.href='{% url 'edit_volunteer_profile' %}'">Edit Profile</button>
+    <button onclick="window.location.href= '{% url 'edit_volunteer_profile' %}'">Edit Profile</button>
 
 {% elif profile_type == 'organization' %}
     <h2>Organization Profile</h2>
@@ -31,6 +31,8 @@
 {% else %}
     <p>No profile information found.</p>
 {% endif %}
+</div>
+
 
 <!-- Logout Button -->
 <form action="{% url 'logout' %}" method="POST" style="margin-top: 20px;">

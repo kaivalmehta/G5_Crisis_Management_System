@@ -1,10 +1,18 @@
 /* General Styles */
 body {
+    display: flex;
+    justify-content: center;
     font-family: Arial, sans-serif;
     background-color: #f4f7fb;
     color: #333;
-    margin: 0;
     padding: 0;
+}
+
+.profile-container{
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 /* Header */
@@ -20,6 +28,7 @@ h2 {
 
 /* Profile Details */
 .profile-details {
+    
     margin: 20px;
     padding: 20px;
     background-color: #ffffff;

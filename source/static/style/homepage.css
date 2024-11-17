@@ -16,82 +16,11 @@ body {
     background-position: center;
     color: #333;
 }
-
-/* Dashboard Navbar */
-.dashboard-navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: rgba(2, 2, 2, 0.9);
-    color: white;
-    padding: 1% 0;
-    z-index: 1000;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.dashboard-navbar-container {
-    max-width: 93%;
-    margin-left: 2%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 3%;
-}
-/* Left Side: Logo and Organization Name */
-.logo-section {
-    display: flex;
-    align-items: center;
-}
-
-.logo-img {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-}
-
-.org-name {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #ffffff;
-}
-.nav-links {
-    display: flex;
-}
-
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    padding: 0.5em 1em;
-}
-.nav-links a:hover::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 0.2%;
-    background-color: #4a90e2;
-    width: 100%;
-    transition: width 0.3s ease;
-}
-
 /* Highlight and Animation for Donate Button */
-.dashboard-donate {
-    background-color: #ff5a5f;
-    padding: 0.5% 1%;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    animation: pulse 1.5s infinite;
-}
-
-.dashboard-donate:hover {
-    background-color: #e04747;
-}
 
 .carousel-container {
     position: relative; /* Allows .report-incident to overlay on top */
-    width: 100%;
-    margin-top: 4.6%; /* Adjusts for any fixed navbar height */
+    width: 100%;/* Adjusts for any fixed navbar height */
 }
 .carousel-container .carousel {
     flex: 2; /* Carousel takes up more space */
@@ -289,35 +218,20 @@ body {
 }
 
 /* Responsive Layout Adjustments */
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
-
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        background-color: rgba(2, 2, 2, 0.9);
-        position: absolute;
-        top: 70px;
-        right: 0;
-        width: 100%;
-        padding: 10px 0;
-        z-index: 999;
-    }
-
-    .nav-links a {
-        padding: 10px;
-        font-size: 1.2em;
-        text-align: center;
-    }
-    .about-section, .contact-section, .report-incident {
+@media (max-width: 1050px) {
+    
+    .about-section,.report-incident {
         max-width: 100%;
-        margin: 0 auto;
+        margin: 0 ;
+        margin-top: 620px;
+    }
+    .contact-section{
+        max-width: 100%;
+        margin: 0;
     }
     .report-incident {
         width: 90%; /* Full width on smaller screens */
-        top: 50%;
+        top: 100%;
         right: 10px;
         padding: 10px;
     }
@@ -339,6 +253,42 @@ body {
 
     .map-placeholder {
         height: 250px;
+    }
+}
+@media(max-width: 820px){
+    .about-section,.report-incident {
+        max-width: 100%;
+        margin: 0 ;
+        margin-top: 600px;
+    }
+    .contact-section{
+        max-width: 100%;
+        margin: 0;
+    }
+    .report-incident {
+        width: 90%; /* Full width on smaller screens */
+        top: 100%;
+        right: 10px;
+        padding: 10px;
+    }
+    .report-incident {
+        position: absolute; /* Removes fixed positioning */
+        margin: 20px ; /* Centers the form horizontally */
+        width: 90%; /* Adjusts width for mobile view */
+    }
+
+    .carousel-container {
+        display: flex;
+        flex-direction: column; /* Stacks items vertically */
+        align-items: center; /* Centers items */
+    }
+    .contact-section{
+        width: 100%;
+        padding: 5%;
+    }
+
+    .map-placeholder {
+        height: 100%;
     }
 }
 
