@@ -15,32 +15,58 @@
 <body>
 
     <!-- Navbar -->
-    <div class="dashboard-navbar">
-        <div class="dashboard-navbar-container">
-            <div class="logo-section">
-                <img src="{% static 'media/Logo.jpg' %}" alt="NGO Logo" class="logo-img">
-                <span class="org-name">Crisis Management</span>
-            </div>
-            <nav class="nav-links">
-                <a href="{% url 'home' %}">Home</a>
-                {% if user.is_authenticated %}
-                <a href="{% url 'resources' %}">Resources</a>
-                <a href="{% url 'volunteer' %}">Volunteers</a>
-                {% else %}
-                <a href="{% url 'home' %}#about">About Us</a>
-                <a href="{% url 'home' %}#contact">Contact Us</a>
-                {% endif %}
-                <a href="{% url 'guidelines' %}">Guidelines</a>
-                <a href="{% url 'incidents' %}">Incidents</a>
-                <a href="{% url 'donations' %}">Donate</a>
-                {% if user.is_authenticated %}
-                    <a href="{% url 'profile' %}"  class="dashboard-donate">Profile</a>
-                {% else %}
-                    <a href="{% url 'login' %}"  class="dashboard-donate">Register/Login</a>
-                {% endif %}
+            <nav>
+                <ul class="sidebar">
+                    <li onclick= closeSidebar()><a href="{% url 'home' %}"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'resources' %}">Resources</a></li>
+                    <li><a href="{% url 'volunteer' %}">Volunteers</a></li>
+                    {% else %}
+                    <li><a href="{% url 'home' %}#about">About Us</a></li>
+                    <li><a href="{% url 'home' %}#contact">Contact Us</a></li>
+                    {% endif %}
+                    <li><a href="{% url 'guidelines' %}">Guidelines</a></li>
+                    <li><a href="{% url 'incidents' %}">Incidents</a></li>
+                    <li><a href="{% url 'donations' %}">Donate</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'profile' %}"  class="dashboard-donate">Profile</a></li>
+                    {% else %}
+                    <li><a href="{% url 'login' %}"  class="dashboard-donate">Register/Login</a></li>
+                    {% endif %}
+                </ul>
+                <ul>
+                    <li><img src="../static/media/Logo.jpg" alt="NGO Logo" class="logo-img">Crisis Management</li>
+                    <li class = "hideOnMobile"><a href="{% url 'home' %}">Home</a></li>
+                    {% if user.is_authenticated %}
+                    <li class = "hideOnMobile"><a href="{% url 'resources' %}">Resources</a></li>
+                    <li class = "hideOnMobile"><a href="{% url 'volunteer' %}">Volunteers</a></li>
+                    {% else %}
+                    <li class = "hideOnMobile"><a href="{% url 'home' %}#about">About Us</a></li>
+                    <li class = "hideOnMobile"><a href="{% url 'home' %}#contact">Contact Us</a></li>
+                    {% endif %}
+                    <li class = "hideOnMobile"><a href="{% url 'guidelines' %}">Guidelines</a></li>
+                    <li class = "hideOnMobile"><a href="{% url 'incidents' %}">Incidents</a></li>
+                    <li class = "hideOnMobile"><a href="{% url 'donations' %}">Donate</a></li>
+                    {% if user.is_authenticated %}
+                    <li class = "hideOnMobile"><a href="{% url 'profile' %}"  class="dashboard-donate">Profile</a></li>
+                    {% else %}
+                    <li class = "hideOnMobile"><a href="{% url 'login' %}"  class="dashboard-donate">Register/Login</a></li>
+                    {% endif %}
+                    <li onclick= showSidebar() class="MenuButton"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></a></svg></li>
+                </ul>
             </nav>
-        </div>
-    </div>
+            <script>
+                function showSidebar(){
+                    const sidebar = document.querySelector('.sidebar')
+                    sidebar.style.display = 'flex'
+                }
+                function closeSidebar(){
+                    const sidebar = document.querySelector('.sidebar')
+                    sidebar.style.display = 'none'
+                }
+            </script>
+
 
     <!-- Main content block -->
     {% block content %}{% endblock %}
@@ -48,6 +74,7 @@
     <!-- Footer -->
     <footer>
         <p>&copy; 2024 Crisis Management System. All rights reserved.</p>
+        <a>Team</a>
     </footer>
 
     <!-- Bootstrap JS and dependencies -->

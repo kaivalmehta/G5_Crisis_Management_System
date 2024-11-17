@@ -7,21 +7,18 @@
 }
 
 body {
-    background-image: url("../../media/background.jpg"); /* Update with your image path */
+    background-image: url("../media/background.jpg"); /* Update with your image path */
     background-size: cover; /* Scales image to cover the entire viewport */
     background-position: center; /* Centers the image */
     background-repeat: no-repeat; /* Prevents tiling */
     background-attachment: fixed; /* Keeps the background fixed when scrolling */
     color: #f5f7fa; /* Optional: Change text color to improve readability */
-}
-
-/* body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     background-color: #f5f7fa;
     animation: backgroundFade 5s infinite;
-} */
+}
 
 /* Container and Grid Layout */
 .container {
@@ -34,6 +31,7 @@ body {
 /* Login Form Styling */
 .login-form {
     width: 100%;
+    height: 80vh;
     max-width: 400px;
     padding: 2em;
     background: #ffffff;
@@ -45,7 +43,6 @@ body {
 
 .login-form h2 {
     font-size: 1.8em;
-    margin-bottom: 1em;
     color: #222222;
     animation: textSlideIn 1s ease;
 }
