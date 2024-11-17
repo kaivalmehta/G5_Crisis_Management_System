@@ -23,7 +23,7 @@ class Organization(models.Model):
 
 class Volunteer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    organization = models.ForeignKey(Organization, on_delete=models.CASCADE, blank=True, null=True)
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE, blank=True, null=True, default=None)
     age = models.PositiveSmallIntegerField(blank=True, null=True)
     sex = models.CharField(max_length=1, blank=True, null=True,
         choices=[

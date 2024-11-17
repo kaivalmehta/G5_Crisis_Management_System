@@ -1,112 +1,117 @@
-/* General Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
+/* navbar.css */
 
-/* Body Padding to Prevent Overlap */
-body {
-    padding-top: 70px; /* Adjust to match the navbar height */
-}
-
-/* Navbar Container */
+/* Navbar container */
 .dashboard-navbar {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
-    background-color: rgba(2,2,2,2);
+    background-color: #343a40; /* Bootstrap dark theme */
     color: white;
-    padding: 1em 0;
-    z-index: 1000;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensures navbar is always on top */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    height: 70px; /* Adjust height */
 }
 
+/* Navbar inner container */
 .dashboard-navbar-container {
-    max-width: 95%;
-    margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    align-items: end;
-    gap: 3%;
+    align-items: center;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
 }
 
-/* Left Side: Logo and Organization Name */
+/* Logo section */
 .logo-section {
     display: flex;
     align-items: center;
 }
 
 .logo-img {
-    width: 40px;
-    height: 40px;
+    height: 50px; /* Adjust to fit navbar height */
     margin-right: 10px;
 }
 
 .org-name {
-    font-size: 1.2em;
+    font-size: 1.5rem;
     font-weight: bold;
-    color: #ffffff;
+    color: white;
 }
 
-/* Right Side: Navbar Links */
+/* Navigation links */
 .nav-links {
     display: flex;
-    gap: 15px;
+    align-items: center;
 }
 
 .nav-links a {
-    color: white;
     text-decoration: none;
-    font-size: 1em;
-    padding: 0.5em 1em;
-    transition: color 0.3s ease;
-    position: relative;
+    color: white;
+    font-size: 1rem;
+    margin: 0 10px;
+    padding: 5px 10px;
+    transition: all 0.3s ease-in-out;
 }
 
-/* Pseudo-selector for Hover Effect */
-.nav-links a:hover::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 2px;
-    background-color: #4a90e2;
-    transition: width 0.3s ease;
-    width: 100%;
+.nav-links a:hover {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+    border-radius: 4px;
 }
 
-/* Highlight and Animation for Donate Button */
+/* Highlighted link (like Profile or Register/Login) */
 .dashboard-donate {
-    background-color: #ff5a5f;
-    padding: 0.5em 1em;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    animation: pulse 1.5s infinite;
+    background-color: #dc3545; /* Bootstrap danger color */
+    color: white;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 4px;
 }
 
 .dashboard-donate:hover {
-    background-color: #e04747;
+    background-color: #c82333; /* Darker danger color */
 }
 
-/* Responsive Design */
+/* Footer styling */
+footer {
+    background-color: #f8f9fa; /* Bootstrap light gray */
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.9rem;
+    color: #6c757d; /* Bootstrap muted text */
+    margin-top: 20px;
+}
+
+/* Adjust main content to prevent overlapping */
+body {
+    margin: 0;
+    padding: 0;
+    padding-top: 70px; /* Ensure content starts below the fixed navbar */
+    font-family: Arial, sans-serif;
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
     .nav-links {
-        display: none; /* Hide links on smaller screens */
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
-    .menu-icon {
-        display: block;
-        font-size: 1.5em;
-        color: white;
-        cursor: pointer;
+    .nav-links a {
+        margin: 5px;
+        font-size: 0.9rem;
     }
-}
 
-@media (max-width: 1200px) {
     .dashboard-navbar-container {
-        padding: 0 10px;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .logo-section {
+        justify-content: center;
+        margin-bottom: 10px;
     }
 }

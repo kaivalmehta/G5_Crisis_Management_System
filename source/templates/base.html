@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Crisis Management System{% endblock %}</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'style/homepage.css' %}">
-    <link rel="stylesheet" href="{% static 'style/login.css' %}">
-    <link rel="stylesheet" href="{% static 'style/register.css' %}">
     <link rel="stylesheet" href="{% static 'style/navbar.css' %}">
-    
+    {% block extra_css %}
+    {% endblock %}
+    {% block extra_js %}
+    {% endblock %}
 </head>
 <body>
 
@@ -23,8 +23,13 @@
             </div>
             <nav class="nav-links">
                 <a href="{% url 'home' %}">Home</a>
+                {% if user.is_authenticated %}
+                <a href="{% url 'resources' %}">Resources</a>
+                <a href="{% url 'volunteer' %}">Volunteers</a>
+                {% else %}
                 <a href="{% url 'home' %}#about">About Us</a>
                 <a href="{% url 'home' %}#contact">Contact Us</a>
+                {% endif %}
                 <a href="{% url 'guidelines' %}">Guidelines</a>
                 <a href="{% url 'incidents' %}">Incidents</a>
                 <a href="{% url 'donations' %}">Donate</a>

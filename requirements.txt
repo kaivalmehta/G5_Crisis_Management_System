@@ -2,3 +2,6 @@
 pipenv
 django
 pillow
+requests
+pytest
+django-pytest

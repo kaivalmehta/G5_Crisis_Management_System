@@ -1,17 +1,43 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% load static %}
 
-{% block title %}Profile | Crisis Management{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'style/profile.css' %}">
+{% endblock %}
+
+{% block title %}Profile{% endblock %}
 
 {% block content %}
-<h2>Welcome, {{ user.username }}!</h2>
-<p>Email: {{ user.email }}</p>
-<p>Thank you for being a part of Crisis Management.</p>
+<h1>Profile Page</h1>
+
+{% if profile_type == 'volunteer' %}
+    <h2>Volunteer Profile</h2>
+    <p><strong>Name:</strong> {{ profile.user.get_full_name }}</p>
+    <p><strong>Email:</strong> {{ profile.user.email }}</p>
+    <p><strong>Age:</strong> {{ profile.age }}</p>
+    <p><strong>Sex:</strong> {{ profile.get_sex_display }}</p>
+    <p><strong>Skills:</strong> {{ profile.skills }}</p>
+    <button onclick="window.location.href='{% url 'edit_volunteer_profile' %}'">Edit Profile</button>
+
+{% elif profile_type == 'organization' %}
+    <h2>Organization Profile</h2>
+    <p><strong>Name:</strong> {{ profile.user.get_full_name }}</p>
+    <p><strong>Email:</strong> {{ profile.user.email }}</p>
+    <p><strong>Domain:</strong> {{ profile.domain }}</p>
+    <p><strong>Level:</strong> {{ profile.get_level_display }}</p>
+    <button onclick="window.location.href='{% url 'edit_organization_profile' %}'">Edit Profile</button>
+
+{% else %}
+    <p>No profile information found.</p>
+{% endif %}
 
 <!-- Logout Button -->
-<form action="{% url 'logout' %}" method="post">
+<form action="{% url 'logout' %}" method="POST" style="margin-top: 20px;">
     {% csrf_token %}
-    <button type="submit" class="logout-btn">Logout</button>
+    <button type="submit" style="background-color: #f44336; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+        Logout
+    </button>
 </form>
+
 {% endblock %}

@@ -1,216 +1,154 @@
-/* General Styles */
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* General Layout */
 body {
     font-family: Arial, sans-serif;
-    background: #f4f9fd;
+    background-color: #f4f4f9;
     margin: 0;
     padding: 0;
 }
 
-.container {
-    display: inline-block; /* ShArinks container to fit content */
-    margin: 20px auto; /* Centers the container with minimal spacing */
-    background: white;
-    padding: 10px; /* Reduced padding to remove unnecessary space */
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for style */
-    width : 100%;
-    height : 100%;
-}
-
-    
-
-/* Heading */
 h1 {
     text-align: center;
-    color: #4a90e2;
-    margin: 33px; /* Removed all margins */
-    padding: 5px 0; /* Minimal padding for better spacing */
-    font-size: 1.8em;
+    margin-top: 30px;
+    color: #333;
 }
 
-/* Top Section */
 /* Top Section */
 .top-section {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 5px; /* Minimal padding for better fit */
-    margin: 5px auto; /* Reduced margin */
-    gap: 10px;
-    width: 100%; /* Shrinks to fit content */
+    margin: 20px 30px;
+    padding: 10px;
 }
 
-
-#searchSkill {
-    flex: 1;
-    padding: 8px;
-    border: 1px solid #ddd;
+.top-section input {
+    width: 60%;
+    padding: 12px;
+    font-size: 16px;
     border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
 }
 
-.add-volunteer-btn, .delete-volunteer-btn {
-    padding: 8px 12px;
+.top-section button {
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: 0.3s;
 }
 
-.add-volunteer-btn {
-    background: #5cb85c;
-    color: white;
+.top-section button:hover {
+    background-color: #45a049;
 }
 
-.delete-volunteer-btn {
-    background: #d9534f;
-    color: white;
-}
-
-.add-volunteer-btn:hover {
-    background: #4ca94c;
-}
-
-.delete-volunteer-btn:hover {
-    background: #c43c38;
-}
-
-/* Table */
+/* Table Styling */
 .table-container {
-    overflow-x: auto;
-    margin-top: 5px; /* Reduced spacing */
+    margin: 30px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
 .volunteer-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 5px; /* Reduced spacing */
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.volunteer-table th, .volunteer-table td {
-    padding: 8px;
+.volunteer-table th,
+.volunteer-table td {
+    padding: 12px;
+    text-align: left;
     border: 1px solid #ddd;
-    text-align: center;
+    font-size: 14px;
+    color: #333;
 }
 
-.volunteer-table thead {
-    background: #4a90e2;
+.volunteer-table th {
+    background-color: #4CAF50;
     color: white;
+    font-weight: bold;
 }
 
-.volunteer-table tbody tr:hover {
-    background: #f4f4f4;
+.volunteer-table tr:nth-child(even) {
+    background-color: #f9f9f9;
 }
 
-/* Modal */
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s;
+.volunteer-table tr:hover {
+    background-color: #f1f1f1;
 }
 
-.modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    transform: scale(0.8);
-    transition: transform 0.3s;
+.volunteer-table td {
+    vertical-align: middle;
 }
 
-.modal.show {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.modal-content.show {
-    transform: scale(1);
-}
-
-.modal-content button {
-    padding: 8px 12px;
-    margin: 8px;
+.volunteer-table td button {
+    padding: 8px 16px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.modal-content button:nth-child(1) {
-    background: #5cb85c;
-    color: white;
+.volunteer-table td button:hover {
+    background-color: #0056b3;
 }
 
-.modal-content button:nth-child(2) {
-    background: #d9534f;
-    color: white;
+.volunteer-table td button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Styling for the Select Checkbox */
+.volunteer-table td input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
     .top-section {
         flex-direction: column;
-        gap: 10px;
+        align-items: center;
     }
 
-    h1 {
-        font-size: 1.5em;
-    }
-
-    #searchSkill {
+    .top-section input {
+        width: 80%;
         margin-bottom: 10px;
     }
-}
 
+    .top-section button {
+        width: 80%;
+    }
 
-/* Edit Button */
-.edit-btn {
-    padding: 5px 10px;
-    background-color: #4a90e2;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
+    .volunteer-table {
+        width: 100%;
+        margin: 0 auto;
+    }
 
-.edit-btn:hover {
-    background-color: #357abd;
-}
+    .volunteer-table th, .volunteer-table td {
+        font-size: 12px;
+        padding: 8px;
+    }
 
-/* Checkboxes */
-.select-row,
-#select-all {
-    transform: scale(1.2); /* Slightly larger checkboxes */
-    cursor: pointer;
-}
-
-/* Action Buttons */
-.action-buttons {
-    margin-top: 10px;
-    text-align: right;
-}
-
-#delete-volunteer-btn {
-    padding: 8px 15px;
-    background-color: #ff5c5c;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-#delete-volunteer-btn:hover {
-    background-color: #e04a4a;
+    .volunteer-table td button {
+        width: 100%;
+    }
 }
