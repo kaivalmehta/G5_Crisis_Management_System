@@ -9,33 +9,63 @@
 {% block title %}Profile{% endblock %}
 
 {% block content %}
-<h1>Profile Page</h1>
+<h1 style="text-align: center;">Profile Page</h1>
 <div class="profile-container">
     {% if profile_type == 'volunteer' %}
     <h2>Volunteer Profile</h2>
-    <p><strong>Name:</strong> {{ profile.user.get_full_name }}</p>
-    <p><strong>Email:</strong> {{ profile.user.email }}</p>
-    <p><strong>Age:</strong> {{ profile.age }}</p>
-    <p><strong>Sex:</strong> {{ profile.get_sex_display }}</p>
-    <p><strong>Skills:</strong> {{ profile.skills }}</p>
-    <button onclick="window.location.href= '{% url 'edit_volunteer_profile' %}'">Edit Profile</button>
+    <div style="display: table; width: 100%;">
+        <div style="display: table-row;">
+            <div style="display: table-cell; font-weight: bold;">Name:</div>
+            <div style="display: table-cell;">{{ profile.user.get_full_name }}</div>
+        </div>
+        <div style="display: table-row;">
+            <div style="display: table-cell; font-weight: bold;">Email:</div>
+            <div style="display: table-cell;">{{ profile.user.email }}</div>
+        </div>
+        <div style="display: table-row;">
+            <div style="display: table-cell; font-weight: bold;">Age:</div>
+            <div style="display: table-cell;">{{ profile.age }}</div>
+        </div>
+        <div style="display: table-row;">
+            <div style="display: table-cell; font-weight: bold;">Sex:</div>
+            <div style="display: table-cell;">{{ profile.get_sex_display }}</div>
+        </div>
+        <div style="display: table-row;">
+            <div style="display: table-cell; font-weight: bold;">Skills:</div>
+            <div style="display: table-cell;">{{ profile.skills }}</div>
+        </div>
+    </div>
+    <button onclick="window.location.href='{% url 'edit_volunteer_profile' %}'">Edit Profile</button>
 
-{% elif profile_type == 'organization' %}
+    {% elif profile_type == 'organization' %}
     <h2>Organization Profile</h2>
-    <p><strong>Name:</strong> {{ profile.user.get_full_name }}</p>
-    <p><strong>Email:</strong> {{ profile.user.email }}</p>
-    <p><strong>Domain:</strong> {{ profile.domain }}</p>
-    <p><strong>Level:</strong> {{ profile.get_level_display }}</p>
+    <div style="display: table; width: 100%;">
+        <div style="display: table-row;">
+            <div style="display: table-cell; font-weight: bold;">Name:</div>
+            <div style="display: table-cell;">{{ profile.user.get_full_name }}</div>
+        </div>
+        <div style="display: table-row;">
+            <div style="display: table-cell; font-weight: bold;">Email:</div>
+            <div style="display: table-cell;">{{ profile.user.email }}</div>
+        </div>
+        <div style="display: table-row;">
+            <div style="display: table-cell; font-weight: bold;">Domain:</div>
+            <div style="display: table-cell;">{{ profile.domain }}</div>
+        </div>
+        <div style="display: table-row;">
+            <div style="display: table-cell; font-weight: bold;">Level:</div>
+            <div style="display: table-cell;">{{ profile.get_level_display }}</div>
+        </div>
+    </div>
     <button onclick="window.location.href='{% url 'edit_organization_profile' %}'">Edit Profile</button>
 
-{% else %}
-    <p>No profile information found.</p>
-{% endif %}
+    {% else %}
+    <p style="text-align: center;">No profile information found.</p>
+    {% endif %}
 </div>
 
-
 <!-- Logout Button -->
-<form action="{% url 'logout' %}" method="POST" style="margin-top: 20px;">
+<form action="{% url 'logout' %}" method="POST" style="margin-top: 20px; text-align: center;">
     {% csrf_token %}
     <button type="submit" style="background-color: #f44336; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
         Logout

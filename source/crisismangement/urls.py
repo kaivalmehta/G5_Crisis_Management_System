@@ -26,7 +26,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # path('', views.home, name='home'),
-    path('donations/', views.donations, name='donations'),
+    path('donate/', views.donate, name='donate'),
+    path('paypal/', include('paypal.standard.ipn.urls')),
     path('guidelines/', views.guidelines, name='guidelines'),
 
     path('',include('report.urls')),

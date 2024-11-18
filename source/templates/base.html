@@ -28,7 +28,7 @@
                     {% endif %}
                     <li><a href="{% url 'guidelines' %}">Guidelines</a></li>
                     <li><a href="{% url 'incidents' %}">Incidents</a></li>
-                    <li><a href="{% url 'donations' %}">Donate</a></li>
+                    <li><a href="{% url 'donate' %}">Donate</a></li>
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'profile' %}"  class="dashboard-donate">Profile</a></li>
                     {% else %}
@@ -47,7 +47,7 @@
                     {% endif %}
                     <li class = "hideOnMobile"><a href="{% url 'guidelines' %}">Guidelines</a></li>
                     <li class = "hideOnMobile"><a href="{% url 'incidents' %}">Incidents</a></li>
-                    <li class = "hideOnMobile"><a href="{% url 'donations' %}">Donate</a></li>
+                    <li class = "hideOnMobile"><a href="{% url 'donate' %}">Donate</a></li>
                     {% if user.is_authenticated %}
                     <li class = "hideOnMobile"><a href="{% url 'profile' %}"  class="dashboard-donate">Profile</a></li>
                     {% else %}

@@ -19,6 +19,4 @@ urlpatterns = [
     path('delete_resource/<uuid:resource_id>/', views.delete_resource, name='delete_resource'),
 
     path('volunteers/', views.volunteer_list, name='volunteer'),
-    path('get_current_organization/', views.get_current_organization, name='get_current_organization'),
-    path('assign_to_my_organization/<int:volunteer_id>/', views.assign_to_my_organization, name='assign_to_my_organization'),
 ]

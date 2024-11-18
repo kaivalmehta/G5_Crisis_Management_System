@@ -1,11 +1,44 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% load static %}
 
-{% block title %}#Frontend Team Add your code here{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'style/guidelines.css' %}">
+{% endblock %}
+
+{% block title %}Disaster Safety Guidelines{% endblock %}
 
 {% block content %}
+<div class="guidelines-container">
+    <h1>Disaster Safety Guidelines</h1>
 
-    #Frontend Team Add your code here
-    
+    <section class="guideline-section">
+        <h2>Earthquakes</h2>
+        <ul>
+            <li><strong>Drop, cover, and hold on:</strong> Drop to the ground, take cover under a sturdy table or desk if possible, and hold on until the shaking stops.</li>
+            <li><strong>Stay away from windows and heavy furniture:</strong> Glass and objects can break and fall during an earthquake.</li>
+            <li><strong>Evacuate tall buildings and structures:</strong> After the shaking stops, evacuate tall buildings and structures as soon as it is safe to do so.</li>
+            <li><strong>Prepare an emergency kit:</strong> Have a disaster supply kit that includes food, water, first-aid supplies, and other essential items in case of an earthquake.</li>
+        </ul>
+    </section>
+
+    <section class="guideline-section">
+        <h2>Hurricanes and Tropical Storms</h2>
+        <ul>
+            <li><strong>Evacuate if advised:</strong> If you are in a coastal area and the authorities issue an evacuation order, leave as soon as possible.</li>
+            <li><strong>Secure your property:</strong> Take steps to secure your property and protect it from potential damage. This may include covering windows and doors, storing outdoor furniture and equipment, and removing loose items from your yard.</li>
+            <li><strong>Have a disaster supply kit:</strong> Include food, water, first-aid supplies, a battery-powered radio, flashlights, and other essential items.</li>
+            <li><strong>Stay informed:</strong> Stay informed about the latest developments and any new warnings or evacuation orders by listening to local news and following official social media accounts.</li>
+        </ul>
+    </section>
+
+    <section class="guideline-section">
+        <h2>Tornadoes</h2>
+        <ul>
+            <li><strong>Take cover:</strong> If you are indoors, go to a basement, storm cellar, or an interior room on the lowest floor. If you are outdoors, try to find a low-lying area or seek shelter in a sturdy building.</li>
+            <li><strong>Stay away from windows:</strong> Windows can break during a tornado, so try to stay away from them.</li>
+            <li><strong>Protect your head:</strong> Cover your head with your hands or a pillow to protect yourself from falling debris.</li>
+        </ul>
+    </section>
+</div>
 {% endblock %}
