@@ -5,3 +5,4 @@ pillow
 requests
 pytest
 django-pytest
+django-paypal
