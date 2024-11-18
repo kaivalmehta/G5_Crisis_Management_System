@@ -29,12 +29,39 @@ def report(request):
 
 def dashboard(request):
     if request.user.is_authenticated and (Organization.objects.filter(user=request.user).exists()):
-        reports = Crisis.objects.exclude(assignee=request.user.organization, status='I').order_by('-time')
-        mycrisis= Crisis.objects.filter(assignee=request.user.organization, status='I')
+        reports = Crisis.objects.exclude(assignee=request.user.organization, currentstatus='I').order_by('-time')
+        mycrisis= Crisis.objects.filter(assignee=request.user.organization, currentstatus='I')
         if mycrisis:
-            mycrisis = mycrisis[0]
             return render(request, 'incidents.html', {'mycrisis':mycrisis, 'crisis':reports})
     reports = Crisis.objects.order_by('-time')
     return render(request, 'incidents.html', {'crisis':reports})
 
+def respond(request,cID):
+    report = Crisis.objects.filter(crisisID=cID)
+    if report:
+        report = report[0]
+    else:
+        messages.error(request, "Some Error Occured.")
+        return redirect('incidents')
+    
+    if report.assignee is not None:
+        messages.error(request, "Task already assigned.")
+        return redirect('incidents')
+
+    report.assignee = request.user.organization
+    report.currentstatus = 'I'
+    request.user.organization.save()
+    report.save()
+    return redirect('incidents')
+def solve(request, cID):
+    report = Crisis.objects.filter(crisisID=cID)
+    if report:
+        report = report[0]
+    
+  
+    report.currentstatus = 'S'
+    request.user.organization.save()
+    report.assignee=None
+    report.save()
+    return redirect('incidents')
 # Create your views here.

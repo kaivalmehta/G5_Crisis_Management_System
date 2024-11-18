@@ -4,6 +4,7 @@
 {% load static %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'style/incidentpage.css' %}">
+<link rel="stylesheet" href="{% static 'style/homepage.css' %}">
 
 <div class="report-container my-4">
     <!-- Filter Buttons -->
@@ -20,18 +21,20 @@
     
     <!-- Display Reports -->
     {% if mycrisis %}
-    <div class="report-item bg-body-secondary p-3 rounded mx-2 mb-4" status="{{mycrisis.currentstatus}}">
+    {% for report in mycrisis %}
+    <div class="report-item bg-body-secondary p-3 rounded mx-2 mb-4" status="{{report.currentstatus}}">
         <div class="d-flex">
             <!-- Left Column: Description -->
             <div class="report-details col-md-6">
-                <h5 class="report-title">{{ mycrisis.name }}</h5>
-                <h6 class="report-date text-primary-emphasis">{{ mycrisis.time }}</h6>
-                <p class="report-description">{{ mycrisis.description }}</p>
-                <h6 class="severity-label mb-3">Severity Level: <span class="severity-value text-danger">{{ mycrisis.severitylvl }}</span></h6>
-                {% if mycrisis.assignee %}
+                <h5 class="report-title">{{ report.name }}</h5>
+                <h6 class="report-date text-primary-emphasis">{{ report.time }}</h6>
+                <p class="report-description">{{ report.description }}</p>
+                <h6 class="severity-label mb-3">Severity Level: <span class="severity-value text-danger">{{ report.severitylvl }}</span></h6>
+                {% if report.assignee %}
                 <h6 class="assignee-label mb-3">Assigned To: <span class="assignee-value text-success-emphasis">
-                    {{ mycrisis.assignee.user.get_full_name }}, {{ mycrisis.assignee.organization }}
+                    {{ report.assignee.user.get_full_name }} {{ mycrisis.assignee.organization }}
                 </span></h6>
+                <a class="btn btn-success mb-md-0 mb-3" href="{% url 'solved' cID=report.crisisID %}">Mark As Solved</a>
                 {% endif %}
             </div>
     
@@ -47,7 +50,7 @@
             </div>
         </div>
     </div>
-    
+    {% endfor %}
     {% endif %}
 
     {% for report in crisis %}
@@ -61,9 +64,15 @@
                 <h6 class="severity-label mb-3">Severity Level: <span class="severity-value text-danger">{{ report.severitylvl }}</span></h6>
                 {% if report.assignee %}
                 <h6 class="assignee-label mb-3">Assigned To: <span class="assignee-value text-success-emphasis">
-                    {{ report.assignee.user.get_full_name }}, {{ report.assignee.organization }}
+                    {{ report.assignee.user.get_full_name }} {{ report.assignee.organization }}
                 </span></h6>
+                {% elif user.is_authenticated and user.organization %}
+                {% if report.currentstatus == "R" %}
+                    <a class="btn btn-primary mb-md-0 mb-3" href="{% url 'respond' cID=report.crisisID %}">Respond</a>
                 {% endif %}
+        {% endif %}
+
+                
             </div>
     
             <!-- Right Column: Map -->
