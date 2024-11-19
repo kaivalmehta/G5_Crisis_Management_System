@@ -5,3 +5,4 @@ from .models import *
 admin.site.register(Organization)
 admin.site.register(Volunteer)
 admin.site.register(Resource)
+admin.site.register(Task)

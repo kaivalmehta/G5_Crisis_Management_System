@@ -20,7 +20,7 @@
         </div>
         <div style="display: table-row;">
             <div style="display: table-cell; font-weight: bold;">Email:</div>
-            <div style="display: table-cell;">{{ profile.user.email }}</div>
+            <div style="display: table-cell;">{{ profile.user }}</div>
         </div>
         <div style="display: table-row;">
             <div style="display: table-cell; font-weight: bold;">Age:</div>
@@ -46,7 +46,7 @@
         </div>
         <div style="display: table-row;">
             <div style="display: table-cell; font-weight: bold;">Email:</div>
-            <div style="display: table-cell;">{{ profile.user.email }}</div>
+            <div style="display: table-cell;">{{ profile.user }}</div>
         </div>
         <div style="display: table-row;">
             <div style="display: table-cell; font-weight: bold;">Domain:</div>
@@ -71,5 +71,41 @@
         Logout
     </button>
 </form>
+{% if request.user.is_authenticated %}
+    <h2>My Crises</h2>
+    <div class="crisis-list">
+        {% for report in assigned_crises %}
+            <div class="crisis-item" style="border: 1px solid #ddd; padding: 15px; margin-bottom: 10px;">
+                <!-- Left Column: Description -->
+                <div class="report-details">
+                    <h5 class="report-title">{{ report.name }}</h5>
+                    <h6 class="report-date text-primary-emphasis">{{ report.time }}</h6>
+                    <p class="report-description">{{ report.description }}</p>
+                    <h6 class="severity-label mb-3">Severity Level: <span class="severity-value text-danger">{{ report.severitylvl }}</span></h6>
+                    {% if request.user.organization %}
+                        <a class="btn btn-success mb-md-0 mb-3" href="{% url 'solved' cID=report.crisisID %}">Mark As Solved</a>
+                    {% endif %}
+                    <a href="{% url 'crisis_tasks' report.crisisID %}" class="btn btn-primary">Tasks</a>
+
+                    
+                </div>
+
+                <!-- Right Column: Map -->
+                <div class="report-map" style="max-width: 50%; padding: 0;">
+                    <div class="map-outer" style="height: 200px;">
+                        <div class="gmap-canvas" style="height: 100%;">
+                            <iframe width="100%" height="100%" id="gmap_canvas" 
+                                src="https://maps.google.com/maps?q={{ report.lat }},{{ report.lon }}&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+                                frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>No assigned crises found.</p>
+        {% endfor %}
+    </div>
+{% endif %}
+
 
 {% endblock %}

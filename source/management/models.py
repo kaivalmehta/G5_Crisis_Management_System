@@ -46,3 +46,17 @@ class Resource(models.Model):
 
     def __str__(self):
         return str(self.name)
+
+class Task(models.Model):
+    taskID=models.UUIDField(primary_key = True, default = uuid.uuid4,editable = False)
+    name=models.CharField(max_length=100)
+    description = models.TextField()
+    crisis = models.ForeignKey('report.Crisis', on_delete=models.CASCADE, related_name="tasks")
+    assignee = models.ForeignKey(Volunteer, on_delete=models.SET_NULL, blank=True, null=True,default="")
+    status= models.CharField(max_length=1,
+        choices=[
+            ('U', 'Unsolved'),
+            ('I', 'In Progress'),
+            ('S', 'Solved')
+        ],default='Unsolved'
+    )  

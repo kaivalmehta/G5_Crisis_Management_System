@@ -2,15 +2,16 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
-from .forms import VolunteerForm,OrganizationForm
+from .forms import VolunteerForm,OrganizationForm,TaskForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Volunteer, Organization, Resource
+from .models import Volunteer, Organization, Resource , Task
 from .forms import ResourceForm
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
-from django.http import JsonResponse
+from django.http import JsonResponse,HttpResponseForbidden
 from .models import Resource
+from report.models import Crisis
 
 def register(request):
     if request.user.is_authenticated:
@@ -121,18 +122,24 @@ def profile(request):
 def profile(request):
     user = request.user
     context = {}
-
+    assigned_crises=[]
     # Check if user is a Volunteer
     try:
         volunteer = Volunteer.objects.get(user=user)
         context['profile_type'] = 'volunteer'
         context['profile'] = volunteer
+        organizationid=volunteer.organization
+        organization=Organization.objects.get(user=organizationid.user)
+        assigned_crises=Crisis.objects.filter(assignee=organization)
+        context['assigned_crises']=assigned_crises
     except Volunteer.DoesNotExist:
         # Check if user is an Organization
         try:
             organization = Organization.objects.get(user=user)
             context['profile_type'] = 'organization'
             context['profile'] = organization
+            assigned_crises = Crisis.objects.filter(assignee=request.user.organization)
+            context['assigned_crises']=assigned_crises
         except Organization.DoesNotExist:
             context['profile_type'] = None
 
@@ -197,6 +204,9 @@ def add_resource(request):
         form = ResourceForm()
     return render(request, 'add_resource.html', {'form': form})
 
+
+
+
 def delete_resource(request, resource_id):
     if request.method == "POST":
         resource = get_object_or_404(Resource, resourceID=resource_id)
@@ -208,3 +218,55 @@ def delete_resource(request, resource_id):
 def volunteer_list(request):
     volunteers = Volunteer.objects.all()
     return render(request, 'volunteer.html', {'volunteers': volunteers, 'organizations': Organization})
+
+@login_required
+def crisis_tasks(request, crisis_id):
+    crisis = get_object_or_404(Crisis, crisisID=crisis_id)
+    tasks = Task.objects.filter(crisis=crisis)   
+    return render(request, 'task.html', {'crisis': crisis, 'tasks': tasks})
+
+
+@login_required
+def task_form(request, crisis_id):
+    crisis = get_object_or_404(Crisis, crisisID=crisis_id)
+    form = TaskForm()  
+
+    if request.method == "POST":
+        form = TaskForm(request.POST)
+        if form.is_valid():
+            task = form.save(commit=False)
+            task.crisis = crisis 
+            task.save()
+            return redirect('crisis_tasks',crisis_id=crisis.crisisID)  
+
+    return render(request, 'task_form.html', {'form': form, 'crisis': crisis})
+
+@login_required
+def delete_task(request, task_id):
+    task = get_object_or_404(Task, taskID=task_id)
+    if request.user.organization:
+        task.delete()
+        return redirect('crisis_tasks', crisis_id=task.crisis.crisisID)  # Redirect to the crisis tasks page
+    else:
+        return HttpResponseForbidden("You do not have permission to delete this task.")
+@login_required
+def accept_task(request, task_id):
+    task = get_object_or_404(Task, taskID=task_id)
+    try:
+        volunteer = Volunteer.objects.get(user=request.user)
+    except Volunteer.DoesNotExist:
+        return HttpResponseForbidden("Only volunteers can accept tasks.")
+
+    task.assignee = volunteer
+    task.status = 'In-Progress'
+    task.save()
+    return redirect('crisis_tasks',crisis_id=task.crisis.crisisID)
+@login_required
+def mark_task_done(request, task_id):
+    task = get_object_or_404(Task, taskID=task_id)
+    if task.assignee and task.assignee.user == request.user:
+        task.status = 'Solved'
+        task.save()
+        return redirect('crisis_tasks',crisis_id=task.crisis.crisisID)  # Adjust to your tasks list or detail view URL
+    else:
+        return HttpResponseForbidden("You are not assigned to this task.")

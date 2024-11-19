@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Tasks{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'style/resources.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="content-container" style="padding-top: 80px;">
+<!-- crisis_tasks.html -->
+<h2>Tasks for {{ crisis.name }}</h2>
+
+
+
+
+<!-- Display tasks in a table -->
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Assigned To</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for task in tasks %}
+        <tr>
+            <td>{{ task.name }}</td>
+            <td>{{ task.description }}</td>
+            <td>{{ task.status }}</td>
+            <td>
+                {% if task.assignee %}
+                    {{ task.assignee.user.get_full_name }}
+                {% else %}
+                    Not assigned
+                {% endif %}
+            </td>
+            <td>
+                {% if request.user.is_authenticated %}
+                    {% if request.user.organization %}
+                        <!-- Button for organization to delete task -->
+                        <a href="{% url 'delete_task' task.taskID %}" class="btn btn-danger">Delete</a>
+                    
+                    {% elif request.user.volunteer %}
+                        {% if task.assignee == request.user.volunteer and task.status == 'In-Progress' %}
+                            <!-- Button for volunteer to mark as done if assigned to them -->
+                            <a href="{% url 'mark_task_done' task.taskID %}" class="btn btn-success">Mark as Done</a>
+                        
+                        {% elif not task.assignee %}
+                            <!-- Button for volunteer to accept task if not assigned -->
+                            <a href="{% url 'accept_task' task.taskID %}" class="btn btn-primary">Accept Task</a>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<!-- Form to add a new task -->
+{% if user.is_authenticated and user.organization %}
+<div class="text-center">
+    <a href="{% url 'task_form' crisis_id=crisis.crisisID %}" class="btn btn-primary mb-3">Add Task</a>
+</div>
+{% endif %}
+</div>
+
+{% endblock %}

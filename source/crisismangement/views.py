@@ -25,6 +25,7 @@ def donate(request):
     return render(request, "donate.html", context)
 
 
+
 def guidelines(request):
     return render(request, 'guidelines.html')
 
