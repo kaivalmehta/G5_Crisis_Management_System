@@ -1,0 +1,194 @@
+/* General Body Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    color: #333333;
+    line-height: 1.6;
+}
+
+/* Title Styling */
+h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    color: #333;
+    margin-top: 80px; /* Push title down to avoid overlap with fixed navbar */
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Form Styling */
+form {
+    max-width: 600px;
+    width : 90vw;
+    margin: 30px auto;
+    background: linear-gradient(135deg, #f9f9f9, #ffffff);
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1), 0 -8px 15px rgba(255, 255, 255, 0.5);
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Label Styling */
+label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1b3a4b; /* Deep teal for contrast */
+    margin-bottom: 8px;
+}
+
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 1px solid #e3e6f1; /* Light gray border */
+    border-radius: 10px;
+    background: #f9f9f9;
+    color: #1b3a4b;
+    transition: all 0.3s ease;
+}
+
+/* Styling for Textarea */
+textarea {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 1px solid #e3e6f1; /* Light gray border */
+    border-radius: 10px;
+    background: #f9f9f9;
+    color: #1b3a4b;
+    resize: vertical; /* Allows vertical resize */
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Textarea Focus Effect */
+textarea:focus {
+    border-color: #3f88c5; /* Blue border on focus */
+    background-color: #ffffff; /* White background when focused */
+    box-shadow: 0 2px 10px rgba(63, 136, 197, 0.3); /* Blue shadow on focus */
+    outline: none; /* Removes default outline */
+}
+
+/* Button Styling */
+button {
+    background-color: #3f88c5; /* Vibrant blue */
+    color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1), 0 -6px 12px rgba(255, 255, 255, 0.5);
+
+}
+
+
+
+/* Centering the submit button */
+form button {
+    align-self: center; /* Centers the button horizontally */
+    width: auto; /* Ensures button only takes up as much width as needed */
+}
+
+
+
+/* Reducing space between name and description */
+form label {
+    margin-bottom: 4px; /* Reduced margin between labels */
+}
+form {
+    gap: 15px; /* Overall gap between elements */
+}
+
+/* Additional Adjustment for Input Fields */
+input[type="number"],
+select,
+textarea {
+    margin-bottom: 15px; /* Adjusted margin to reduce space between fields */
+}
+
+/* Button Hover Effect */
+button:hover {
+    background-color: #2b6777; /* Slightly darker teal */
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15), 0 -8px 15px rgba(255, 255, 255, 0.6);
+}
+
+/* Button Active Effect */
+button:active {
+    background-color: #388e3c;
+}
+
+/* Message Styling */
+.text-center {
+    text-align: center;
+    color: #f44336; /* Red for error messages */
+    margin-bottom: 15px;
+}
+
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 768px) {
+    /* Form Adjustments for Tablets */
+    form {
+        width: 90%; /* Reduce form width */
+        padding: 15px; /* Less padding */
+    }
+
+    /* Title Scaling for Tablets */
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    /* Input Fields & Button Scaling */
+    input[type="number"],
+    select,
+    textarea,
+    button {
+        font-size: 1rem;
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* Form Adjustments for Mobile Devices */
+    form {
+        width: 95%; /* Full-width for small screens */
+        padding: 10px;
+    }
+
+    /* Title Scaling for Mobile */
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    /* Smaller font size and padding for inputs */
+    input[type="number"],
+    select,
+    textarea,
+    button {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+}
+
+/* Responsive adjustments for navbar */
+@media screen and (max-width: 768px) {
+    /* Adjust navbar height to avoid overlap with title */
+    nav {
+        position: relative;
+        z-index: 999; /* Ensure navbar is on top */
+    }
+
+    /* Margin Top for Body */
+    body {
+        margin-top: 80px; /* Prevent title from being hidden under navbar */
+    }
+}
