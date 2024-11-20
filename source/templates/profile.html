@@ -3,114 +3,127 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'style/profile.css' %}">
+<link rel="stylesheet" href="{% static 'style/profile.css' %}" />
 {% endblock %}
 
 {% block title %}Profile{% endblock %}
 
 {% block content %}
-<div class="text-center mb-2">
-    {% for message in messages %}
-    <i class="text-danger text-center">{{ message }}</i>
-    {% endfor %}
-</div>
-<h1 style="text-align: center;">Profile Page</h1>
-<div class="profile-container">
-    {% if profile_type == 'volunteer' %}
-    <h2>Volunteer Profile</h2>
-    <div style="display: table; width: 100%;">
-        <div style="display: table-row;">
-            <div style="display: table-cell; font-weight: bold;">Name:</div>
-            <div style="display: table-cell;">{{ profile.user.get_full_name }}</div>
+<div class="profile-page-container">
+    <!-- Left Section: Profile Information -->
+    <div class="profile-left">
+        {% if profile_type == 'volunteer' %}
+        <h2>Volunteer Profile</h2>
+                <div class="profile-info-box">
+            <div class="profile-info-row">
+                <div class="profile-info-label">Name:</div>
+                <div class="profile-info-value">{{ profile.user.get_full_name }}</div>
+            </div>
+            <div class="profile-info-row">
+                <div class="profile-info-label">Email:</div>
+                <div class="profile-info-value">{{ profile.user }}</div>
+            </div>
+            <div class="profile-info-row">
+                <div class="profile-info-label">Age:</div>
+                <div class="profile-info-value">{{ profile.age }}</div>
+            </div>
+            <div class="profile-info-row">
+                <div class="profile-info-label">Sex:</div>
+                <div class="profile-info-value">{{ profile.get_sex_display }}</div>
+            </div>
+            <div class="profile-info-row">
+                <div class="profile-info-label">Skills:</div>
+                <div class="profile-info-value">{{ profile.skills }}</div>
+            </div>
         </div>
-        <div style="display: table-row;">
-            <div style="display: table-cell; font-weight: bold;">Email:</div>
-            <div style="display: table-cell;">{{ profile.user }}</div>
+        <button
+            onclick="window.location.href='{% url 'edit_volunteer_profile' %}'"
+            class="edit-btn"
+        >
+            Edit Profile
+        </button>
+        {% elif profile_type == 'organization' %}
+        <h2>Organization Profile</h2>
+        
+        <div class="profile-info-box">
+            <div class="profile-info-row">
+                <div class="profile-info-label">Name:</div>
+                <div class="profile-info-value">{{ profile.user.get_full_name }}</div>
+            </div>
+            <div class="profile-info-row">
+                <div class="profile-info-label">Email:</div>
+                <div class="profile-info-value">{{ profile.user }}</div>
+            </div>
+            <div class="profile-info-row">
+                <div class="profile-info-label">Domain:</div>
+                <div class="profile-info-value">{{ profile.domain }}</div>
+            </div>
+            <div class="profile-info-row">
+                <div class="profile-info-label">Level:</div>
+                <div class="profile-info-value">{{ profile.get_level_display }}</div>
+            </div>
         </div>
-        <div style="display: table-row;">
-            <div style="display: table-cell; font-weight: bold;">Age:</div>
-            <div style="display: table-cell;">{{ profile.age }}</div>
-        </div>
-        <div style="display: table-row;">
-            <div style="display: table-cell; font-weight: bold;">Sex:</div>
-            <div style="display: table-cell;">{{ profile.get_sex_display }}</div>
-        </div>
-        <div style="display: table-row;">
-            <div style="display: table-cell; font-weight: bold;">Skills:</div>
-            <div style="display: table-cell;">{{ profile.skills }}</div>
-        </div>
+        <button
+            onclick="window.location.href='{% url 'edit_organization_profile' %}'"
+            class="edit-btn"
+        >
+            Edit Profile
+        </button>
+        {% else %}
+        <p style="text-align: center">No profile information found.</p>
+        {% endif %}
+        <form
+            action="{% url 'logout' %}"
+            method="POST"
+            style="margin-top: 20px"
+        >
+            {% csrf_token %}
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
     </div>
-    <button onclick="window.location.href='{% url 'edit_volunteer_profile' %}'">Edit Profile</button>
 
-    {% elif profile_type == 'organization' %}
-    <h2>Organization Profile</h2>
-    <div style="display: table; width: 100%;">
-        <div style="display: table-row;">
-            <div style="display: table-cell; font-weight: bold;">Name:</div>
-            <div style="display: table-cell;">{{ profile.user.get_full_name }}</div>
-        </div>
-        <div style="display: table-row;">
-            <div style="display: table-cell; font-weight: bold;">Email:</div>
-            <div style="display: table-cell;">{{ profile.user }}</div>
-        </div>
-        <div style="display: table-row;">
-            <div style="display: table-cell; font-weight: bold;">Domain:</div>
-            <div style="display: table-cell;">{{ profile.domain }}</div>
-        </div>
-        <div style="display: table-row;">
-            <div style="display: table-cell; font-weight: bold;">Level:</div>
-            <div style="display: table-cell;">{{ profile.get_level_display }}</div>
-        </div>
-    </div>
-    <button onclick="window.location.href='{% url 'edit_organization_profile' %}'">Edit Profile</button>
-
-    {% else %}
-    <p style="text-align: center;">No profile information found.</p>
-    {% endif %}
-</div>
-
-<!-- Logout Button -->
-<form action="{% url 'logout' %}" method="POST" style="margin-top: 20px; text-align: center;">
-    {% csrf_token %}
-    <button type="submit" style="background-color: #f44336; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
-        Logout
-    </button>
-</form>
-{% if request.user.is_authenticated %}
-    <h2>My Crises</h2>
-    <div class="crisis-list">
-        {% for report in assigned_crises %}
-            <div class="crisis-item" style="border: 1px solid #ddd; padding: 15px; margin-bottom: 10px;">
-                <!-- Left Column: Description -->
+    <!-- Right Section: My Crises -->
+    <div class="profile-right">
+        <h2>My Crises</h2>
+        <div class="crisis-list">
+            {% for report in assigned_crises %}
+            <div class="crisis-item">
                 <div class="report-details">
                     <h5 class="report-title">{{ report.name }}</h5>
-                    <h6 class="report-date text-primary-emphasis">{{ report.time }}</h6>
+                    <h6 class="report-date">{{ report.time }}</h6>
                     <p class="report-description">{{ report.description }}</p>
-                    <h6 class="severity-label mb-3">Severity Level: <span class="severity-value text-danger">{{ report.severitylvl }}</span></h6>
+                    <h6 class="severity-label">
+                        Severity Level:
+                        <span class="severity-value">{{ report.severitylvl }}</span>
+                    </h6>
                     {% if request.user.organization %}
-                        <a class="btn btn-success mb-md-0 mb-3" href="{% url 'solved' cID=report.crisisID %}">Mark As Solved</a>
+                    <a
+                        class="btn btn-success"
+                        href="{% url 'solved' cID=report.crisisID %}"
+                    >
+                        Mark As Solved
+                    </a>
                     {% endif %}
-                    <a href="{% url 'crisis_tasks' report.crisisID %}" class="btn btn-primary">Tasks</a>
-
-                    
+                    <a
+                        href="{% url 'crisis_tasks' report.crisisID %}"
+                        class="btn btn-primary"
+                    >
+                        Tasks
+                    </a>
                 </div>
-
-                <!-- Right Column: Map -->
-                <div class="report-map" style="max-width: 50%; padding: 0;">
-                    <div class="map-outer" style="height: 200px;">
-                        <div class="gmap-canvas" style="height: 100%;">
-                            <iframe width="100%" height="100%" id="gmap_canvas" 
-                                src="https://maps.google.com/maps?q={{ report.lat }},{{ report.lon }}&t=&z=13&ie=UTF8&iwloc=&output=embed" 
-                                frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-                        </div>
-                    </div>
+                <div class="report-map">
+                    <iframe
+                        src="https://maps.google.com/maps?q={{ report.lat }},{{ report.lon }}&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                        frameborder="0"
+                        scrolling="no"
+                    ></iframe>
                 </div>
             </div>
-        {% empty %}
+            {% empty %}
             <p>No assigned crises found.</p>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
-{% endif %}
-
+</div>
 
 {% endblock %}

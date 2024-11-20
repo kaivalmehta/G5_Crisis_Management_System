@@ -1,0 +1,156 @@
+/* General Page Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    color: #333333;
+    line-height: 1.6;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #2b6777; /* A calm, muted teal */
+    margin-bottom: 1vh;
+}
+
+/* Form Container */
+form {
+    max-width: 600px;
+    width: 90vw;
+    margin: 30px auto;
+    background: linear-gradient(135deg, #f9f9f9, #ffffff);
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1), 0 -8px 15px rgba(255, 255, 255, 0.5);
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Form Labels */
+label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1b3a4b; /* Deep teal for contrast */
+    margin-bottom: 8px;
+}
+
+/* Form Inputs */
+input[type="text"],
+select {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 1px solid #e3e6f1; /* Light gray border */
+    border-radius: 10px;
+    background: #f9f9f9;
+    color: #1b3a4b;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+select:focus {
+    outline: none;
+    background: #ffffff;
+    border-color: #3f88c5; /* Soft blue highlight */
+    box-shadow: 0 0 8px rgba(63, 136, 197, 0.3); /* Blue glow */
+}
+
+/* Buttons */
+button {
+    background-color: #3f88c5; /* Vibrant blue */
+    color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1), 0 -6px 12px rgba(255, 255, 255, 0.5);
+}
+
+button:hover {
+    background-color: #2b6777; /* Slightly darker teal */
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15), 0 -8px 15px rgba(255, 255, 255, 0.6);
+}
+
+/* Error Messages */
+.text-danger {
+    color: #e63946; /* Bright red for error */
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Message Container */
+.text-center.mb-2 {
+    margin: 10px auto 20px;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+
+    form {
+        padding: 20px 25px;
+    }
+
+    label {
+        font-size: 0.9rem;
+    }
+
+    input[type="text"],
+    select {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+        align-self: center; /* Center button on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    form {
+        padding: 15px 20px;
+    }
+
+    input[type="text"],
+    select {
+        padding: 8px;
+        font-size: 0.85rem;
+    }
+
+    button {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+        align-self: center;
+    }
+}
+
+/* Custom Scrollbar */
+input::-webkit-scrollbar {
+    width: 8px;
+}
+
+input::-webkit-scrollbar-thumb {
+    background: #3f88c5;
+    border-radius: 10px;
+}
+
+input::-webkit-scrollbar-thumb:hover {
+    background: #2b6777;
+}
