@@ -1,5 +1,12 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'style/edit_volunteer_profile.css' %}" />
+{% endblock %}
+
+
 {% block title %}Edit Volunteer Profile{% endblock %}
 
 {% block content %}
