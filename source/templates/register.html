@@ -9,6 +9,11 @@
 {% endblock %}
 
 {% block content %}
+<div class="text-center mb-2">
+    {% for message in messages %}
+    <i class="text-danger text-center">{{ message }}</i>
+    {% endfor %}
+</div>
 <div class="container mt-5">
     <div class="register-form mx-auto" style="max-width: 500px;">
         <h2 class="text-center mb-4">Register Account</h2>

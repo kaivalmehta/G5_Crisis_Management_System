@@ -21,7 +21,9 @@
                     <li><a href="{% url 'home' %}">Home</a></li>
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'resources' %}">Resources</a></li>
+                    {% if request.user.organization %}
                     <li><a href="{% url 'volunteer' %}">Volunteers</a></li>
+                    {% endif %}
                     {% else %}
                     <li><a href="{% url 'home' %}#about">About Us</a></li>
                     <li><a href="{% url 'home' %}#contact">Contact Us</a></li>
@@ -40,7 +42,9 @@
                     <li class = "hideOnMobile"><a href="{% url 'home' %}">Home</a></li>
                     {% if user.is_authenticated %}
                     <li class = "hideOnMobile"><a href="{% url 'resources' %}">Resources</a></li>
+                    {% if user.organization %}
                     <li class = "hideOnMobile"><a href="{% url 'volunteer' %}">Volunteers</a></li>
+                    {% endif %}
                     {% else %}
                     <li class = "hideOnMobile"><a href="{% url 'home' %}#about">About Us</a></li>
                     <li class = "hideOnMobile"><a href="{% url 'home' %}#contact">Contact Us</a></li>

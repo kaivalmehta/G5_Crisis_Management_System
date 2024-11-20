@@ -3,6 +3,11 @@
 {% block title %}Edit Volunteer Profile{% endblock %}
 
 {% block content %}
+<div class="text-center mb-2">
+    {% for message in messages %}
+    <i class="text-danger text-center">{{ message }}</i>
+    {% endfor %}
+</div>
 <h1>Edit Volunteer Profile</h1>
 <form method="POST">
     {% csrf_token %}

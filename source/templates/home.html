@@ -9,6 +9,11 @@
 {% endblock %}
 
 {% block content %}
+<div class="text-center mb-2">
+    {% for message in messages %}
+    <i class="text-danger text-center">{{ message }}</i>
+    {% endfor %}
+</div>
     <!-- Carousel Section -->
     <section class="carousel-container">
         <!-- Carousel Slider -->

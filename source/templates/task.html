@@ -9,6 +9,11 @@
 {% endblock %}
 
 {% block content %}
+<div class="text-center mb-2">
+    {% for message in messages %}
+    <i class="text-danger text-center">{{ message }}</i>
+    {% endfor %}
+</div>
 <div class="content-container" style="padding-top: 80px;">
 <!-- crisis_tasks.html -->
 <h2>Tasks for {{ crisis.name }}</h2>

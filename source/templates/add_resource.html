@@ -4,6 +4,11 @@
 
 {% block content %}
 <h1>Add Resource</h1>
+<div class="text-center mb-2">
+    {% for message in messages %}
+    <i class="text-danger text-center">{{ message }}</i>
+    {% endfor %}
+</div>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}

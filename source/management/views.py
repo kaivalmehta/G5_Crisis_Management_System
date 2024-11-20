@@ -216,8 +216,10 @@ def delete_resource(request, resource_id):
 
 
 def volunteer_list(request):
-    volunteers = Volunteer.objects.all()
-    return render(request, 'volunteer.html', {'volunteers': volunteers, 'organizations': Organization})
+    organization = Organization.objects.filter(user=request.user).first()  # Get the first matching organization
+    volunteers = Volunteer.objects.filter(organization=organization) # Check if organization exists
+    return render(request, 'volunteer.html', {'volunteers': volunteers})
+
 
 @login_required
 def crisis_tasks(request, crisis_id):

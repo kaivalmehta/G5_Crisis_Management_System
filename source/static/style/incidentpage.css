@@ -282,3 +282,15 @@ body {
 .report-item .map-outer {
     height: 100%;
 }
+.status-tab {
+    background-color: #f0f0f0;
+    color: black;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.status-tab.selected {
+    background-color: #333;  /* Color when selected */
+    color: white;
+    border-color: #333;
+}
+

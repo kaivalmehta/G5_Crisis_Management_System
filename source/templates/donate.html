@@ -2,7 +2,11 @@
 {% load static %}
 
 {% block title %}Donate{% endblock %}
-
+<div class="text-center mb-2">
+    {% for message in messages %}
+    <i class="text-danger text-center">{{ message }}</i>
+    {% endfor %}
+</div>
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'style/donate.css' %}">
 {% endblock %}

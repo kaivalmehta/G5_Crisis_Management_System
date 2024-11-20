@@ -9,6 +9,11 @@
 {% block title %}Edit Organization Profile{% endblock %}
 
 {% block content %}
+<div class="text-center mb-2">
+    {% for message in messages %}
+    <i class="text-danger text-center">{{ message }}</i>
+    {% endfor %}
+</div>
 <h1>Edit Organization Profile</h1>
 <form method="POST">
     {% csrf_token %}

@@ -5,7 +5,11 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'style/incidentpage.css' %}">
 <link rel="stylesheet" href="{% static 'style/homepage.css' %}">
-
+<div class="text-center mb-2">
+    {% for message in messages %}
+    <i class="text-danger text-center">{{ message }}</i>
+    {% endfor %}
+</div>
 <div class="report-container my-4">
     <!-- Filter Buttons -->
     <div class="status-tabs">
@@ -104,7 +108,6 @@
             
             for (var j = 0; j < reports.length; j++) {
                 var report = reports[j];
-                console.log(report)
                 if (report.getAttribute('status') !== selectedStatus) {
                     report.style.display = "none";
                 } else {
@@ -113,7 +116,8 @@
             }
         });
     }
-    document.getElementById('initFilter').click();
+    
+    // Trigger a click on the 'Reported' filter by default
+    document.getElementById('filter-reported').click();
 </script>
-
 {% endblock %}

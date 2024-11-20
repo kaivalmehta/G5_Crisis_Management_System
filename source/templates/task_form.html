@@ -3,6 +3,11 @@
 {% block title %}Create Tasks{% endblock %}
 
 {% block content %}
+<div class="text-center mb-2">
+    {% for message in messages %}
+    <i class="text-danger text-center">{{ message }}</i>
+    {% endfor %}
+</div>
 <h2>Create Task for {{ crisis.name }}</h2>
 <form method="post">
     {% csrf_token %}
