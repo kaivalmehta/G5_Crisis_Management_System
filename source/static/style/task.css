@@ -1,0 +1,156 @@
+/* General Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f9fc; /* Light background color */
+}
+
+/* Title Styling */
+h1 {
+    text-align: center; /* Center align title */
+    font-size: 2rem; /* Scales proportionally */
+    color: #333; /* Dark gray for readability */
+    margin: 20px 0; /* Spacing above and below */
+    font-weight: bold;
+}
+
+/* Outer Box Styling */
+.outer-container {
+    background-color: white; /* White background for outer box */
+    padding: 20px;
+    margin: 10px auto; /* Centers horizontally and adjusts spacing */
+    border-radius: 15px; /* Rounded corners */
+    width: 90%; /* Dynamic width */
+    max-width: 1200px; /* Maximum width for large screens */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+    box-sizing: border-box; /* Ensures padding is included in width calculation */
+    overflow: hidden; /* Prevent content overflow */
+}
+
+/* Green Header Line */
+.header-line {
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    padding: 10px 0;
+    border-radius: 10px 10px 0 0; /* Rounded top corners */
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds shadow */
+}
+
+/* White Box Container */
+.white-box {
+    background-color: white;
+    border-radius: 0 0 10px 10px; /* Rounded bottom corners */
+    overflow: hidden;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Table Styling */
+table {
+    width: 100%; /* Table takes full width */
+    border-collapse: collapse; /* Ensures no double borders */
+    margin: 0 auto;
+    border: 1px solid #ddd; /* Adds table border */
+    box-sizing: border-box; /* Ensures padding and borders are included in the width calculation */
+}
+
+th, td {
+    padding: 10px 5px; /* Reduced padding for smaller screens */
+    text-align: left;
+    font-size: 1rem; /* Base font size for desktop */
+    border: 1px solid #ddd; /* Adds borders to all cells */
+}
+
+th {
+    background-color: #4CAF50; /* Green header background */
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-bottom: 2px solid #4CAF50; /* Bolder bottom border */
+}
+
+td {
+    color: #333; /* Dark gray for cell text */
+}
+
+/* Alternating Row Colors */
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light gray for alternate rows */
+}
+
+/* Hover Effect on Rows */
+tbody tr:hover {
+    background-color: #f1faff; /* Light blue hover effect */
+    transform: scale(1.01); /* Slight zoom */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    margin: 20px 0;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    /* Outer Container Adjustments */
+    .outer-container {
+        width: 95%; /* Reduce width on smaller screens */
+        padding: 15px; /* Less padding for smaller devices */
+    }
+
+    /* Title Scaling */
+    h1 {
+        font-size: 1.5rem; /* Reduce title size on smaller screens */
+    }
+
+    /* Table Font Scaling */
+    th, td {
+        font-size: 0.9rem; /* Adjust table font size */
+    }
+
+    /* Green Header Line */
+    .header-line {
+        font-size: 1.2rem; /* Smaller font size for smaller screens */
+    }
+
+    /* Ensure Table Stays within the Container */
+    table {
+        width: 100%; /* Full width */
+        table-layout: fixed; /* Ensures the table layout adjusts properly */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* Further Adjustments for Mobile */
+    th, td {
+        font-size: 0.8rem; /* Smaller text for very small screens */
+        padding: 8px 5px; /* Adjust cell padding */
+    }
+
+    h1 {
+        font-size: 1.2rem; /* Reduce title font size further */
+    }
+
+    /* Ensure Table Stays within the Container */
+    table {
+        width: 100%; /* Full width */
+        table-layout: fixed; /* Ensures proper width */
+    }
+}
+
+/* Title Styling */
+h2 {
+    text-align: center; /* Aligns the title to the center */
+    font-size: 2rem; /* Adjust font size for prominence */
+    color: #333; /* Dark gray color for readability */
+    margin: 20px 0; /* Add some vertical spacing */
+    font-weight: bold; /* Makes the title bold */
+}
+

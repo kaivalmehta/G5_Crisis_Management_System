@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}Create Tasks{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'style/task_form.css' %}">
+{% endblock %}
 
 {% block content %}
 <div class="text-center mb-2">
