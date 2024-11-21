@@ -1,45 +1,63 @@
-/* Guidelines Page Styles */
+
 .guidelines-container {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 1200px;
+    margin: 40px auto;
     padding: 20px;
-    line-height: 1.6;
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 .guidelines-container h1 {
-    text-align: center;
-    margin-bottom: 20px;
+    color: #007bff; /* Primary blue color */
+    margin-bottom: 30px;
+}
+
+/* Grid layout for cards */
+.guidelines-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Individual card styling */
+.guideline-card {
+    background-color: #ffffff; /* White background for cards */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.guideline-card h2 {
     color: #333;
-    font-size: 2em;
-}
-
-.guideline-section {
-    margin-bottom: 20px;
-}
-
-.guideline-section h2 {
-    font-size: 1.5em;
-    color: #444;
-    margin-bottom: 10px;
-    border-bottom: 2px solid #ddd;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #007bff;
     padding-bottom: 5px;
+    margin-bottom: 15px;
 }
 
-.guideline-section ul {
+.guideline-card ul {
     list-style-type: disc;
-    margin-left: 20px;
+    padding-left: 20px;
 }
 
-.guideline-section li {
+.guideline-card li {
     margin-bottom: 10px;
-    color: #555;
+    line-height: 1.6;
 }
 
-.guideline-section strong {
-    color: #222;
+.guideline-card li strong {
+    color: #007bff;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .guidelines-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .guideline-card h2 {
+        font-size: 1.25rem;
+    }
 }

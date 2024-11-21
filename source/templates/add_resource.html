@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 
+{%load static%}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'style/add_resource.css' %}">
+{% endblock %}
+
 {% block title %}Add Resource{% endblock %}
 
 {% block content %}
