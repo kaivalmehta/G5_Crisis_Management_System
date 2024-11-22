@@ -7,15 +7,11 @@
 }
 
 body {
-    background-image: url("../media/background.jpg"); /* Update with your image path */
     background-size: cover; /* Scales image to cover the entire viewport */
     background-position: center; /* Centers the image */
     background-repeat: no-repeat; /* Prevents tiling */
     background-attachment: fixed; /* Keeps the background fixed when scrolling */
     color: #f5f7fa; /* Optional: Change text color to improve readability */
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
     background-color: #f5f7fa;
     animation: backgroundFade 5s infinite;
 }

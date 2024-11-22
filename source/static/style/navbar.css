@@ -81,12 +81,12 @@ nav li:first-child{
     padding: 0;
 }
 nav li:nth-last-child(2){
-    margin-right: 3vw;
-    padding-right: 4vw;
+    margin-right: 4vw;
+    padding-right: 5vw;
     
 }
 nav li:last-child{
-    padding-right: 30px;
+    padding-right: 4vw;
 }
 .dashboard-donate {
     background-color: #ff5a5f;
@@ -115,9 +115,6 @@ footer {
     width: 100%;
     max-width: 100vw;
 }
-
-/* Adjust main content to prevent overlapping */
-
 
 /* Responsive design */
 @media (max-width: 1050px) {

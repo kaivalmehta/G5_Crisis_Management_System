@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{%load static%}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'style/meetourteam.css' %}">
+{% endblock %}
+
+{% block title %}Add Resource{% endblock %}
+
+{% block content %}
+<header>
+    <h1>Meet Our Team</h1>
+    <p>Get to know the amazing people behind our work!</p>
+</header>
+<section class="team">
+    <div class="team-member">
+        <h3>Kaival<br>Mehta</h3>
+        <p>202201009</p>
+    </div>
+    <div class="team-member">
+        <h3>Jash<br>Shah</h3>
+        <p>202201016</p>
+    </div>
+    <div class="team-member">
+        <h3>Gunesha<br>Shahu</h3>
+        <p>202201022</p>
+    </div>
+    <div class="team-member">
+        <h3>Hitarth<br>Bhatt</h3>
+        <p>202201024</p>
+    </div>
+    <div class="team-member">
+        <h3>Sujal<br>Mavdiya</h3>
+        <p>202201040</p>
+    </div>
+    <div class="team-member">
+        <h3>Sneh<br>Joshi</h3>
+        <p>202201048</p>
+    </div>
+    <div class="team-member">
+        <h3>Namra<br>Monpara</h3>
+        <p>202201055</p>
+    </div>
+    <div class="team-member">
+        <h3>Khushi<br>Prajapati</h3>
+        <p>202201062</p>
+    </div>
+    <div class="team-member">
+        <h3>Aaryan<br>Shauraya</h3>
+        <p>202201075</p>
+    </div>
+    <div class="team-member">
+        <h3>Saish<br>Pagar</h3>
+        <p>202201092</p>
+    </div>
+</section>
+<script>
+    // script.js
+document.addEventListener("DOMContentLoaded", function () {
+const teamSection = document.querySelector(".team");
+
+function updateGridColumns() {
+    const screenWidth = window.innerWidth;
+    let columns;
+
+    if (screenWidth > 1000) {
+        columns = 5; // Large screens
+    } else if (screenWidth > 800) {
+        columns = 3; // Medium screens
+    } else if (screenWidth > 600) {
+        columns = 3; // Small screens
+    } else if (screenWidth > 450) {
+        columns = 2; // Extra small screens
+    } else{
+        columns = 1; // Mobile screens
+    }
+
+    teamSection.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
+}
+
+// Run on load
+updateGridColumns();
+
+// Update on window resize
+window.addEventListener("resize", updateGridColumns);
+});
+</script>
+{% endblock %}
