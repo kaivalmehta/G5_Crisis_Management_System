@@ -5,63 +5,67 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'style/incidentpage.css' %}">
 <link rel="stylesheet" href="{% static 'style/homepage.css' %}">
+
 <div class="text-center mb-2">
     {% for message in messages %}
     <i class="text-danger text-center">{{ message }}</i>
     {% endfor %}
 </div>
 <div class="report-container my-4">
+    <h1 class="text-center mb-4">Incidents Dashboard</h1>
     <!-- Filter Buttons -->
     <div class="status-tabs">
-        <label class="status-tab" for="filter-reported" style="background-color: red; color: white; padding: 10px 20px; border: 1px solid #ccc; cursor: pointer; font-size: 1em; border-radius: 5px; transition: background-color 0.3s ease, color 0.3s ease;">Reported</label>
-        <label class="status-tab" for="filter-inprogress" style="background-color: orange; color: black; padding: 10px 20px; border: 1px solid #ccc; cursor: pointer; font-size: 1em; border-radius: 5px; transition: background-color 0.3s ease, color 0.3s ease;">In Progress</label>
-        <label class="status-tab" for="filter-solved" style="background-color: green; color: white; padding: 10px 20px; border: 1px solid #ccc; cursor: pointer; font-size: 1em; border-radius: 5px; transition: background-color 0.3s ease, color 0.3s ease;">Solved</label>
+        <label class="status-tab" id="tab-reported" for="filter-reported">Reported</label>
+        <label class="status-tab" id="tab-inprogress" for="filter-inprogress">In Progress</label>
+        <label class="status-tab" id="tab-solved" for="filter-solved">Solved</label>
     </div>
     
     <input type="radio" class="btn-check" id="filter-reported" name="filter-status" value="R" checked style="display:none;">
     <input type="radio" class="btn-check" id="filter-inprogress" name="filter-status" value="I" style="display:none;">
     <input type="radio" class="btn-check" id="filter-solved" name="filter-status" value="S" style="display:none;">
     
-    
     <!-- Display Reports -->
     {% if mycrisis %}
     {% for report in mycrisis %}
     <div class="report-item bg-body-secondary p-3 rounded mx-2 mb-4" status="{{report.currentstatus}}">
-        <div class="d-flex">
+        <div class="d-flex flex-wrap">
             <!-- Left Column: Description -->
             <div class="report-details col-md-6">
                 <h5 class="report-title">{{ report.name }}</h5>
                 <h6 class="report-date text-primary-emphasis">{{ report.time }}</h6>
                 <p class="report-description">{{ report.description }}</p>
-                <h6 class="severity-label mb-3">Severity Level: <span class="severity-value text-danger">{{ report.severitylvl }}</span></h6>
+                <h6 class="severity-label mb-3">Severity Level: 
+                    <span class="severity-value text-danger">{{ report.severitylvl }}</span>
+                </h6>
                 {% if report.assignee %}
-                <h6 class="assignee-label mb-3">Assigned To: <span class="assignee-value text-success-emphasis">
-                    {{ report.assignee.user.get_full_name }} {{ mycrisis.assignee.organization }}
-                </span></h6>
+                <h6 class="assignee-label mb-3">Assigned To: 
+                    <span class="assignee-value text-success-emphasis">{{ report.assignee.user.get_full_name }} {{ report.assignee.organization }}</span>
+                </h6>
                 <a class="btn btn-success mb-md-0 mb-3" href="{% url 'solved' cID=report.crisisID %}">Mark As Solved</a>
                 {% endif %}
             </div>
     
             <!-- Right Column: Map -->
-            <div class="report-map col-md-6" style="max-width: 50%; padding: 0;">
+            <div class="report-map col-md-6" style="max-width: 100%; max-height: 100%; padding: 0; flex-shrink: 0;">
                 <div class="map-outer" style="height: 200px;">
                     <div class="gmap-canvas" style="height: 100%;">
-                        <iframe width="100%" height="100%" id="gmap_canvas" 
-                            src="https://maps.google.com/maps?q={{report.lat}},{{report.lon}}&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+                        <iframe width="100%" height="100%" id="gmap_canvas"
+                            src="https://maps.google.com/maps?q={{report.lat}},{{report.lon}}&t=&z=13&ie=UTF8&iwloc=&output=embed"
                             frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    
     {% endfor %}
     {% endif %}
 
     {% for report in crisis %}
     <div class="report-item bg-body-secondary p-3 rounded mx-2 mb-4" status="{{report.currentstatus}}">
-        <div class="d-flex">
+        <div class="d-flex flex-wrap">
             <!-- Left Column: Description -->
-            <div class="report-details col-md-6" style="flex: 1; padding-right: 20px;">
+            <div class="report-details col-md-6">
                 <h5 class="report-title">{{ report.name }}</h5>
                 <h6 class="report-date text-primary-emphasis">{{ report.time }}</h6>
                 <p class="report-description">{{ report.description }}</p>
@@ -80,10 +84,10 @@
             </div>
     
             <!-- Right Column: Map -->
-            <div class="report-map col-md-9" style="max-width: 70%; padding: 0; flex-shrink: 0;">
+            <div class="report-map col-md-9" style="max-width: 100%; padding: 0; flex-shrink: 0;">
                 <div class="map-outer" style="height: 200px;">
                     <div class="gmap-canvas" style="height: 100%;">
-                        <iframe width="100%" height="100%" id="gmap_canvas" 
+                        <iframe width="100%" height="100%" id="gmap_canvas"
                             src="https://maps.google.com/maps?q={{report.lat}},{{report.lon}}&t=&z=13&ie=UTF8&iwloc=&output=embed" 
                             frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
                     </div>
@@ -91,33 +95,53 @@
             </div>
         </div>
     </div>
-    
-    </div>
     {% empty %}
     <i>No Reports Found.</i>
     {% endfor %}
+    </div>
+        </div>
+    </div>
+    </div>
 </div>
-
 <script>
     // JavaScript for filtering reports based on status
-    var filters = document.querySelectorAll('input[type=radio][name="filter-status"]');
-    for (var i = 0; i < filters.length; i++) {
-        filters[i].addEventListener('click', () => {
-            let selectedStatus = document.querySelector('input[name="filter-status"]:checked').value;
-            var reports = document.getElementsByClassName("report-item");
-            
-            for (var j = 0; j < reports.length; j++) {
-                var report = reports[j];
-                if (report.getAttribute('status') !== selectedStatus) {
-                    report.style.display = "none";
-                } else {
-                    report.style.display = "flex";
-                }
-            }
+    const filters = document.querySelectorAll('input[type=radio][name="filter-status"]');
+    const tabs = {
+        R: document.getElementById('tab-reported'),
+        I: document.getElementById('tab-inprogress'),
+        S: document.getElementById('tab-solved')
+    };
+
+    function updateTabs() {
+        const selectedStatus = document.querySelector('input[name="filter-status"]:checked').value;
+
+        // Reset all tabs
+        Object.values(tabs).forEach(tab => {
+            tab.style.backgroundColor = ''; // Reset to default
+            tab.style.color = ''; // Reset text color
         });
+
+        // Highlight the active tab
+        tabs[selectedStatus].style.backgroundColor = '#e04747';
+        tabs[selectedStatus].style.color = 'white'; // Contrast text color
     }
-    
+
+    // Attach click event listeners to filters
+    filters.forEach(filter => {
+        filter.addEventListener('click', () => {
+            updateTabs();
+
+            // Show/Hide reports
+            const selectedStatus = filter.value;
+            const reports = document.getElementsByClassName("report-item");
+            Array.from(reports).forEach(report => {
+                report.style.display = report.getAttribute('status') === selectedStatus ? "flex" : "none";
+            });
+        });
+    });
+
     // Trigger a click on the 'Reported' filter by default
     document.getElementById('filter-reported').click();
 </script>
+
 {% endblock %}

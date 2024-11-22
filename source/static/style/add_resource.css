@@ -3,8 +3,6 @@ body {
     font-family: 'Arial', sans-serif;
     background-color: #f8f9fa; /* Light grey background for better contrast */
     color: #343a40; /* Dark grey text color */
-    margin: 0;
-    padding-top: 60px;
 }
 
 /* Heading styling */

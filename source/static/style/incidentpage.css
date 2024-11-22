@@ -1,296 +1,201 @@
-/* Basic reset */
-* {
+/* CSS for Incident Page */
+
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
 }
 
-/* Body styling */
-body {
-    background-color: #f5f5fa;
-    background-image: none;
-    padding-top: 70px; /* Space for the fixed navbar */
-    display: flex;
-    justify-content: center;
-}
-
-/* Dashboard Container */
-.dashboard-container {
-    width: 80%;
-    max-width: 800px;
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    margin-top: 20px;
-}
-.incident-dashboard{
-    width: 80%;
-    max-width: 50%;
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    margin-top: 20px;
-}
-.header {
+.text-center {
     text-align: center;
-    padding: 20px;
-    font-size: xx-large;
-    font-weight: bold;
 }
 
-/* Status Tabs Styling */
+.mb-2, .my-4, .mb-4 {
+    margin-bottom: 1rem;
+}
+
+.mb-3 {
+    margin-bottom: 0.75rem;
+}
+
+.bg-body-secondary {
+    background-color: #e9ecef;
+}
+
+.rounded {
+    border-radius: 8px;
+}
+
+/* Container and Heading */
+.report-container {
+    width: 80%;
+    max-width: 50vw;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.report-container h1 {
+    font-size: 2.5rem;
+    color: #212529;
+}
+
+/* Filter Tabs */
 .status-tabs {
     display: flex;
     justify-content: center;
+    margin-bottom: 20px;
+    border: 5px;
 }
 
 .status-tab {
-    padding: 10px 20px;
-    background-color: #fff;
-    border: 1px;
     cursor: pointer;
-    font-size: 1em;
-    color: #333;
-    transition: background-color 0.3s ease;
+    background-color: #ffffff;
+    color: #6c757d;
+    padding: 8px 16px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.status-tab.active {
-    background-color: #e04747;
-    color: white;
-}
-
-/* Status Sections Styling */
-.status-section {
-    display: none; /* Hide by default */
-    padding: 20px;
-    background-color: #f7f7f7;
-    margin-top: 20px;
-}
-
-.status-section.active {
-    display: block; /* Show only the active section */
-}
-
-.incident-list {
-    padding: 20px;
-}
-
-.incident-item {
+/* Report Item */
+.report-item {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 15px;
+    flex-direction: column;
+    gap: 15px;
     border: 1px solid #eee;
     box-shadow: #333;
     transition: background 0.3s;
 }
 
-.incident-item:hover {
-    background-color: #f7f7f7;
+.report-item .d-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-.incident-details {
+.report-details {
+    padding: 10px;
     flex: 1;
-    margin-right: 15px;
-}
-
-.incident-title {
-    font-size: 18px;
-    padding: 5px;
-    font-weight: bold;
-    color: #333;
-}
-
-.incident-time {
-    color: #666;
-    padding: 5px;
-    font-size: 14px;
-}
-
-.incident-description {
-    padding: 5px;
-    font-size: 14px;
-    color: #555;
-}
-
-.severity-level {
-    padding: 5px;
-    color: #d9534f;
-    font-weight: bold;
-}
-
-.map-container {
-    flex-shrink: 0;
-    width: 50%;
-    height: 120px;
-}
-
-/* Show Toggle Button on Small Screens */
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
-
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        background-color: rgba(2, 2, 2, 0.9);
-        position: absolute;
-        top: 70px;
-        right: 0;
-        width: 100%;
-        padding: 10px 0;
-        z-index: 999;
-    }
-
-    .nav-links a {
-        padding: 10px;
-        font-size: 1.2em;
-        text-align: center;
-    }
-}
-/* Default nav-links are hidden on mobile */
-.nav-links {
-    display: flex;
-}
-
-/* Show nav-links when .nav-open is applied */
-.nav-links.nav-open {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    background-color: rgba(2, 2, 2, 0.9);
-    position: absolute;
-    top: 70px;
-    right: 0;
-    width: 100%;
-    padding: 10px 0;
-    z-index: 999;
-}
-
-/* Show Toggle Button on Small Screens */
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
-}
-
-
-/* Responsive Styling */
-@media (max-width: 768px) {
-    .dashboard-navbar-container {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .nav-links {
-        flex-direction: column;
-        gap: 5px;
-    }
-
-    .nav-links a {
-        padding: 0.5em 0;
-    }
-
-    .dashboard-container {
-        width: 90%;
-    }
-
-    .tabs {
-        flex-direction: column;
-    }
-
-    .incident-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .map-container {
-        width: 100%;
-        height: 200px;
-        margin-top: 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    .org-name {
-        font-size: 1em;
-    }
-
-    .nav-links a {
-        font-size: 0.9em;
-    }
-
-    .header {
-        font-size: 20px;
-    }
-
-    .incident-title {
-        font-size: 16px;
-    }
-
-    .incident-time,
-    .incident-description,
-    .severity-level {
-        font-size: 12px;
-    }
-}
-/* Style for the report items */
-.report-item {
-    background-color: #f8f9fa;  /* Light grey background */
-    color: black;               /* Black text */
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid #dcdcdc;  /* Light border */
-    margin-bottom: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Subtle shadow */
 }
 
 .report-title {
-    font-size: 1.25rem;
-    font-weight: bold;
+    font-size: 1.5rem;
+    color: #343a40;
+    margin: 0;
+}
+
+.report-date {
+    font-size: 1rem;
+    color: #0d6efd;
 }
 
 .report-description {
     font-size: 1rem;
-    margin-top: 10px;
+    color: #495057;
+    line-height: 1.5;
 }
 
-.severity-label,
-.assignee-label {
-    font-size: 0.9rem;
-    margin-top: 5px;
+.severity-label, .assignee-label {
+    font-size: 1rem;
+    font-weight: 600;
 }
 
 .severity-value {
+    color: #dc3545;
     font-weight: bold;
-    color: red;
 }
 
 .assignee-value {
+    color: #198754;
     font-weight: bold;
-    color: green;
 }
 
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #198754;
+    border-color: #198754;
+}
+
+.btn-primary:hover, .btn-success:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* Map Section */
 .report-map {
-    margin-top: 15px;
+    flex: 1;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #f8f9fa;
 }
 
-.report-item .map-outer {
+.map-outer {
+    position: relative;
+    width: 100%;
     height: 100%;
 }
-.status-tab {
-    background-color: #f0f0f0;
-    color: black;
-    transition: background-color 0.3s ease, color 0.3s ease;
+
+.gmap-canvas iframe {
+    border: none;
+    width: 100%;
+    height: 100%;
 }
 
-.status-tab.selected {
-    background-color: #333;  /* Color when selected */
-    color: white;
-    border-color: #333;
+/* Empty Reports Message */
+i {
+    font-size: 1.2rem;
+    color: #6c757d;
+    margin: 20px 0;
+    display: block;
+    text-align: center;
+}
+/* General Flexbox Adjustment */
+.d-flex {
+    display: flex;
+    flex-wrap: wrap; /* Ensures children can wrap to the next line */
+    gap: 15px;
 }
 
+/* Map goes below description for smaller screens */
+@media screen and (max-width: 768px) {
+    .report-container{
+        max-width: 90vw;
+    }
+    .d-flex {
+        flex-direction: column; /* Stack children vertically */
+    }
+    .report-map {
+        max-width: 100%; /* Full width on small screens */
+        margin-top: 15px; /* Add space above the map */
+    }
+    .report-details {
+        max-width: 100%; /* Ensure description also takes full width */
+    }
+}
