@@ -27,7 +27,6 @@ urlpatterns = [
 
     # path('', views.home, name='home'),
     path('donate/', views.donate, name='donate'),
-    path('paypal/', include('paypal.standard.ipn.urls')),
     path('guidelines/', views.guidelines, name='guidelines'),
 
     path('',include('report.urls')),

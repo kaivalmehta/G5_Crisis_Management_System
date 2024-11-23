@@ -11,11 +11,20 @@
 <link rel="stylesheet" href="{% static 'style/donate.css' %}">
 {% endblock %}
 
-{% block extra_js %}
-{% endblock %}
-
 {% block content %}
 <h1>Donate!</h1>
-    <!-- writes out the form tag automatically -->
-    {{ form.render }}
+
+<script src="https://www.paypal.com/sdk/js?client-id=BAA5N4InYT_h1h2f25BA6qIE2xn7YOg5TzJmjWndatBTJdZtSfZWw2dy6EaIBhBSyEZp01Ki5zFgZgp2kg&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
+<div id="paypal-container-QG5YB3AAV6KK2"></div>
+<script>
+  paypal.HostedButtons({
+    hostedButtonId: "QG5YB3AAV6KK2",
+  }).render("#paypal-container-QG5YB3AAV6KK2")
+</script>
+
+<!-- QR Code -->
+<div class="qr-code-container">
+    <img src="{% static 'media/donations-qrcode.png' %}" alt="QR Code for Donations">
+    <p>Scan the QR code to donate</p>
+</div>
 {% endblock %}

@@ -1,0 +1,72 @@
+/* General page styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Title Styling */
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    color: #007bff;
+    margin-top: 20px;
+}
+
+/* Message Styles */
+.text-center {
+    margin-top: 10px;
+}
+
+.text-danger {
+    font-size: 1.1em;
+    color: #dc3545;
+}
+
+/* QR Code Section */
+.qr-code-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.qr-code-container img {
+    width: 200px;
+    height: auto;
+    margin: 10px auto;
+    display: block;
+}
+
+.qr-code-container p {
+    font-size: 1em;
+    color: #555;
+    margin: 5px 0;
+}
+
+/* PayPal Button Container */
+#paypal-container-QG5YB3AAV6KK2 {
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* Button and Links Styling */
+button, a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+button:hover, a:hover {
+    opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    .qr-code-container img {
+        width: 150px;
+    }
+}
