@@ -1,176 +1,199 @@
-/* General Styles */
-body {
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: Arial, sans-serif;
-    background-color: #f4f7fb;
-    color: #333;
 }
 
-/* Header */
+/* General Layout */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #eef3fc; /* Light blue background */
+}
+
 h1 {
     text-align: center;
-    margin: 20px 0;
+    margin-top: 30px;
+    color: #1a4d8f; /* Darker blue for text */
 }
 
 /* Top Section */
 .top-section {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
-    margin: 20px;
-}
-
-#searchSkill {
+    margin: 20px 30px;
     padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 250px;
 }
 
 .add-resource-btn {
-    padding: 10px 20px;
-    font-size: 14px;
-    background-color: #007bff;
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: #007bff; /* Primary blue */
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .add-resource-btn:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; /* Darker blue */
 }
 
-/* Resource Table */
+/* Table Styling */
 .table-container {
-    margin: 20px;
-    overflow-x: auto;
+    margin: 30px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
 .resource-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.resource-table th, .resource-table td {
-    padding: 12px 15px;
+.resource-table th,
+.resource-table td {
+    padding: 12px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    color: #333;
 }
 
 .resource-table th {
-    background-color: #007bff;
+    background-color: #007bff; /* Primary blue for header */
     color: white;
+    font-weight: bold;
+}
+
+.resource-table tr:nth-child(even) {
+    background-color: #f2f7fc; /* Light blue for even rows */
+}
+
+.resource-table tr:hover {
+    background-color: #dce7f8; /* Slightly darker blue for hover */
+}
+
+.resource-table td {
+    vertical-align: middle;
 }
 
 .resource-table td button {
-    padding: 5px 10px;
-    margin-right: 5px;
+    padding: 8px 16px;
+    font-size: 14px;
+    background-color: #1a4d8f; /* Dark blue for action buttons */
+    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background-color: #28a745;
-    color: white;
+    transition: background-color 0.3s ease;
 }
 
 .resource-table td button:hover {
-    background-color: #218838;
+    background-color: #143a70; /* Darker blue for hover */
 }
 
-.resource-table td button.delete {
-    background-color: #dc3545;
-}
-
-.resource-table td button.delete:hover {
-    background-color: #c82333;
-}
-
-.resource-table td input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-}
-
-/* Modals */
+/* Modal Styling */
 .modal {
+    display: none;
     position: fixed;
-    top: 0;
+    z-index: 1000;
     left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: none;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Black overlay with transparency */
     justify-content: center;
     align-items: center;
-    z-index: 1000;
 }
 
 .modal-content {
     background-color: #fff;
     padding: 20px;
-    border-radius: 8px;
-    width: 400px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.modal h2 {
-    margin-top: 0;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 400px;
     text-align: center;
 }
 
-.modal label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
+.modal-content h2 {
+    color: #1a4d8f; /* Dark blue for heading */
+    margin-bottom: 20px;
 }
 
-.modal input[type="text"],
-.modal input[type="number"] {
+.modal-content label {
+    display: block;
+    margin: 10px 0 5px;
+    color: #333;
+}
+
+.modal-content input {
     width: 100%;
     padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
+    font-size: 14px;
     border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
 }
 
-.modal button {
+.modal-content button {
     padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
+    font-size: 16px;
+    margin: 5px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    width: 100%;
 }
 
-.modal button:hover {
+.modal-content button:first-child {
+    background-color: #007bff; /* Save button blue */
+    color: white;
+}
+
+.modal-content button:first-child:hover {
     background-color: #0056b3;
 }
 
-/* Hidden class to hide modals */
-.hidden {
-    display: none;
+.modal-content button:last-child {
+    background-color: #ccc; /* Cancel button gray */
+    color: #333;
 }
 
-/* Responsive */
-@media screen and (max-width: 768px) {
-    .top-section {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+.modal-content button:last-child:hover {
+    background-color: #999;
+}
 
-    #searchSkill {
-        width: 100%;
-        margin-bottom: 10px;
+/* Responsive Design */
+@media (max-width: 768px) {
+    .top-section {
+        justify-content: center;
     }
 
     .add-resource-btn {
-        width: 100%;
-        margin-top: 10px;
+        width: 80%;
     }
 
-    .resource-table {
+    .resource-table th,
+    .resource-table td {
         font-size: 12px;
+        padding: 8px;
+    }
+
+    .resource-table td button {
+        width: 100%;
+    }
+
+    .modal-content {
+        width: 95%;
     }
 }
