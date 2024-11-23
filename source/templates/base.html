@@ -26,7 +26,7 @@
                     {% endif %}
                     {% else %}
                     <li><a href="{% url 'home' %}#about">About Us</a></li>
-                    <li><a href="{% url 'home' %}#contact">Contact Us</a></li>
+                    <li><a href="{% url 'home' %}#contact">Our Team</a></li>
                     {% endif %}
                     <li><a href="{% url 'guidelines' %}">Guidelines</a></li>
                     <li><a href="{% url 'incidents' %}">Incidents</a></li>
@@ -38,7 +38,7 @@
                     {% endif %}
                 </ul>
                 <ul>
-                    <li><img src="../static/media/Logo.jpg" alt="NGO Logo" class="logo-img">Crisis Management</li>
+                    <li><img src="../static/media/Logo.jpg" alt="NGO Logo" class="logo-img">KarunaCMS</li>
                     <li class = "hideOnMobile"><a href="{% url 'home' %}">Home</a></li>
                     {% if user.is_authenticated %}
                     <li class = "hideOnMobile"><a href="{% url 'resources' %}">Resources</a></li>
@@ -47,7 +47,7 @@
                     {% endif %}
                     {% else %}
                     <li class = "hideOnMobile"><a href="{% url 'home' %}#about">About Us</a></li>
-                    <li class = "hideOnMobile"><a href="{% url 'home' %}#contact">Contact Us</a></li>
+                    <li class = "hideOnMobile"><a href="{% url 'home' %}#contact">Our Team</a></li>
                     {% endif %}
                     <li class = "hideOnMobile"><a href="{% url 'guidelines' %}">Guidelines</a></li>
                     <li class = "hideOnMobile"><a href="{% url 'incidents' %}">Incidents</a></li>

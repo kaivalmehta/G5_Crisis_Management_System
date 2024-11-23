@@ -121,41 +121,115 @@
         
     </section>
     
-
-    <!-- About Us Section -->
-    <section id="about" class="about-section">
-        <h1>About Us</h1>
-        <p class="about_us_text">
-            Our Crisis Management System offers a feasible approach for organizations to efficiently manage emergencies and reduce response durations.The platform simplifies incident reporting, team collaboration, and resource distribution via a unified dashboard. It includes crucial tools such as emergency alerts, live status updates, and electronic checklists for standard operating procedures. Team leaders can promptly allocate tasks, monitor response advancements, and ensure clear communication pathways with all involved parties. Equipped with pre-designed reporting templates and secure data storage, the system aids organizations in keeping comprehensive incident records and enhancing their emergency procedures informed by previous experiences. Regardless of facing natural disasters, technical malfunctions, or security issues, our platform delivers the framework and resources required for systematic crisis handling and recovery.
-        </p>
-        <h1>What we do</h1>
-        <p class="what_we_do_text">
-            Our Crisis Management System serves as a crucial bridge between communities, volunteers, and help organizations amid times of emergency. Through our stage, citizens can report occurrences and remain educated approximately crises in their zone, whereas enlisted volunteers can effectively take an interest in help endeavors by tolerating particular errands posted by confirmed organizations. NGOs and alleviation organizations utilize the stage to proficiently distribute and oversee crisis-related assignments, facilitate volunteer endeavors, and keep up real-time stock of accessible assets. The framework encourages consistent communication between all partners, permitting organizations to rapidly convey help where it's required most. With our coordinates gift include, concerned citizens can specifically contribute to progressing help endeavors, guaranteeing assets reach influenced regions productively. This collaborative approach makes a organized reaction organize that interfaces those who need to assist with those who require it most, making emergency administration more facilitated and viable. 
-        </p>
-    </section>
-
-
-    <!-- Contact Us Section -->
-    <section id="contact" class="contact-section">
-        <h1>Contact Us</h1>
-        <div style="display: flex; justify-content: space-between; gap: 20px;">
-            <div class="inquire-us-box">
-                <form>
-                    <label for="name">Your Name *</label>
-                    <input type="text" id="name" placeholder="Enter your name..." required>
-                    
-                    <label for="email">Your Email *</label>
-                    <input type="email" id="email" placeholder="Enter your email..." required>
-                    
-                    <label for="message">Your Message *</label>
-                    <textarea id="message" placeholder="Enter your message..." required></textarea>
-                    
-                    <button type="submit" class="submit-btn">Submit</button>
-                </form>
-            </div>
-            <div class="map-placeholder">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9207.22131232633!2d72.62998082524157!3d23.192097945470948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395c2a3c9618d2c5%3A0xc54de484f986b1fa!2sDA-IICT!5e0!3m2!1sen!2sin!4v1731160429688!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+      <!-- About Section -->
+      <section id = "about"class="about-section">
+        <div class="card">
+          <h1>About Us</h1>
+          <p>
+            Our Crisis Management System bridges communities, volunteers, and relief organizations during emergencies. It facilitates incident reporting, real-time updates, task coordination for volunteers, efficient resource management for organizations, and direct donations to support relief efforts, ensuring swift and organized responses.
+          </p>
+          <ul>
+            <li>Citizens can report incidents and get real-time crisis updates.</li>
+            <li>Volunteers can sign up for tasks and receive notifications for assignments.</li>
+            <li>Relief organizations can manage resources, track volunteer tasks, and receive donations.</li>
+            <li>Integrated donation feature ensures resources reach affected areas.</li>
+            <li>Promotes seamless communication for efficient and effective emergency management.</li>
+          </ul>
         </div>
+    
+        <div class="card">
+          <h1>What We Do?</h1>
+          <p>
+            Our Crisis Management System connects communities, volunteers, and organizations during emergencies. It allows citizens to report incidents, enables volunteers to take on relief tasks, and helps organizations efficiently manage resources and coordinate efforts. A donation feature ensures contributions directly support affected areas, fostering a structured and effective emergency response.
+          </p>
+          <ul>
+            <li>Connects communities, volunteers, and organizations for emergency relief.</li>
+            <li>Citizens can report incidents and stay informed about crises.</li>
+            <li>Volunteers participate in tasks posted by verified organizations</li>
+            <li>NGOs manage tasks, coordinate efforts, and track resources in real time.</li>
+            <li>Donation feature ensures efficient support to affected regions.</li>
+            <li>Encourages organized and collaborative emergency management.</li>
+          </ul>
+        </div>
+      </section>
+    
+    <section id = "contact">
+<header>
+        <h1>Meet Our Team</h1>
+        <p>Get to know the amazing people behind our work!</p>
+    </header>
+    <section class="team">
+        <div class="team-member">
+            <h3>Kaival<br>Mehta</h3>
+            <p>202201009</p>
+        </div>
+        <div class="team-member">
+            <h3>Jash<br>Shah</h3>
+            <p>202201016</p>
+        </div>
+        <div class="team-member">
+            <h3>Gunesha<br>Shahu</h3>
+            <p>202201022</p>
+        </div>
+        <div class="team-member">
+            <h3>Hitarth<br>Bhatt</h3>
+            <p>202201024</p>
+        </div>
+        <div class="team-member">
+            <h3>Sujal<br>Mavdiya</h3>
+            <p>202201040</p>
+        </div>
+        <div class="team-member">
+            <h3>Sneh<br>Joshi</h3>
+            <p>202201048</p>
+        </div>
+        <div class="team-member">
+            <h3>Namra<br>Monpara</h3>
+            <p>202201055</p>
+        </div>
+        <div class="team-member">
+            <h3>Khushi<br>Prajapati</h3>
+            <p>202201062</p>
+        </div>
+        <div class="team-member">
+            <h3>Aaryan<br>Shauraya</h3>
+            <p>202201075</p>
+        </div>
+        <div class="team-member">
+            <h3>Saish<br>Pagar</h3>
+            <p>202201092</p>
+        </div>
+    </section>
+    <script>
+        // script.js
+    document.addEventListener("DOMContentLoaded", function () {
+    const teamSection = document.querySelector(".team");
+    
+    function updateGridColumns() {
+        const screenWidth = window.innerWidth;
+        let columns;
+    
+        if (screenWidth > 1000) {
+            columns = 5; // Large screens
+        } else if (screenWidth > 800) {
+            columns = 3; // Medium screens
+        } else if (screenWidth > 600) {
+            columns = 3; // Small screens
+        } else if (screenWidth > 450) {
+            columns = 2; // Extra small screens
+        } else{
+            columns = 1; // Mobile screens
+        }
+    
+        teamSection.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
+    }
+    
+    // Run on load
+    updateGridColumns();
+    
+    // Update on window resize
+    window.addEventListener("resize", updateGridColumns);
+    });
+    </script>
     </section>
 {% endblock %}

@@ -11,7 +11,7 @@ body {
     background-attachment: fixed;
     background-position: center;
     color: #333;
-    padding-top: 7vh;
+    padding-top: 6vh;
 }
 /* Highlight and Animation for Donate Button */
 
@@ -43,21 +43,71 @@ body {
     height: 12px;
 }
 
-.about-section, .contact-section {
-    padding-top: 2%;
-    padding-left: 2%;
-    padding-right: 2%;
-    max-width: 100%;
-    margin: 0;
+
+
+  /* Section Container */
+.about-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
 }
-.about-section h1, .contact-section h1 {
-    color: #222;
-    text-align: left;
+
+  /* Individual Cards */
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex: 1 1 calc(50% - 20px); /* Two equal-width columns */
+    padding: 20px;
+    min-width: 300px;
+    box-sizing: border-box;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.about_us_text, .what_we_do_text{
-    text-align: left;
-    font-size: large;
+
+  /* Hover Effect for Cards */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
+
+  /* Header Styling */
+  .card h1 {
+    font-size: 24px;
+    color: #007acc;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #007acc;
+    padding-bottom: 5px;
+  }
+  
+  /* Paragraph and Text Styling */
+  .card p {
+    line-height: 1.6;
+    margin: 15px 0;
+  }
+  .card ul {
+    margin: 15px 0;
+    padding-left: 20px;
+  }
+  
+  .card li {
+    margin-bottom: 10px;
+    list-style: none;
+    position: relative;
+  }
+  
+  .card li::before {
+    content: "•";
+    color: #007acc;
+    font-size: 18px;
+    position: absolute;
+    left: -15px;
+    top: 0;
+  }
+
 
 .report-incident {
     position: absolute; /* Allows placement within carousel container */
@@ -146,72 +196,60 @@ body {
     background-color: #c9302c;
 }
 
-.get-location-btn {
-    background-color: #5bc0de;
-    color: white;
-    padding: 1%;
-    border: none;
-    border-radius: 0.5%;
-    cursor: pointer;
-    margin-top: 1.5%;
-    transition: background-color 0.3s;
+header {
+    text-align: center;
+    padding: 3vh;
 }
 
-.get-location-btn:hover {
-    background-color: #31b0d5;
+header h1 {
+    margin: 0;
+    font-size: 3vw;
+    color: #333;
 }
 
-.inquire-us-box {
-    background-color: #f9f9f9;
-    padding: 2%;
-    border-radius: 0.8%;
-    box-shadow: 0 4% 8% rgba(0, 0, 0, 0.2);
-    width: 100%;
-    max-width: 50%;
+header p {
+    color: #666;
+    font-size: 1rem;
 }
 
-.inquire-us-box form label {
-    font-weight: bold;
-    color: #000;
-    margin-top: 1%;
-    margin-bottom: 2.5%;
-    display: block;
-}
-
-.inquire-us-box form input[type="text"],
-.inquire-us-box form input[type="email"],
-.inquire-us-box form textarea {
-    width: 100%;
-    padding: 2.5%;
-    margin-top: 0.5%;
-    margin-bottom: 5%;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.inquire-us-box form .submit-btn {
-    width: 100%;
-    background-color: #d9534f;
-    color: white;
-    padding: 1%;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.inquire-us-box form .submit-btn:hover {
-    background-color: #c9302c;
-}
-
-.map-placeholder {
-    background-color: #eee;
+/* Team Section */
+.team {
     display: grid;
-    margin-top: 0;
-    border-radius: 0.5%;
-    box-shadow: 0 0.4% 0.8% rgba(0, 0, 0, 0.2);
-    width: 100%;
-    max-width: 1000px;
+    gap: 3vh; /* Reduced the gap */
+    padding: 3vh;
+    max-width: 60vw;
+    margin: 0 auto;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-content: center; /* Default for older browsers */
+    position: relative;
+}
+
+.team-member {
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    width: 11vw;
+    height: auto;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+}
+
+.team-member h3 {
+    margin: 0 5px;
+    padding-top: 1vh;
+    color: #333;
+    font-size: 1.5vw;
+}
+
+.team-member p {
+    color: #666;
+    font-size: 1.2vw;
 }
 
 /* Responsive Layout Adjustments */
@@ -220,7 +258,7 @@ body {
     .about-section,.report-incident {
         max-width: 100%;
         margin: 0 ;
-        margin-top: 620px;
+        margin-top: 560px;
     }
     .contact-section{
         max-width: 100%;
@@ -253,11 +291,20 @@ body {
     }
 }
 @media(max-width: 820px){
-    .about-section,.report-incident {
+    .report-incident {
         max-width: 100%;
         margin: 0 ;
         margin-top: 600px;
     }
+    .about-section {
+        flex-direction: column; /* Stacks the cards vertically */
+    }
+    
+    .card {
+        flex: 1 1 100%; /* Full width for each card */
+        margin-bottom: 20px; /* Add spacing between stacked cards */
+    }
+    
     .contact-section{
         max-width: 100%;
         margin: 0;
@@ -279,15 +326,21 @@ body {
         flex-direction: column; /* Stacks items vertically */
         align-items: center; /* Centers items */
     }
-    .contact-section{
-        width: 100%;
-        padding: 5%;
-    }
+}
 
-    .map-placeholder {
-        height: 100%;
+@media(max-width: 850px){
+    .team-member{
+        width: 20vw;
+        height: auto;
+    }
+    .team-member h3{
+        font-size: 4vw;
+    }
+    .team-member p{
+        font-size: 2vw;
     }
 }
+
 
 @media (max-width: 480px) {
     .org-name {
@@ -303,22 +356,26 @@ body {
         height: 50vh;
     }
 
-    .about-section, .contact-section{
+    .about-section{
         padding: 5%;
         font-size: 0.9em;
+        margin-top: 500px;
     }
 
     .inquire-us-box {
         max-width: 100%;
     }
     .report-incident {
-        position: absolute;
-        width: 95%; /* Almost full width on mobile */
-        top: 50%;
-        right: 10px;
+        width: 90%; /* Full width on smaller screens */
+        top: 100%;
         padding: 10px;
     }
-
+    .report-incident {
+        position: absolute; /* Removes fixed positioning */
+        margin: 2vh;
+        margin-right: 2.5vw;/* Centers the form horizontally */
+        width: 90%; /* Adjusts width for mobile view */
+    }
     .report-incident h1 {
         font-size: 1.2rem; /* Adjust heading size */
         margin-bottom: 10px;
@@ -350,19 +407,6 @@ body {
         font-size: 0.9em;
     }
 
-    /* Adjust report-incident positioning to be fixed below carousel */
-    .report-incident {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        padding: 10px;
-        background-color: rgba(255, 255, 255, 0.95);
-        box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
-        z-index: 1000;
-        border-radius: 5px 5px 0 0;
-    }
-
     /* Reduce size and padding for better mobile view */
     .report-incident h1 {
         font-size: 1.2rem;
@@ -375,8 +419,19 @@ body {
         flex-direction: column;
         gap: 10px;
     }
-
-    .map-placeholder {
-        height: 200px;
+}
+@media(max-width: 450px){
+    .team-member{
+        width: 50vw;
+        height: auto;
+    }
+    .team-member h3{
+        font-size: 10vw;
+    }
+    .team-member p{
+        font-size: 5vw;
+    }
+    header h1{
+        font-size: 8vh;
     }
 }
