@@ -23,7 +23,6 @@
                 <th>Index</th>
                 <th>Name</th>
                 <th>Quantity</th>
-                <th>Ward</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -33,7 +32,6 @@
                 <td>{{ forloop.counter }}</td>
                 <td class="name">{{ resource.name }}</td>
                 <td class="quantity">{{ resource.quantity }}</td>
-                <td class="ward">{{ resource.ward }}</td>
                 <td>
                     <button onclick="deleteResource('{{ resource.resourceID }}')">Delete</button>
                 </td>

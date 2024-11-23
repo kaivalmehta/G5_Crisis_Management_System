@@ -78,25 +78,47 @@
                     <span>9</span>
                     <span>10</span>
                 </div>
-                <input type="hidden" name="latitude" id="latitude">
-    <input type="hidden" name="longitude" id="longitude">
-                <!-- template.html -->
-                <script>
-                    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            document.getElementById("latitude").value = position.coords.latitude;
-            document.getElementById("longitude").value = position.coords.longitude;
-        });
-    } else {
-        alert("Geolocation is not supported by this browser.");
-    }
-                </script>
                 
-
-    
-                <button type="submit">Report Incident</button>
+                <input type="hidden" name="latitude" id="latitude">
+                <input type="hidden" name="longitude" id="longitude">
+                
+                <button type="submit" id="report-button" disabled>Report Incident</button>
+                
+                <script>
+                    const reportButton = document.getElementById("report-button");
+        
+                    // Attempt to get the user's location
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(
+                            function(position) {
+                                // Set location data
+                                document.getElementById("latitude").value = position.coords.latitude;
+                                document.getElementById("longitude").value = position.coords.longitude;
+        
+                                // Enable the button
+                                reportButton.disabled = false;
+                            },
+                            function(error) {
+                                // Handle location errors
+                                if (error.code === error.PERMISSION_DENIED) {
+                                    alert("Location access is blocked. Please enable location services to report an incident.");
+                                } else {
+                                    alert("An error occurred while retrieving your location. Please try again.");
+                                }
+        
+                                // Keep the button disabled
+                                reportButton.disabled = true;
+                            }
+                        );
+                    } else {
+                        alert("Geolocation is not supported by this browser.");
+                        reportButton.disabled = true;
+                    }
+                </script>
             </form>
         </div>
+        
+        
     </section>
     
 

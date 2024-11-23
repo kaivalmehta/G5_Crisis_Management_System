@@ -42,7 +42,6 @@ class Resource(models.Model):
     resourceID = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=256)
     quantity = models.CharField(max_length=32)
-    ward = models.PositiveSmallIntegerField()
 
     def __str__(self):
         return str(self.name)

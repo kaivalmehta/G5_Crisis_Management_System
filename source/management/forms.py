@@ -11,6 +11,10 @@ class OrganizationForm(ModelForm):
             'domain': TextInput(attrs={"class":"form-control my-2 mb-3"}),
             'level': Select(attrs={"class":"form-select my-2 mb-3"}),
         }
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['domain'].required = True
+        self.fields['level'].required = True
 
 
 class VolunteerForm(ModelForm):
@@ -24,6 +28,10 @@ class VolunteerForm(ModelForm):
             'skills': TextInput(attrs={"class":"form-control my-2 mb-3"}),
                                 
         }
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.required = True
 
 
 class ResourceForm(ModelForm):
@@ -32,10 +40,12 @@ class ResourceForm(ModelForm):
         exclude = ['resourceID', 'organization']
         widgets = {
             'name': TextInput(attrs={"class":"form-control my-2 mb-3"}),
-            'quantity':TextInput(attrs={"class":"form-control my-2 mb-3"}),
-            'city':Select(attrs={"class":"form-control my-2 mb-3"}),
-            'ward':NumberInput(attrs={"class":"form-control my-2 mb-3"})
+            'quantity':TextInput(attrs={"class":"form-control my-2 mb-3"})
         }
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.required = True
 
 class TaskForm(ModelForm):
     class Meta:
@@ -45,3 +55,7 @@ class TaskForm(ModelForm):
             'name':  TextInput(attrs={"class":"form-control my-2 mb-3"}),
             'description':TextInput(attrs={"class":"form-control my-2 mb-3"}),
         }
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['name'].required = True
+        
