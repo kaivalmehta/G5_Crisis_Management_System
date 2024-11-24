@@ -34,7 +34,7 @@
             <input class="btn btn-success" type="submit" value="Login" />
         </div>
     </form>
-    
+    <p class="forgot-text text-center mt-3">Forgot Password? <a href="{% url 'password_reset' %}" class="forgot-link">Forget</a></p>
     <p class="register-text text-center mt-3">Don't have an account? <a href="{% url 'register' %}" class="register-link">Register</a></p>
 </div>
 {% endblock %}
