@@ -45,6 +45,7 @@
     </table>
 </div>
 
+{% if request.user.organization %}
 <div class="top-section">
     <button class="add-resource-btn" onclick="window.location.href='{% url 'add_resource' %}'">Add Resource</button>
 </div>
@@ -63,5 +64,6 @@
         <button onclick="closeAddresourceModal()">Cancel</button>
     </div>
 </div>
+{% endif %}
 
 {% endblock %}

@@ -1,8 +1,7 @@
 #python version-3.12.6
 pipenv
 django
-pillow
 requests
 pytest
 django-pytest
-django-paypal
+python-dotenv
