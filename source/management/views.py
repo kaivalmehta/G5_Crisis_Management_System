@@ -30,7 +30,7 @@ def register(request):
             messages.error(request, "Password length is too short.")
             return redirect('register')
 
-        user = User(first_name=request.POST['name'], username=request.POST['email'])
+        user = User(first_name=request.POST['name'], username=request.POST['email'],email=request.POST['email'])
         user.set_password(request.POST['password'])  # Hashes the password
         request.session['username'] = user.username
         user.save()

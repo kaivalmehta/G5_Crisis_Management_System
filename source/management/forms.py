@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from .models import Organization, Volunteer, Resource,Task
-from django.forms import CheckboxSelectMultiple, TextInput, NumberInput, Select, SelectMultiple
+from django.forms import CheckboxSelectMultiple, TextInput, NumberInput, Select, SelectMultiple,IntegerField,CharField
 
 
 class OrganizationForm(ModelForm):
@@ -35,18 +35,27 @@ class VolunteerForm(ModelForm):
 
 
 class ResourceForm(ModelForm):
+    name = CharField(
+        max_length=50,  # Enforce the max_length constraint
+        widget=TextInput(attrs={"class": "form-control my-2 mb-3"}),
+        error_messages={
+            'max_length': 'Name cannot exceed 50 characters.',
+            'required': 'This field is required.',
+        }
+    )
+    quantity = IntegerField(
+        widget=NumberInput(attrs={"class": "form-control my-2 mb-3"}),
+        min_value=1,
+        error_messages={
+            'required': 'This field is required.',
+            'invalid': 'Enter a valid number.',
+            'min_value': 'Quantity must be a positive integer.'
+        }
+    )
+
     class Meta:
         model = Resource
         exclude = ['resourceID', 'organization']
-        widgets = {
-            'name': TextInput(attrs={"class":"form-control my-2 mb-3"}),
-            'quantity':TextInput(attrs={"class":"form-control my-2 mb-3"})
-        }
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for field in self.fields.values():
-            field.required = True
-
 class TaskForm(ModelForm):
     class Meta:
         model=Task
