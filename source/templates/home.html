@@ -58,10 +58,10 @@
             <form method="POST">
                 {% csrf_token %}
                 <label for="incident-type">Incident Type *</label>
-                <input type="text" name="name" id="incident-type" placeholder="Describe the incident type..." required>
+                <input type="text" name="name" id="incident-type" minlength="5" maxlength="100" placeholder="Describe the incident type..." required>
                 
                 <label for="description">Description *</label>
-                <textarea id="description" name="description" placeholder="Describe the incident..." required></textarea>
+                <textarea id="description" name="description" minlength="10" maxlength="1000" placeholder="Describe the incident..." required></textarea>
                 
                 <label for="severity">Severity Level *</label>
                 <input type="range" name="severity" id="severity" min="1" max="10" value="5" required>
