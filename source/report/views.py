@@ -34,12 +34,15 @@ def dashboard(request):
     if request.user.is_authenticated and (Organization.objects.filter(user=request.user).exists()):
         reports = Crisis.objects.exclude(assignee=request.user.organization, currentstatus='I').order_by('-time')
         mycrisis= Crisis.objects.filter(assignee=request.user.organization, currentstatus='I')
-        if mycrisis:
+        if mycrisis.exists():
             return render(request, 'incidents.html', {'mycrisis':mycrisis, 'crisis':reports})
     reports = Crisis.objects.order_by('-time')
     return render(request, 'incidents.html', {'crisis':reports})
 
 def respond(request,cID):
+    if not request.user.is_authenticated:
+        messages.error(request, "You need to log in first.")
+        return redirect('login')
     report = Crisis.objects.filter(crisisID=cID)
     if report:
         report = report[0]
@@ -56,7 +59,11 @@ def respond(request,cID):
     request.user.organization.save()
     report.save()
     return redirect('incidents')
+
 def solve(request, cID):
+    if not request.user.is_authenticated:
+        messages.error(request, "You need to log in first.")
+        return redirect('login')
     report = Crisis.objects.filter(crisisID=cID)
     if report:
         report = report[0]
@@ -67,4 +74,3 @@ def solve(request, cID):
     report.assignee=None
     report.save()
     return redirect('incidents')
-# Create your views here.
