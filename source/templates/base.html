@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Crisis Management System{% endblock %}</title>
+    <link rel="icon" href="{% static 'media/Logo.png' %}">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'style/navbar.css' %}">
     {% block extra_css %}
@@ -38,7 +39,7 @@
                     {% endif %}
                 </ul>
                 <ul>
-                    <li><img src="../static/media/Logo.jpg" alt="NGO Logo" class="logo-img">KarunaCMS</li>
+                    <li><img src="../static/media/Logo.png" alt="NGO Logo" class="logo-img">KarunaCMS</li>
                     <li class = "hideOnMobile"><a href="{% url 'home' %}">Home</a></li>
                     {% if user.is_authenticated %}
                     <li class = "hideOnMobile"><a href="{% url 'resources' %}">Resources</a></li>
