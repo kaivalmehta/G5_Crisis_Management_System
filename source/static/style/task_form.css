@@ -1,9 +1,13 @@
 /* General Body Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: Arial, sans-serif;
     background-color: #ffffff;
-    color: #333333;
-    line-height: 1.6;
 }
 
 /* Title Styling */
@@ -11,7 +15,6 @@ h2 {
     text-align: center;
     font-size: 2.2rem;
     color: #333;
-    margin-top: 80px; /* Push title down to avoid overlap with fixed navbar */
     margin-bottom: 20px;
     font-weight: bold;
 }
