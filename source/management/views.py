@@ -251,6 +251,7 @@ def delete_task(request, task_id):
         return redirect('crisis_tasks', crisis_id=task.crisis.crisisID)  # Redirect to the crisis tasks page
     else:
         return HttpResponseForbidden("You do not have permission to delete this task.")
+    
 @login_required
 def accept_task(request, task_id):
     task = get_object_or_404(Task, taskID=task_id)
@@ -263,6 +264,7 @@ def accept_task(request, task_id):
     task.status = 'In-Progress'
     task.save()
     return redirect('crisis_tasks',crisis_id=task.crisis.crisisID)
+
 @login_required
 def mark_task_done(request, task_id):
     task = get_object_or_404(Task, taskID=task_id)

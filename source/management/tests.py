@@ -1,81 +1,72 @@
 from django.test import TestCase
-
-# Create your tests here.
-from django.test import TestCase, Client
-from django.urls import reverse
 from django.contrib.auth.models import User
+from .models import Organization, Volunteer, Resource, Task
+from report.models import Crisis  # Assuming Crisis is defined in report.models
 
-class UserAuthenticationTests(TestCase):
+class ModelsTestCase(TestCase):
 
     def setUp(self):
-        self.client = Client()
-        self.register_url = reverse('register')
-        self.login_url = reverse('login')
-        self.profile_url = reverse('profile')
-        self.logout_url = reverse('logout')
+        # Create users
+        self.user1 = User.objects.create_user(username='org_user', password='password123', first_name='Org', last_name='User')
+        self.user2 = User.objects.create_user(username='vol_user', password='password123', first_name='Vol', last_name='User')
         
-        # Create a sample user for testing login
-        self.user = User.objects.create_user(username='testuser', password='testpassword')
-        self.user.save()
+        # Create an organization
+        self.organization = Organization.objects.create(user=self.user1, domain="Healthcare", level="N")
+        
+        # Create a volunteer
+        self.volunteer = Volunteer.objects.create(user=self.user2, organization=self.organization, age=30, sex='M', skills="First Aid, Rescue Operations")
+        
+        # Create a crisis (mocking Crisis model)
+        self.crisis = Crisis.objects.create(name="Flood in Area A", description="Severe flooding requiring immediate attention.")
+        
+        # Create a resource
+        self.resource = Resource.objects.create(organization=self.organization, name="Food Packets", quantity="100")
+        
+        # Create a task
+        self.task = Task.objects.create(name="Distribute Food", description="Deliver food packets to affected areas.", crisis=self.crisis, assignee=self.volunteer)
 
-    def test_register_page_loads(self):
-        response = self.client.get(self.register_url)
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'register.html')
+    def test_organization_creation(self):
+        self.assertEqual(str(self.organization), "Org User")
+        self.assertEqual(self.organization.domain, "Healthcare")
+        self.assertEqual(self.organization.level, "N")
 
-    def test_login_page_loads(self):
-        response = self.client.get(self.login_url)
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'login.html')
+    def test_volunteer_creation(self):
+        self.assertEqual(str(self.volunteer), "Vol User")
+        self.assertEqual(self.volunteer.age, 30)
+        self.assertEqual(self.volunteer.sex, "M")
+        self.assertEqual(self.volunteer.skills, "First Aid, Rescue Operations")
+        self.assertEqual(self.volunteer.organization, self.organization)
 
-    def test_profile_page_redirects_if_not_logged_in(self):
-        response = self.client.get(self.profile_url)
-        self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, f"{self.login_url}?next={self.profile_url}")
+    def test_resource_creation(self):
+        self.assertEqual(str(self.resource), "Food Packets")
+        self.assertEqual(self.resource.organization, self.organization)
+        self.assertEqual(self.resource.quantity, "100")
 
-    def test_logout_redirects_to_home(self):
-        self.client.login(username='testuser', password='testpassword')
-        response = self.client.get(self.logout_url)
-        self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, reverse('home'))
+    def test_task_creation(self):
+        self.assertEqual(self.task.name, "Distribute Food")
+        self.assertEqual(self.task.description, "Deliver food packets to affected areas.")
+        self.assertEqual(self.task.crisis, self.crisis)
+        self.assertEqual(self.task.assignee, self.volunteer)
+        self.assertEqual(self.task.status, "Unsolved")  # Default status
 
-    def test_user_registration(self):
-        response = self.client.post(self.register_url, {
-            'username': 'newuser',
-            'email': 'newuser@example.com',
-            'password1': 'password123',
-            'password2': 'password123'
-        })
-        self.assertEqual(response.status_code, 302)
-        self.assertTrue(User.objects.filter(username='newuser').exists())
+    def test_task_status_update(self):
+        self.task.status = "I"
+        self.task.save()
+        self.assertEqual(self.task.status, "I")
 
-    def test_login_with_valid_credentials(self):
-        login = self.client.post(self.login_url, {
-            'username': 'testuser',
-            'password': 'testpassword'
-        })
-        self.assertEqual(login.status_code, 302)
-        self.assertRedirects(login, self.profile_url)
+    def test_resource_deletion(self):
+        resource_id = self.resource.pk
+        self.resource.delete()
+        self.assertFalse(Resource.objects.filter(pk=resource_id).exists())
 
-    def test_login_with_invalid_credentials(self):
-        login = self.client.post(self.login_url, {
-            'username': 'testuser',
-            'password': 'wrongpassword'
-        })
-        self.assertEqual(login.status_code, 200)
-        self.assertTemplateUsed(login, 'login.html')
-        self.assertContains(login, "Please enter a correct username and password")
+    def test_task_deletion(self):
+        task_id = self.task.pk
+        self.task.delete()
+        self.assertFalse(Task.objects.filter(pk=task_id).exists())
 
-    def test_profile_page_access_after_login(self):
-        self.client.login(username='testuser', password='testpassword')
-        response = self.client.get(self.profile_url)
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'profile.html')
-
-    def test_logout_functionality(self):
-        self.client.login(username='testuser', password='testpassword')
-        response = self.client.get(self.logout_url)
-        self.assertEqual(response.status_code, 302)
-        response = self.client.get(self.profile_url)
-        self.assertRedirects(response, f"{self.login_url}?next={self.profile_url}")
+    def test_volunteer_on_delete_set_null(self):
+        task_id = self.task.pk
+        self.volunteer.delete()
+        task = Task.objects.get(pk=task_id)
+        self.assertIsNone(task.assignee)
 

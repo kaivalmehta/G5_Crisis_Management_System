@@ -6,7 +6,7 @@ import uuid
 # Create your models here.
 
 class Organization(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
     domain = models.CharField(max_length=256, blank=True)
     level = models.CharField(max_length=1, blank=True,
         choices=[
@@ -22,7 +22,7 @@ class Organization(models.Model):
 
 
 class Volunteer(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE, blank=True, null=True, default=None)
     age = models.PositiveSmallIntegerField(blank=True, null=True)
     sex = models.CharField(max_length=1, blank=True, null=True,
