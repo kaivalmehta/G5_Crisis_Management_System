@@ -1,20 +1,30 @@
 # Crisis Management System
 
-A web-based application for organizations to efficiently manage emergencies, streamline incident reporting, and reduce response times through a centralized platform. This system facilitates communication between volunteers, organizations, and communities during crises.
+Imagine you’re in the midst of a natural disaster or a local emergency. You see people in need, organizations wanting to help, and volunteers ready to act—but there’s no system to connect them all effectively. That’s where KarunaCMS steps in.
+
+KarunaCMS is a platform that bridges the gap between citizens, volunteers, and organizations to respond to crises faster and more efficiently. Whether it’s reporting an incident, coordinating resources, or volunteering to help, KarunaCMS empowers communities to take meaningful action during critical times.
 
 ## Features
 
-- **User Registration and Authentication:** Users can register as volunteers or organizations, log in, and manage their profile.
-- **Incident Reporting:** Users can report incidents, provide descriptions, attach images, and specify severity.
-- **Profile Management:** Logged-in users can view their profiles and log out.
-- **Carousel Display:** Home page features a carousel section to showcase images or information.
-- **Contact Form and Google Maps Integration:** Users can reach out via a contact form and locate the organization's address through an embedded map.
+- **User Registration & Authentication:**
+  - Register users as volunteers or organizations.
+  - Password validation, including length and confirmation checks.
+  - Login and logout functionality.
 
-## Prerequisites
+- **Profile Management:**
+  - Separate profiles for volunteers and organizations.
+  - Edit profile options tailored to their respective attributes.
 
-- Python 3.x
-- Django 4.x
-- Virtual environment (recommended)
+- **Resource Management:**
+  - Organizations can manage resources, including adding and deleting them.
+
+- **Volunteer-Organization Interaction:**
+  - Organizations can view their volunteers.
+  - Tasks can be created and assigned to volunteers.
+
+- **Task Management:**
+  - Tasks associated with crises can be created, viewed, updated, and deleted.
+  - Volunteers can accept tasks and mark them as done.
 
 ## Project Setup
 
@@ -74,15 +84,3 @@ Access the application at `http://127.0.0.1:8000`.
 - **`models.py`** - Database models (if applicable, e.g., for users, incidents, etc.).
 - **`forms.py`** - Django forms for handling registration and login.
 - **`static/`** - Directory for static files, such as CSS, JavaScript, and images.
-
-## License
-
-This project is licensed under the MIT License.
-
-## Contributing
-
-1. Fork the repository
-2. Create a new branch for your feature: `git checkout -b feature-name`
-3. Commit your changes: `git commit -m 'Add new feature'`
-4. Push to the branch: `git push origin feature-name`
-5. Submit a pull request
