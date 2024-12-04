@@ -274,3 +274,12 @@ def mark_task_done(request, task_id):
         return redirect('crisis_tasks',crisis_id=task.crisis.crisisID)  # Adjust to your tasks list or detail view URL
     else:
         return HttpResponseForbidden("You are not assigned to this task.")
+    
+@login_required
+def delete_user(request):
+    if request.method == "POST":
+        # Delete the authenticated user
+        user = request.user
+        user.delete()
+        # Redirect to a page after user deletion
+        return redirect('home')

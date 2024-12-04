@@ -14,7 +14,7 @@
     <div class="profile-left">
         {% if profile_type == 'volunteer' %}
         <h2>Volunteer Profile</h2>
-                <div class="profile-info-box">
+        <div class="profile-info-box">
             <div class="profile-info-row">
                 <div class="profile-info-label">Name:</div>
                 <div class="profile-info-value">{{ profile.user.get_full_name }}</div>
@@ -42,9 +42,17 @@
         >
             Edit Profile
         </button>
+        <form
+            action="{% url 'delete_user' %}"
+            method="POST"
+            style="display: inline-block; margin-top: 10px;"
+            onsubmit="return confirm('Are you sure you want to delete your account? This action cannot be undone.');"
+        >
+            {% csrf_token %}
+            <button type="submit" class="edit-btn">Delete Profile</button>
+        </form>
         {% elif profile_type == 'organization' %}
         <h2>Organization Profile</h2>
-        
         <div class="profile-info-box">
             <div class="profile-info-row">
                 <div class="profile-info-label">Name:</div>
@@ -69,6 +77,15 @@
         >
             Edit Profile
         </button>
+        <form
+            action="{% url 'delete_user' %}"
+            method="POST"
+            style="display: inline-block; margin-top: 10px;"
+            onsubmit="return confirm('Are you sure you want to delete your account? This action cannot be undone.');"
+        >
+            {% csrf_token %}
+            <button type="submit" class="edit-btn">Delete Profile</button>
+        </form>
         {% else %}
         <p style="text-align: center">No profile information found.</p>
         {% endif %}

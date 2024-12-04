@@ -7,6 +7,7 @@
     <i class="text-danger text-center">{{ message }}</i>
     {% endfor %}
 </div>
+
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'style/donate.css' %}">
 {% endblock %}
@@ -21,10 +22,4 @@
     hostedButtonId: "WUJ62SFX5U27L",
   }).render("#paypal-container-WUJ62SFX5U27L")
 </script>
-
-<!-- QR Code -->
-<div class="qr-code-container">
-    <img src="{% static 'media/donations-qrcode.png' %}" alt="QR Code for Donations">
-    <p>Scan the QR code to donate</p>
-</div>
 {% endblock %}
